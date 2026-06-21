@@ -28,11 +28,15 @@ export default function WorkInformationCard(
   return (
     <Card key={workId}>
       <Card.Header>
-        <Card.Title as="h2">{title} <WorkInformationPopover /></Card.Title>
+        <Card.Title as="h2">Work Information <WorkInformationPopover /></Card.Title>
       </Card.Header>
-      <Card.Body className="elcCardBody">
+      <Card.Body>
+        <h3>Title</h3>
+        <Card.Text>
+          <em><RichTextBlock content={title ?? ""} /></em>
+        </Card.Text>
         <h3>Description <WorkDescriptionPopover /></h3>
-        <Card.Text id="workDescription">
+        <Card.Text>
           <RichTextBlock content={workDescription ?? ""} />
         </Card.Text>
         {instructions.trim().length > 0 && (

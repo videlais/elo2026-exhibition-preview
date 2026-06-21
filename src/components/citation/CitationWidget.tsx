@@ -3,7 +3,9 @@ import { Clipboard } from "react-bootstrap-icons";
 import { useState } from "react";
 import "@citation-js/plugin-csl";
 import "@citation-js/plugin-bibtex";
-import { Cite, plugins, util } from "@citation-js/core";
+import { Cite, plugins } from "@citation-js/core";
+import mlaTemplate from "../../citation/csl/modern-language-association.csl?raw";
+import chicagoTemplate from "../../citation/csl/chicago-author-date.csl?raw";
 import "./CitationWidget.css";
 
 let citationTemplatesRegistered = false;
@@ -12,9 +14,6 @@ function ensureCitationTemplatesRegistered() {
   if (citationTemplatesRegistered) {
     return;
   }
-
-  const mlaTemplate = util.fetchFile("https://www.zotero.org/styles/modern-language-association");
-  const chicagoTemplate = util.fetchFile("https://www.zotero.org/styles/chicago-author-date");
 
   const cslConfig = plugins.config.get("@csl");
   cslConfig.templates.add("mla", mlaTemplate);

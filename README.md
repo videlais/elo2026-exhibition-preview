@@ -55,6 +55,30 @@ The `normalizeWorksDataset` adapter in `src/utils/elmsAdapters.ts` maps this nes
 
 ---
 
+## Citation Style (CSL) Files
+
+The citation widget on each work page renders APA, MLA, Chicago, and BibTeX bibliographies via [`@citation-js/core`](https://github.com/citation-js/citation-js). APA is bundled with `@citation-js/plugin-csl`; **MLA and Chicago templates are committed to the repo** under `src/citation/csl/` and imported as raw strings at build time (via Vite's `?raw` suffix). This avoids a runtime network call to `zotero.org` from every visitor.
+
+Bundled files:
+
+| File | Source |
+|---|---|
+| `src/citation/csl/modern-language-association.csl` | <https://www.zotero.org/styles/modern-language-association> |
+| `src/citation/csl/chicago-author-date.csl` | <https://www.zotero.org/styles/chicago-author-date> |
+
+**Re-pull for each new archive / exhibition cut.** CSL definitions evolve (slowly) as MLA/Chicago publish style updates. Before cutting a new archival build, refresh the local copies:
+
+```sh
+curl -sSfL https://www.zotero.org/styles/modern-language-association \
+  -o src/citation/csl/modern-language-association.csl
+curl -sSfL https://www.zotero.org/styles/chicago-author-date \
+  -o src/citation/csl/chicago-author-date.csl
+```
+
+Then commit any resulting diff.
+
+---
+
 ## Routes and Pages
 
 | Route | Page | Description |
