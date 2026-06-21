@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import PageLayout from "../components/PageLayout";
 import useWorks from "../hooks/useWorks";
+import { assetUrl } from "../utils/assetUrl";
 
 export default function HomePage() {
   const works = useWorks();
@@ -17,7 +18,7 @@ export default function HomePage() {
           {works.map((work) => {
             const workId = work.workInformation.workId;
             const title = work.workInformation.title;
-            const coverSrc = work.mediaFilesInformation?.coverImage ?? "";
+            const coverSrc = assetUrl(work.mediaFilesInformation?.coverImage);
             const names = (work.entityInformation ?? [])
               .filter((e) => e.entityType !== "group" && e.entityName)
               .map((e) => e.entityName);

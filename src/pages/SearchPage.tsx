@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import PageLayout from "../components/PageLayout";
 import useWorks from "../hooks/useWorks";
+import { assetUrl } from "../utils/assetUrl";
 
 export default function SearchPage() {
   const allWorks = useWorks();
@@ -40,7 +41,7 @@ export default function SearchPage() {
           {filtered.map((work) => {
             const workId = work.workInformation.workId;
             const title = work.workInformation.title;
-            const coverSrc = work.mediaFilesInformation?.coverImage ?? "";
+            const coverSrc = assetUrl(work.mediaFilesInformation?.coverImage);
             const authorName = work.entityInformation
               ? work.entityInformation.find((e) => e.primaryRole)?.entityName ?? work.entityInformation[0]?.entityName ?? ""
               : "";

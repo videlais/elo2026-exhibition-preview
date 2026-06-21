@@ -1,5 +1,6 @@
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { ELMSMediaFilesInformation } from "../../../types/elms/mediaFilesInformation";
+import { assetUrl } from "../../../utils/assetUrl";
 import {
   MediaFilesInformationPopover,
   CoverImagePopover,
@@ -31,7 +32,7 @@ export default function MediaFilesInformationCard(
                 {coverImage && (
                   <>
                     <h3>Cover Image <CoverImagePopover /></h3>
-                    <img src={coverImage} alt="Cover Image" />
+                    <img src={assetUrl(coverImage)} alt="Cover Image" />
                   </>
                 )}
               </div>
@@ -41,7 +42,7 @@ export default function MediaFilesInformationCard(
                 <h3>Traversal Video <TraversalVideoPopover /></h3>
                 {traversalVideo ? (
                   <video controls>
-                    <source src={traversalVideo} type="video/mp4" />
+                    <source src={assetUrl(traversalVideo)} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 ) : (
