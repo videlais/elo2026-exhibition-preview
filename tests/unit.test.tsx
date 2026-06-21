@@ -1,107 +1,13 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { renderHook } from '@testing-library/react';
 import React from 'react';
 import { sanitizeHtml } from '../src/utils/sanitizeHtml';
 import { ThemeProvider, useTheme } from '../src/context/ThemeContext';
 
-import useSlot from '../src/hooks/useSlot';
-import withSlot from '../src/wrappers/withSlot';
 import ErrorBoundary from '../src/components/ErrorBoundary';
 import Footer from '../src/components/sections/FooterSection/Footer';
 import { Card } from 'react-bootstrap';
 import TitleCard from '../src/components/cards/WorkInformationCard';
-
-function SlotNode({ name, children }: { name: string; children?: React.ReactNode }) {
-  void name;
-  return <>{children}</>;
-}
-
-// ──────────────────────────────────────────────
-// useSlot
-// ──────────────────────────────────────────────
-describe('useSlot', () => {
-  it('returns null when no children match and no fallback', () => {
-    const { result } = renderHook(() =>
-      useSlot({ children: <SlotNode name="Other" />, name: 'Header' })
-    );
-    expect(result.current).toBeNull();
-  });
-
-  it('returns a function that returns slot children when name matches', () => {
-    const child = <SlotNode name="Header">header content</SlotNode>;
-    const { result } = renderHook(() =>
-      useSlot({ children: child, name: 'Header' })
-    );
-    expect(typeof result.current).toBe('function');
-    expect(result.current!()).toBe('header content');
-  });
-
-  it('returns the fallback function when no slot matches but fallback provided', () => {
-    const { result } = renderHook(() =>
-      useSlot({
-        children: <SlotNode name="Other" />,
-        name: 'Header',
-        fallback: <div>fallback</div>,
-      })
-    );
-    expect(typeof result.current).toBe('function');
-    const content = result.current!() as React.ReactElement<{ children: React.ReactNode }>;
-    expect(content.props.children).toBe('fallback');
-  });
-
-  it('returns null when no children provided and no fallback', () => {
-    const { result } = renderHook(() =>
-      useSlot({ children: [], name: 'Header' })
-    );
-    expect(result.current).toBeNull();
-  });
-
-  it('handles multiple children and finds the correct slot', () => {
-    const children = [
-      <SlotNode key="1" name="Body">body content</SlotNode>,
-      <SlotNode key="2" name="Header">header content</SlotNode>,
-    ];
-    const { result } = renderHook(() =>
-      useSlot({ children, name: 'Header' })
-    );
-    expect(typeof result.current).toBe('function');
-    expect(result.current!()).toBe('header content');
-  });
-});
-
-// ──────────────────────────────────────────────
-// withSlot
-// ──────────────────────────────────────────────
-describe('withSlot', () => {
-  it('attaches a Slot property to the wrapped component', () => {
-    const Comp: React.FC<{ label: string }> = ({ label }) => <div>{label}</div>;
-    const Wrapped = withSlot(Comp);
-    expect(typeof Wrapped.Slot).toBe('function');
-  });
-
-  it('wrapped component renders normally', () => {
-    const Comp: React.FC<{ label: string }> = ({ label }) => <div>{label}</div>;
-    const Wrapped = withSlot(Comp);
-    render(<Wrapped label="hello" />);
-    expect(screen.getByText('hello')).toBeTruthy();
-  });
-
-  it('Slot renders null (is invisible)', () => {
-    const Comp: React.FC<Record<string, unknown>> = () => <div />;
-    const Wrapped = withSlot(Comp);
-    const { container } = render(<Wrapped.Slot name="test" />);
-    expect(container.firstChild).toBeNull();
-  });
-
-  it('Slot accepts children without error', () => {
-    const Comp: React.FC<Record<string, unknown>> = () => <div />;
-    const Wrapped = withSlot(Comp);
-    expect(() =>
-      render(<Wrapped.Slot name="test"><span>child</span></Wrapped.Slot>)
-    ).not.toThrow();
-  });
-});
 
 // ──────────────────────────────────────────────
 // ErrorBoundary

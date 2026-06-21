@@ -23,9 +23,13 @@ export default function HomePage() {
               const workId = work.workInformation.workId;
               const title = work.workInformation.title;
               const coverSrc = work.mediaFilesInformation?.coverImage ?? "";
-              const authorName = work.entityInformation
-                ? work.entityInformation.find((e) => e.primaryRole)?.entityName ?? work.entityInformation[0]?.entityName ?? ""
-                : "";
+              const names = (work.entityInformation ?? [])
+                .filter((e) => e.entityType !== "group" && e.entityName)
+                .map((e) => e.entityName);
+              const authorName =
+                names.length <= 1
+                  ? names[0] ?? ""
+                  : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
 
               return (
                 <Col key={workId} xs={12} sm={6} md={4} xl={2} role="listitem">

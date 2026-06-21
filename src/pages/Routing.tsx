@@ -1,10 +1,13 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
-import { Suspense } from "react";
-import useManualScrollRestoration from "../hooks/useManualScrollRestoration";
+import { Suspense, useEffect } from "react";
 import { appRoutes } from "../components/routes/appRoutes";
 
 const Index = () => {
-  useManualScrollRestoration();
+  useEffect(() => {
+    if (window.history.scrollRestoration) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
 
   return (
     <HashRouter>
