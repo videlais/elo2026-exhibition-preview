@@ -1,0 +1,15 @@
+.citationWidgetEntry {
+  margin-bottom: 0.75rem;
+}
+
+.citationWidgetActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.citationWidgetCopyButton {
+  font-size: 0.8em;
+  padding-top: 0;
+  padding-bottom: 0;
+}

@@ -1,0 +1,23 @@
+.coverImage {
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.coverImage img {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+.traversalVideo {
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.traversalVideo video {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+}

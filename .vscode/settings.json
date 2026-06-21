@@ -1,0 +1,5 @@
+{
+  "jest.jestCommandLine": "",
+  "testing.autoRun.mode": "rerun",
+  "gitdoc.enabled": false
+}

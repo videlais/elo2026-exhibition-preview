@@ -1,0 +1,617 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/elms-schema.json",
+  "title": "Extended eLectronic Metadata Schema (ELMS) ELO Variant",
+  "description": "Schema for electronic literature metadata",
+  "type": "object",
+  "properties": {
+    "workInformation": {
+      "type": "object",
+      "description": "This section defines general metadata about a work including its title, workId (unique identifier), and description. This information is used to identify and describe the work as a whole, regardless of its different versions and copies. The title should be the name by which the work is commonly known, and the description should provide an overview of the work's content, themes, and significance.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Names the specific work to which the entry refers. The title should be the name by which the work is commonly known and should be consistent across all versions and copies of the work. For example, if the work is a game called 'The Enchanted Forest', the title should be 'The Enchanted Forest' for all versions and copies of that game, even if they have different version numbers or media formats."
+        },
+        "workId": {
+          "type": "string",
+          "description": "Identifies a work with a unique identifier or slug value. The workId is used for tracking and possible URI generation purposes within the archive. For example, if a work was 'Web Example', the workId might be 'web-example'. The workId should be unique across all works in the archive."
+        },
+        "workDescription": {
+          "type": "string",
+          "description": "Provides detailed information about a work. The description should give an overview of the work's content, themes, and significance. It can include information about the work's plot, characters, setting, gameplay mechanics, artistic style, and any other relevant details that help to contextualize the work and its importance within the field of electronic literature. For example, a description of 'The Enchanted Forest' might explain that it is a narrative-driven adventure game set in a magical forest, where players explore different areas, solve puzzles, and interact with various characters to uncover the story."
+        },
+        "curatorialStatement": {
+          "type": "string",
+          "description": "Every work should include a curatorial statement that provides context and insight into the work's creation, themes, and significance. This statement can help viewers understand the artist's intentions and the work's place within the broader field of electronic literature."
+        },
+        "instructions": {
+          "type": "string",
+          "description": "Provides instructions or guidelines related to the exhibition of the work. This can include information on how to interact with the work, setup requirements, or any other relevant details for viewers or exhibitors."
+        },
+        "documentationLicense": {
+          "type": "string",
+          "description": "Identifies the license under which the documentation for the work is released. This can include information about how the documentation can be used, shared, or modified by others. For example, if the documentation for a work is released under a Creative Commons Attribution license, the documentationLicense field might be 'Creative Commons Attribution (CC BY)'. If the documentation is released under a Creative Commons Attribution-ShareAlike license, the documentationLicense field might be 'Creative Commons Attribution-ShareAlike (CC BY-SA)'. If the documentation is released under a Creative Commons Attribution-NonCommercial license, the documentationLicense field might be 'Creative Commons Attribution-NonCommercial (CC BY-NC)'."
+        }
+      },
+      "required": ["title", "workId", "workDescription", "curatorialStatement", "instructions", "documentationLicense"]
+    },
+    "versionInformation": {
+      "type": "object",
+      "description": "This section defines metadata about a specific version of a work in the archive, which is a specific instantiation that may differ from other versions available in other archives or collections. A version of a work may be published or unpublished, and it may be collected in different containers such as anthologies, journals, or websites. A version of a work may also have different software and hardware dependencies, digital qualities, sensory modalities, genres, languages, and accessibility features that affect how it can be accessed and experienced.",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "A human-readable name or label for this version of the work when distinct releases have meaningful titles (e.g. &quot;Director's Cut&quot;, &quot;ELO2026 Edition&quot;). If the work has only one release and no named variants, you can leave this blank or enter a short descriptive label."
+        },
+        "versionId": {
+          "type": "string",
+          "description": "Identifies a version of a work with a unique identifier or slug value. The versionId is used for tracking and possible URI generation purposes within the archive based on semantic versioning. It should be unique across all versions of the work. For example, for a work with the title 'The Enchanted Forest', the versionId for the first release might be 'the-enchanted-forest/1.0/', while a later release with additional features might have the versionId 'the-enchanted-forest/2.0.2/' in the same archive."
+        },
+        "versionNumber": {
+          "type": "string",
+          "description": "The numeric version of this release, following semantic versioning conventions (MAJOR.MINOR.PATCH). MAJOR increments when the work changes fundamentally (e.g. rebuilt in a new platform); MINOR when features are added (e.g. new chapter or interaction mode); PATCH for small fixes or corrections. For most submissions with a single stable release, '1.0' is appropriate. More complex examples: '2.1.3' (second major version, first minor addition, third patch fix)."
+        },
+        "versionLetter": {
+          "type": "string",
+          "description": "An optional single letter suffix used to distinguish very minor variants of the same version number (e.g. '1.0a', '1.0b'). Use this only when two releases share the same version number but differ in small ways — for example, a typo correction that does not warrant incrementing the patch number. Leave blank if not applicable."
+        },
+        "imageThumbnail": {
+          "type": "string",
+          "format": "uri",
+          "description": "Identifies a smaller version of a full-sized image. This thumbnail image is typically used for quick previews or in search results, providing a visual representation of the work without requiring users to load the full-sized image. For example, if a version of a work includes a cover image, the imageThumbnail might be a smaller version of that cover image that can be displayed in search results or on the collection page."
+        },
+        "originalPublicationStatus": {
+          "type": "string",
+          "enum": ["published", "unpublished"],
+          "description": "Identifies the status of a version of a work as either published or unpublished. A published version of a work is one that has been made publicly available through a recognized channel such as a publisher, website, or digital repository. An unpublished version of a work is one that has not been formally released to the public and may only be accessible to a limited audience, such as the creator(s) or a select group of testers. If a version of a work was never published and is only available in an unpublished form, this field should be set to 'unpublished'. If a version of a work was published at any point in time previous to now, this field should be set to 'published'."
+        },
+        "incomplete": {
+          "type": "boolean",
+          "description": "Describes a work that was never finished as originally envisioned by the author. This can include works that were abandoned by the creator(s) before completion, works that were released in an unfinished state, or works that are still in development and have not yet reached a final version. If a version of a work is incomplete, this field should be set to true; if the version is complete and represents the creator's intended vision for the work, this field should be set to false."
+        },
+        "authorialVersion": {
+          "type": "boolean",
+          "description": "Identifies a given version of a work as the authoritative version as determined by the creator(s) of the work. If a version is marked as the authorial version, it should be the version that the creator(s) consider to be the definitive or canonical version of the work, and it should be the version that is most widely recognized and cited in discussions of the work. If there are multiple versions of a work and none of them are designated as the authorial version, this field can be left blank or set to false."
+        },
+        "originalPublicationMonth": {
+          "type": "string",
+          "enum": [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+          ],
+          "description": "Identifies the month in which the original version of a work was published. This can provide important context about the work's historical and cultural background, as well as help users understand the timeline of the work's development and release. For example, if a version of a work was originally published in January, the originalPublicationMonth would be 'January'."
+        },
+        "originalPublicationYear": {
+          "type": "integer",
+          "minimum": 1950,
+          "maximum": 2100,
+          "description": "Identifies the year in which a version of a work was originally published. This can provide important context about the work's historical and cultural background, as well as help users understand the timeline of the work's development and release. For example, if a version of a work was originally published in 2000, the originalPublicationYear would be 2000."
+        },
+        "originalPublicationType": {
+          "type": "string",
+          "description": "Describes unique versions of works and the containers in which they are collected. This can include information about the format, platform, or medium in which the original version of a work was published. For example, if a version of a work was originally published as a web-based interactive experience, the originalPublicationType might be 'web-based interactive experience'. If a version of a work was originally published as a downloadable game, the originalPublicationType might be 'downloadable game'. If a version of a work was originally published as a mobile app, the originalPublicationType might be 'mobile app'."
+        },
+        "originalPublisher": {
+          "type": "string",
+          "description": "Identifies the individual or group responsible for publishing a specific version of a work. This can provide important context about the work's production and distribution, as well as help users understand the entities involved in bringing the work to the public. For example, if a version of a work was originally published by a major publishing house, the originalPublisher might be 'Penguin Random House'."
+        },
+        "originalPublisherAuthority": {
+          "type": "string",
+          "format": "uri",
+          "description": "Locates the authority that identifies a publisher of a version of a work. This can provide a reliable reference for verifying the publisher's identity and credentials. For example, if a version of a work was originally published by a recognized authority, the originalPublisherAuthority might be a URI pointing to that authority's official record."
+        },
+        "originalVolume": {
+          "type": "string",
+          "description": "Identifies the volume of a journal that published a version of a work. This can provide important context about the work's publication history and help users locate the specific issue of the journal in which the work was published. For example, if a version of a work was published in volume 5 of a journal, the originalVolume would be '5'."
+        },
+        "originalIssue": {
+          "type": "string",
+          "description": "Identifies the issue of a journal that published a version of a work. This can provide important context about the work's publication history and help users locate the specific issue of the journal in which the work was published. For example, if a version of a work was published in issue 3 of a journal, the originalIssue would be '3'."
+        },
+        "originalMediaFormat": {
+          "type": "string",
+          "description": "Describes the type of physical media on which a version of a work resides. This can include information about the format, platform, or medium in which the original version of a work was published. For example, if a version of a work was originally published on a CD-ROM, the originalMediaFormat might be 'CD-ROM'. If a version of a work was originally published as a web-based interactive experience, the originalMediaFormat might be 'web-based interactive experience'. If a version of a work was originally published as a mobile app, the originalMediaFormat might be 'mobile app'."
+        },
+        "publicationMonth": {
+          "type": "string",
+          "enum": [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+          ],
+          "description": "Identifies the month or season in which a version of a work was published. This can provide important context about the work's publication history and help users understand the timing of the work's release. For example, if a version of a work was published in March, the publicationMonth would be 'March'."
+        },
+        "publicationYear": {
+          "type": "integer",
+          "minimum": 1950,
+          "maximum": 2100,
+          "description": "Identifies the year in which a version of a work was published. This can provide important context about the work's publication history and help users understand the timing of the work's release. For example, if a version of a work was published in 2020, the publicationYear would be 2020."
+        },
+        "softwareDependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Identifies software platforms, programs, and standards required to access and experience the work. If the work is designed for a specific operating system such as Windows, macOS, or iOS, that should be specified here. For example, a work may require a certain web browser or a particular game engine."
+        },
+        "authoringPlatform": {
+          "type": "string",
+          "description": "Describes the primary digital tool used in the production of a work. For example, a work may be created in Twine, Unity, or Processing. If the work was created using a custom-built engine or tool, that can be specified here as well."
+        },
+        "hardwareDependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Identifies the kind of computing device and its onboard components required to access and experience the work. For example, a work may require a desktop computer with a graphics card or a mobile device with a touchscreen."
+        },
+        "peripheralDependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Describes additional hardware not integral to the ordinary function of the original computing device such as game controllers, VR headsets, or haptic feedback devices that are required to access and experience the work as intended."
+        },
+        "computerLanguages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Describes relevant programming languages used in the production of a work. For example, a work may be written in JavaScript, Python, or C++. If the language is unknown, the tool used to create the work may be specified instead such as Twine, Unity, or Processing."
+        },
+        "digitalQualities": {
+          "type": "array",
+          "description": "Describes the technical aspects of a work. This can include extra details about the work's file format, resolution, frame rate, or any other relevant technical details that help to contextualize the work and its requirements for access and experience. For example, a work may be a high-resolution video available in a special format, a web-based interactive experience designed for specific browsers, or a virtual reality experience requiring specific hardware.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sensoryModalities": {
+          "type": "array",
+          "description": "Describes the sense(s) the work evokes. This can include information about the work's visual, auditory, tactile, olfactory, or gustatory, qualities that contribute to the overall experience of the work. For example, a work may be primarily visual with rich imagery and animations, or it may be an audio-based experience that relies on sound design and music. Some works may engage multiple sensory modalities, such as a virtual reality experience that combines visual, auditory, and haptic feedback to create an immersive environment.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "genres": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Describes the artistic genre(s) of a work. For example, a work may be classified as a puzzle game, interactive fiction, or educational software. Genres can be broad (e.g. 'game', 'poetry') or specific (e.g. 'escape room', 'hypertext fiction'), and multiple genres can be listed if applicable."
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Identifies the oral or written language(s) used in creation and/or translation of a work. For example, a work may be written in English, Spanish, or Japanese. If the work is multilingual, all relevant languages should be listed here."
+        },
+        "accessibility": {
+          "type": "string",
+          "description": "Describes the hardware, software, and physical aspects involved in accessing and experiencing the work. For example, this may include information about the work's compatibility with assistive technologies, its requirements for physical interaction, or any other relevant details that help users understand how to access and experience the work effectively. For example, if a work is locked to a location or device, that can be specified here. If a work requires specific input methods such as touch or voice control, that can also be described here."
+        },
+        "rightsNotice": {
+          "type": "string",
+          "description": "Describes the permissions an end user has been granted to use the work. This can include information about the work's copyright status, licensing terms, or any other relevant details that help users understand their rights and responsibilities when accessing and using the work. For example, if a work is in the public domain, that can be specified here. If a work is licensed under a Creative Commons license, the specific license type (e.g. CC BY-SA 4.0) can be described here. If a work is protected by copyright and requires permission for use, that can also be noted here."
+        },
+        "eldLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "Locates a version of a work in the Electronic Literature Directory (ELD). This can include a URL to the work's page on the ELD website, providing users with access to additional information about the work and its context within the field of electronic literature. For example, if a version of a work is listed in the ELD, the eldLink might be 'https://directory.eliterature.org/work/12345', where '12345' is the unique identifier for that work in the ELD database."
+        },
+        "elmcipLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "Locates a version of a work in the Electronic Literature as a Model of Creativity and Innovation in Practice (ELMCIP) database. This can include a URL to the work's page on the ELMCIP website, providing users with access to additional information about the work and its context within the field of electronic literature. For example, if a version of a work is listed in the ELMCIP database, the elmcipLink might be 'https://elmcip.net/work/67890', where '67890' is the unique identifier for that work in the ELMCIP database."
+        },
+        "rebootingElectronicLiteratureLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "Locates a version of a work in Rebooting Electronic Literature. This can include a URL to the work's page on the Rebooting Electronic Literature website, providing users with access to additional information about the work and its context within the field of electronic literature. For example, if a version of a work is listed in the Rebooting Electronic Literature database, the rebootingElectronicLiteratureLink might be 'https://rebootingeliterature.org/work/24680', where '24680' is the unique identifier for that work in the Rebooting Electronic Literature database."
+        }
+      },
+      "required": ["version", "versionId"]
+    },
+    "accessibilityInformation": {
+      "type": "object",
+      "description": "This section defines metadata about the accessibility features of a work, which describe the hardware, software, and physical aspects involved in accessing and experiencing the work. Accessibility features can include content timing, text format, color and contrast, visual impact, auditory elements, touch interactions, haptic feedback, repetitive motion requirements, and movement and gesture controls. Providing detailed information about a work's accessibility features helps users with disabilities or specific needs determine whether they can engage with the work effectively and comfortably.",
+      "properties": {
+        "contentTiming": {
+          "type": "string",
+          "enum": ["fleeting content", "rapidly moving content"],
+          "description": "Select if the work includes time-limited or rapidly changing content that users cannot pause or control. 'Fleeting content' disappears before all users can read or perceive it; 'rapidly moving content' scrolls, cycles, or advances too quickly to follow comfortably."
+        },
+        "textFormat": {
+          "type": "string",
+          "enum": ["italics", "light fonts", "moving text", "other inaccessible text", "rasterized text", "sans-serif fonts", "serif fonts", "script fonts", "short reading time", "small fonts"],
+          "description": "Select all text presentation characteristics that may reduce readability. Choose 'rasterized text' if text is embedded in images (making it inaccessible to screen readers), 'moving text' if text animates or scrolls, or any font style that relies on decorative, small, or low-weight lettering."
+        },
+        "colorAndContrast": {
+          "type": "string",
+          "enum": ["color impacts navigation", "color impacts content", "low contrast (occasional)", "low contrast (frequent)", "low contrast (throughout)", "visual noise"],
+          "description": "Select if the work uses color in ways that may be problematic for users with low vision or color blindness. Choose 'color impacts navigation' or 'color impacts content' if color alone conveys meaning, and choose a 'low contrast' option if text or interactive elements lack sufficient contrast against their background."
+        },
+        "visualImpact": {
+          "type": "string",
+          "enum": ["sudden visual transition(s)", "flashing lights hazard", "blinking lights hazard"],
+          "description": "Select if the work contains rapid visual changes, flashing, or blinking elements. Content that flashes more than three times per second may trigger photosensitive seizures and must be disclosed. Sudden scene cuts or strobing effects should also be noted here."
+        },
+        "auditory": {
+          "type": "string",
+          "enum": ["sudden sounds", "inconsistent volume", "high-pitch sounds", "low-pitch sounds"],
+          "description": "Select if the work produces audio that may affect users with auditory sensitivities or hearing aids. Choose 'sudden sounds' for audio that starts without warning, 'inconsistent volume' for content that varies dramatically in loudness, or the pitch options if the work relies on very high or very low frequency sounds."
+        },
+        "touch": {
+          "type": "string",
+          "enum": ["capacitive touchscreen", "cursor click", "cursor movement", "text input", "physical buttons (mouse)", "physical buttons (other)", "joystick(s)", "directional input", "physical dial(s)", "physical switch(es)", "cursor drag", "persistent grip", "other"],
+          "description": "Select all physical input methods required to interact with the work. This helps users with motor disabilities or those relying on alternative input devices (switch controls, eye tracking, etc.) determine whether they can engage with the work without requiring unavailable input types."
+        },
+        "hapticFeedback": {
+          "type": "string",
+          "enum": ["adaptive input", "mobile device (vibration)", "controller (vibration)", "haptic gloves", "full-body haptics"],
+          "description": "Select if the work provides or requires haptic feedback such as vibration, force feedback, or wearable devices. This may affect users with tactile sensitivities, pacemakers, or those who cannot use vibrating or force-feedback devices."
+        },
+        "repetitiveMotion": {
+          "type": "string",
+          "enum": ["frequent repetitive key presses", "frequent repetitive gestures", "other repetitive motion"],
+          "description": "Select if the work requires users to perform the same physical action repeatedly over an extended period. Repetitive motion requirements can affect users with repetitive strain injuries, limited hand mobility, or conditions such as arthritis."
+        },
+        "movementAndGesture": {
+          "type": "string",
+          "enum": ["eye movement", "head tracking", "spatial peripheral manipulation", "interoception", "proprioception", "facial recognition", "fine motor control"],
+          "description": "Select if the work uses the visitor's body movements, gaze direction, head position, or facial expressions as input. This may affect users who rely on assistive technology, have a limited range of motion, or cannot perform the required physical gestures."
+        }
+      }
+    },
+    "copyInformation": {
+      "type": "array",
+      "description": "This section defines metadata for multiple copies of the same work within an archive. A copy of a work is a specific instantiation of a version of a work that may differ from other copies in terms of its media format, publication status, publication date, publisher, provenance, availability, preservation methods, and other relevant details. Each copy of a version of a work is identical in content but may differ in how it is accessed and experienced based on its unique characteristics and the context in which it is hosted or published.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "copy": {
+            "type": "string",
+            "description": "Each copy of a version of a work is identical, though may differ in media format. This field identifies a specific copy of a version of a work within an archive. For example, if a version of a work is published in both a web-based format and a downloadable format, each of those formats would be considered a separate copy of the same version of the work. The copy field can be used to provide additional information about the specific characteristics or context of that copy, such as its media format, publication status, or any other relevant details that help to distinguish it from other copies of the same version of the work."
+          },
+          "copyId": {
+            "type": "integer",
+            "description": "Identifies a copy of a work with a unique number. The copyId is used for tracking and reference purposes within the archive. It should be assigned sequentially as new copies of a version of a work are added to the archive, and it should not be reused or changed once assigned. For example, if a version of a work has three copies in the archive, they might be assigned copyId values of 1, 2, and 3 respectively."
+          },
+          "copyImages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": "Identifies images of a unique copy of a work. This can include screenshots, cover art, or any other relevant images that help to visually represent the specific copy of the work. For example, if a copy of a work is published in a web-based format, the copyImages might include screenshots of the user interface or gameplay. If a copy of a work is published as a downloadable game, the copyImages might include cover art or promotional images for that specific copy."
+          },
+          "copyPublicationStatus": {
+            "type": "string",
+            "enum": ["published", "unpublished"],
+            "description": "Identifies the status of a copy of a version of a work as either published or unpublished. A published copy of a version of a work is one that has been made publicly available through a recognized channel such as a publisher, website, or digital repository. An unpublished copy of a version of a work is one that has not been formally released to the public and may only be accessible to a limited audience, such as the creator(s) or a select group of testers. If a copy of a version of a work was never published and is only available in an unpublished form, this field should be set to 'unpublished'. If a copy of a version of a work was published at any point in time previous to now, this field should be set to 'published'."
+          },
+          "copyPublicationMonth": {
+            "type": "string",
+             "enum": [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+          ],
+            "description": "Identifies the month or season in which a copy of a work was published. This can provide important context about the copy's publication history and help users understand the timing of the copy's release. For example, if a copy of a work was published in March, the copyPublicationMonth would be 'March'."
+          },
+          "copyPublicationYear": {
+            "type": "integer",
+            "minimum": 1950,
+            "maximum": 2100,
+            "description": "Identifies the year in which a copy of a work was published. This can provide important context about the copy's publication history and help users understand the timing of the copy's release. For example, if a copy of a work was published in 2020, the copyPublicationYear would be 2020."
+          },
+          "copyPublicationType": {
+            "type": "string",
+            "description": "Describes unique copies of works and the containers in which they are collected. This can include information about the format, platform, or medium in which the copy of a work was published. For example, if a copy of a work was published as a web-based interactive experience, the copyPublicationType might be 'web-based interactive experience'. If a copy of a work was published as a downloadable game, the copyPublicationType might be 'downloadable game'. If a copy of a work was published as a mobile app, the copyPublicationType might be 'mobile app'."
+          },
+          "copyPublisher": {
+            "type": "string",
+            "description": "Identifies the individual or group responsible for publishing a specific copy of a work. This can provide important context about the copy's production and distribution, as well as help users understand the entities involved in bringing the copy to the public. For example, if a copy of a work was published by a major publishing house, the copyPublisher might be 'Penguin Random House'."
+          },
+          "copyPublisherAuthority": {
+            "type": "string",
+            "format": "uri",
+            "description": "Locates the authority that identifies a publisher of a copy of a work. This can provide a reliable reference for verifying the publisher's identity and credentials. For example, if a copy of a work was published by a recognized authority, the copyPublisherAuthority might be a URI pointing to that authority's official record."
+          },
+          "copyVolume": {
+            "type": "string",
+            "description": "Identifies the volume of a journal that published a copy of a work. This can provide important context about the copy's publication history and help users locate the specific issue of the journal in which the copy was published. For example, if a copy of a work was published in volume 5 of a journal, the copyVolume would be '5'."
+          },
+          "copyIssue": {
+            "type": "string",
+            "description": "Identifies the issue of a journal that published a copy of a work. This can provide important context about the copy's publication history and help users locate the specific issue of the journal in which the copy was published. For example, if a copy of a work was published in issue 3 of a journal, the copyIssue would be '3'."
+          },
+          "copyMediaFormat": {
+            "type": "string",
+            "description": "Describes the type of physical media on which a copy of a version of a work resides. This can include information about the format, platform, or medium in which the copy of a work was published. For example, if a copy of a work was originally published on a CD-ROM, the copyMediaFormat might be 'CD-ROM'. If a copy of a work was originally published as a web-based interactive experience, the copyMediaFormat might be 'web-based interactive experience'. If a copy of a work was originally published as a mobile app, the copyMediaFormat might be 'mobile app'."
+          },
+          "originalUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Locates where the copy of a work was initially hosted. This can include a URL to the original hosting location of the copy, providing users with access to the copy as it was first made available. For example, if a copy of a work was initially hosted on a specific website, the originalUrl might be 'https://originalhost.com/copy/12345', where '12345' is the unique identifier for that copy on the original hosting site."
+          },
+          "hostedUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Locates a copy of a work held locally within the archive. This can include a URL to the copy's page on the archive's website, providing users with access to the copy as it is currently hosted within the archive. For example, if a copy of a work is hosted on the archive's website, the hostedUrl might be 'https://archive.org/copy/67890', where '67890' is the unique identifier for that copy within the archive."
+          },
+          "downloadLink": {
+            "type": "string",
+            "format": "uri",
+            "description": "Provides a copy of a work for download. This can include a URL to a downloadable version of the copy, allowing users to access the copy directly on their own devices. For example, if a copy of a work is available for download, the downloadLink might be 'https://archive.org/download/copy/67890', where '67890' is the unique identifier for that copy within the archive."
+          },
+          "provenance": {
+            "type": "string",
+            "description": "Provides the acquisition history of a particular copy of a version of a work. This can include information about how the copy was obtained, such as whether it was donated by the creator(s), acquired through a purchase, or obtained from another source. For example, if a copy of a work was donated by the creator(s), the provenance might be 'donated by creator'. If a copy of a work was acquired through a purchase, the provenance might be 'acquired through purchase from original publisher'. If a copy of a work was obtained from another source, the provenance might be 'obtained from third-party collector'."
+          },
+          "availability": {
+            "type": "string",
+            "description": "Indicates the extent to which a copy of a version of a work can be experienced. This can include information about whether the copy is currently accessible to the public, whether it is restricted to certain users or locations, or whether it is temporarily unavailable due to technical issues or preservation efforts. For example, if a copy of a work is currently accessible to the public, the availability might be 'publicly accessible'. If a copy of a work is restricted to certain users or locations, the availability might be 'restricted access'. If a copy of a work is temporarily unavailable due to technical issues or preservation efforts, the availability might be 'temporarily unavailable'."
+          },
+          "preservationMethods": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Describes process(es) used to make an outmoded copy of a version of a work able to be accessed and experienced. This can include techniques such as digital restoration, format migration, or emulation. For example, if a copy of a work was made accessible through digital restoration, the preservationMethods might be ['digital restoration']. If a copy of a work was made accessible through format migration, the preservationMethods might be ['format migration']."
+          },
+          "preservationNotes": {
+            "type": "string",
+            "description": "Provides information about how an outmoded copy of a version of a work was made to be accessed and experienced. This can include details about the specific techniques or processes used, any challenges encountered, and any additional context that helps to understand the preservation efforts. For example, if a copy of a work was made accessible through digital restoration, the preservationNotes might be 'Restored using high-resolution scanning and image enhancement techniques'."
+          },
+          "lastTestedDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Identifies when a preserved copy of a version of a work was last tested. This can provide important context about the current state of the copy and its accessibility. For example, if a preserved copy of a version of a work was last tested on June 1, 2024, the lastTestedDate would be '2024-06-01'."
+          },
+          "lastTestedWith": {
+            "type": "string",
+            "description": "Identifies the hardware and software on and with which a preserved copy of a version of a work was tested. This can provide important context about the current state of the copy and its accessibility. For example, if a preserved copy of a version of a work was last tested on a Windows 10 desktop computer using Google Chrome, the lastTestedWith might be 'Windows 10 desktop computer with Google Chrome'."
+          }
+        },
+        "required": ["copyId"]
+      }
+    },
+    "entityInformation": {
+      "type": "array",
+      "description": "This section defines metadata about the individual (agent) or group involved in the production of a work, including their names, roles, and other relevant information. This information helps to acknowledge the contributions of creators, artists, translators, editors, reviewers, and other participants in the creation and dissemination of a work. It also provides context about the provenance and collaborative nature of the work.",
+      "items": {
+        "type": "object",
+        "properties": {
+           "entityId": {
+            "type": "string",
+            "description": "An internal identifier describing an individual in the production of a work."
+          },
+          "entityName": {
+            "type": "string",
+            "description": "Identifies an individual involved in the production of a work. This can include creators, publishers, translators, editors, reviewers, and other contributors. The entityName should be the name by which the individual or group is commonly known and should be consistent across all versions and copies of the work. For example, if the creator of a work is an individual named 'Jane Doe', the entityName should be 'Jane Doe' for all versions and copies of that work. If the producer is a group called 'The Creative Collective', the entityName should be 'The Creative Collective' for all versions and copies of that work."
+          },
+          "nameAuthority": {
+            "type": "string",
+            "format": "uri",
+            "description": "Locates the authority that identifies an individual entity. This can provide a reliable reference for verifying the identity and credentials of the individual or group involved in the production of a work. For example, if the creator of a work is an individual named 'Jane Doe' who is listed in a recognized authority such as VIAF (Virtual International Authority File), the nameAuthority might be a URI pointing to Jane Doe's record in the VIAF database. If the producer of a work is a group called 'The Creative Collective' that is listed in a recognized authority such as the Library of Congress Name Authority File, the nameAuthority might be a URI pointing to The Creative Collective's record in that database."
+          },
+          "entityType": {
+            "type": "string",
+            "enum": ["individual", "group"],
+            "description": "Identifies a creator of the work as an individual or a group. If the creator is a single person or entity, select 'individual'. If the creator is a collective or group of people who collaborated on the work, select 'group'."
+          },
+          "entityCountryOfOrigin": {
+            "type": "string",
+            "description": "Describes an entity's country of origin using ISO 3166-1 alpha-2 country codes such as 'US' for the United States or 'FR' for France. This information can provide context about the cultural background and influences of the creator, as well as help users discover works from specific regions or countries."
+          },
+          "role": {
+            "type": "string",
+            "description": "Identifies the function performed by an entity in the production of a work, as described by MARC relators. Examples include Creator, Publisher, Translator, Editor, and Reviewer."
+          },
+          "roleAbbreviation": {
+            "type": "string",
+            "description": "Abbreviates the function performed by an entity in the production of a work, as described by MARC relators. For example, if the role is 'Creator', the roleAbbreviation might be 'crt'. Refer to the URL https://www.loc.gov/marc/relators/relaterm.html for a complete list of MARC relator codes and their corresponding abbreviations. Common examples include 'crt' for Creator, 'pub' for Publisher, 'cur' for Curator, and 'trl' for Translator."
+          },
+          "primaryRole": {
+            "type": "boolean",
+            "description": "Identifies the lead entity in the production of a work. If there are multiple entities involved in the production of a work, this field can be used to indicate which entity is the primary creator or contributor. For example, if a work was created by a team of collaborators, the primaryRole field can be set to true for the lead creator or the entity that had the most significant role in the production of the work."
+          },
+          "rolePseudonym": {
+            "type": "string",
+            "description": "Identifies an alternative name used by an entity in the creation or publication of a version of a work. This can include a pseudonym, pen name, or any other name that the entity used in relation to the work. For example, if a creator named 'Jane Doe' published a version of a work under the pseudonym 'J.D. Smith', the rolePseudonym would be 'J.D. Smith'."
+          },
+          "entityRoleId": {
+            "type": "integer",
+            "description": "Connects an entity with a copy or a version on the back end with a unique number while describing the role the entity performed. This can be used for internal tracking and reference purposes within the archive. It should be assigned sequentially as new entities are added to the archive, and it should not be reused or changed once assigned. For example, if an entity is the creator of a version of a work, they might be assigned an entityRoleId value of 1. If another entity is the publisher of that version of the work, they might be assigned an entityRoleId value of 2."
+          }
+        },
+        "required": ["entityName", "entityId", "entityType", "entityCountryOfOrigin", "role", "primaryRole"]
+      }
+    },
+    "collectionInformation": {
+      "type": "object",
+      "description": "This section defines metadata about the collection in which a work is published or hosted. A collection can include an anthology, journal, website, or any other container that groups together multiple works. The collection information provides context about the environment in which the work is presented and can help users discover related works within the same collection.",
+      "properties": {
+        "collectionId": {
+          "type": "string",
+          "description": "Identifies a collection of works with a unique identifier. The collectionId is used for internal tracking and reference purposes within the archive. It should be assigned sequentially as new collections are added to the archive, and it should not be reused or changed once assigned."
+        },
+        "collectionName": {
+          "type": "string",
+          "description": "Identifies a collection of works. This can include the name of an anthology, journal, website, or any other container in which a collection of works is published or hosted. For example, if a collection of works is published in an anthology called 'The Best of Electronic Literature', the collectionName should be 'The Best of Electronic Literature'. If a collection of works is hosted on a website called 'Interactive Fiction Archive', the collectionName should be 'Interactive Fiction Archive'."
+        },
+        "collectionDescription": {
+          "type": "string",
+          "description": "Provides detailed information about a collection of works. The description can include information about the themes, scope, and significance of the collection, as well as any relevant historical or cultural context. For example, a description for a collection of works published in an anthology might explain that the anthology focuses on experimental interactive fiction from the 1990s, while a description for a collection of works hosted on a website might explain that the website is dedicated to preserving and promoting early web-based literature."
+        },
+        "collectionHostedUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Locates a collection of works in the archive. This can include a URL to the collection's page on a website, a link to a digital repository, or any other online location where the collection can be accessed. For example, if a collection of works is hosted on a website called 'Interactive Fiction Archive', the collectionHostedUrl might be 'https://www.interactivefictionarchive.com/collections/best-of-1990s'. If a collection of works is available in a digital repository, the collectionHostedUrl might be a link to the repository's page for that collection."
+        },
+        "collectionMetaDescription": {
+          "type": "string",
+          "description": "Provides a truncated version of a collection's description for the purpose of search and findability. This should be a concise summary of the collection's content and significance, ideally no more than 160 characters, that can be used in search engine results and other contexts where space is limited. For example, a meta description for a collection of works published in an anthology might be 'An anthology of experimental interactive fiction from the 1990s', while a meta description for a collection of works hosted on a website might be 'A curated selection of early web-based literature.'"
+        },
+        "collectionMetaTitle": {
+          "type": "string",
+          "description": "Provides a version of a collection's title for the purpose of search and findability. This should be a concise and descriptive title that accurately represents the content of the collection, ideally no more than 60 characters, that can be used in search engine results and other contexts where space is limited."
+        },
+        "collectionMetaKeywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Provides keywords for the purpose of search and findability. These keywords should be relevant to the content of the collection and can be used in search engine optimization and other contexts where discoverability is important. For example, a collection of works on interactive fiction might have keywords like 'interactive fiction', 'text adventure', and 'gamebook'."
+        },
+        "collectionImage": {
+          "type": "string",
+          "format": "uri",
+          "description": "Identifies an image that represents a collection of works in the archive. This image is typically used as a thumbnail or preview image for the collection, providing a visual representation of the collection's content. For example, if a collection of works is published in an anthology, the collectionImage might be the cover image of the anthology. If a collection of works is hosted on a website, the collectionImage might be a representative image that captures the theme or focus of the collection."
+        },
+        "collectionHeaderImage": {
+          "type": "string",
+          "format": "uri",
+          "description": "Identifies an image that is featured at the top of a collection space. This image is typically larger than the collectionImage and serves as a banner or header for the collection, providing a visually striking representation of the collection's content. For example, if a collection of works is published in an anthology, the collectionHeaderImage might be an expanded version of the cover image of the anthology. If a collection of works is hosted on a website, the collectionHeaderImage might be a custom-designed banner that incorporates elements of the collection's theme or focus."
+        },
+        "collectionVideoLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "Locates a local video file that introduces a collection of works. This can include a link to a video hosted within the archive that provides an overview of the collection's content, themes, and significance. For example, if a collection of works is hosted on a website, the collectionVideoLink might be a link to a video on the website that serves as an introduction to the collection."
+        },
+        "collectionVideoExternalLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "Locates an extended version of the video file hosted offsite that introduces a collection of works. This can include a link to a YouTube video, Vimeo video, or any other online platform where the extended version of the video can be accessed."
+        },
+        "collectionVideoThumbnail": {
+          "type": "string",
+          "format": "uri",
+          "description": "Identifies the cover image for a collection video. This image is typically used as a thumbnail or preview image for the video, providing a visual representation of the video's content."
+        },
+        "collectionType": {
+          "type": "string",
+          "description": "Describes how the works in a given collection of works are grouped and categorized. This can include information about the genre, format, or thematic focus of the collection. For example, a collection of works might be categorized as 'Science Fiction', 'Poetry', or 'Historical Documents'."
+        },
+        "collectionProvenance": {
+          "type": "string",
+          "description": "Provides the acquisition history of a particular collection of works. This can include information about how the collection was acquired, such as donations, purchases, or transfers from other institutions. For example, if a collection of works was donated by an individual named 'Jane Doe', the collectionProvenance field might be 'Donated by Jane Doe'. If a collection of works was purchased from a company called 'Literary Archives Inc.', the collectionProvenance field might be 'Purchased from Literary Archives Inc.'. If a collection of works was transferred from another institution called 'The Digital Library', the collectionProvenance field might be 'Transferred from The Digital Library'."
+        },
+        "startYearCollected": {
+          "type": "integer",
+          "minimum": 1950,
+          "maximum": 2100,
+          "description": "Identifies the earliest original publication year of works within a collection of works. If the collection includes works that were published over a long period of time, this field can be used to indicate the starting point of that range. For example, if a collection of works includes pieces that were originally published as early as 1980, the startYearCollected would be 1980."
+        },
+        "endYearCollected": {
+          "type": "integer",
+          "minimum": 1950,
+          "maximum": 2100,
+          "description": "Identifies the latest original publication year of works within a collection of works. If the collection includes works that are still being published, this field can be left blank or set to the current year."
+        },
+        "responsibility": {
+          "type": "string",
+          "description": "Identifies the individual or group responsible for the creation or management of a collection. This can include curators, editors, archivists, or any other individuals or groups who played a significant role in the development and maintenance of the collection. For example, if a collection of works was curated by an individual named 'John Smith', the responsibility field might be 'Curated by John Smith'. If a collection of works is managed by a group called 'The Literary Archive Team', the responsibility field might be 'Managed by The Literary Archive Team'."
+        }
+      }
+    },
+    "worksExternalLinksInformation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "This section defines metadata about pieces of content located outside of the collection, version, or copy. This can include links to external reviews, interviews, critical essays, or other relevant materials that provide additional context or information about the work.",
+        "properties": {
+          "externalLinkName": {
+            "type": "string",
+            "description": "Describes a piece of content located outside of the collection, version, or copy. This can include links to external reviews, interviews, critical essays, or other relevant materials that provide additional context or information about the work."
+          },
+          "externalLinkId": {
+            "type": "integer",
+            "description": "Identifies a piece of content located outside of the collection with a unique number. This can include links to external reviews, interviews, critical essays, or other relevant materials that provide additional context or information about the work."
+          },
+          "externalLinkUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Locates a piece of content not affiliated with the current archive. This can include links to external reviews, interviews, critical essays, or other relevant materials that provide additional context or information about the work."
+          }
+        },
+        "required": ["externalLinkName", "externalLinkId", "externalLinkUrl"]
+      }
+    },
+    "artificialIntelligenceInformation": {
+      "type": "object",
+      "description": "This section defines metadata about the use of generative artificial intelligence in the creation of a work. It includes information about whether the work contains content or code generated by AI systems, services, or agents, as well as details about the specific tools and models used in the creation process. This information helps to provide transparency about the role of AI in the production of the work and allows users to understand the extent to which AI contributed to its creation.",
+      "properties": {
+        "artificialIntelligenceGeneratedContent": {
+          "type": "boolean",
+          "description": "Indicates whether the work contains content generated by artificial intelligence systems, services, or agents. This can include text, images, audio, video, or any other form of content that was created using AI technologies. If the work includes AI-generated content, this field should be set to true; if the work does not include any AI-generated content, it should be set to false."
+        },
+        "artificialIntelligenceGeneratedCode": {
+          "type": "boolean",
+          "description": "Indicates whether the work contains code generated by artificial intelligence systems, services, or agents. This can include scripts, programs, or any other form of code that was created using AI technologies. If the work includes AI-generated code, this field should be set to true; if the work does not include any AI-generated code, it should be set to false."
+        },
+        "artificialIntelligenceToolsUsed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Lists the artificial intelligence tools used in the creation of the work. For example, if the work was created using a generative AI image tool like DALL-E or an AI coding assistant like GitHub Copilot, those tools should be specified here."
+        },
+        "artificialIntelligenceModelsUsed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Lists the artificial intelligence models and/or agents used in the creation of the work. For example, if the work was created using GPT-5.4, Claude Sonnet, or a custom-trained machine learning model, those should be specified here."
+        },
+        "artificialIntelligenceExternalLinks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Provides external URLs to the language models or services relevant to the work. For example, if the work was created using a specific AI tool or model that has a public webpage or documentation, those links can be included here for reference. This data may include links to HuggingFace model pages, OpenAI tool documentation, or any other relevant resources that provide additional information about the AI technologies used in the creation of the work."
+        }
+      }
+    },
+    "mediaFilesInformation": {
+      "type": "object",
+      "description": "This section describes a cover image and a recorded video traversal of the work. The cover image should represent the work visually, while the traversal video provides a guided experience of the work.",
+      "properties": {
+        "coverImage": {
+          "type": "string",
+          "format": "uri",
+          "x-widget": "media-upload",
+          "x-media-type": "image",
+          "description": "A cover image or screenshot representing the work (JPEG, PNG, or WebP, max 20 MB)."
+        },
+        "traversalVideo": {
+          "type": "string",
+          "format": "uri",
+          "x-widget": "media-upload",
+          "x-media-type": "video",
+          "description": "A recorded video traversal of the work (MP4, WebM, or MOV, max 5 GB). Please keep the total runtime less than 20 minutes. If you have a video that exceeds the size limit, please contact the organizers for alternative arrangements."
+        }
+      },
+      "required": ["coverImage", "traversalVideo"]
+    },
+    "creatorMetadataInformation": {
+      "type": "object",
+      "description": "This section defines metadata about the creator's perspective on the work, including keywords that describe the work from the creator's point of view. This information can provide insight into the themes, concepts, and elements that the creator considers important in their work, and it can help users discover works based on these creator-defined keywords.",
+      "properties": {
+        "creatorKeywords": {
+          "type": "array",
+          "description": "Provides keywords that describe the work from the creator's perspective. These keywords can be used to highlight important themes, concepts, or elements of the work that may not be captured by traditional genre classifications. For example, a creator might use keywords like 'queer', 'conceptual', 'ambient', or 'procedural generation' to describe their work.",
+          "items": {
+            "type": "string"
+          }
+        },
+         "creatorBiography": {
+            "type": "string",
+            "description": "Provides detailed information about an entity involved in the production of a work. The biography can include information about the entity's background, career, notable works, and contributions to the field of electronic literature. For example, a biography for an individual creator might include their education, previous works, awards, and influence on the genre. A biography for a group might include the history of the collective, its members, and its impact on the field."
+          }
+      }
+    }
+  },
+  "required": ["workInformation", "entityInformation", "artificialIntelligenceInformation", "mediaFilesInformation"]
+}

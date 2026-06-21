@@ -1,0 +1,40 @@
+{
+  "name": "ELO 2026 Online Exhibition",
+  "description": "ELOnline 2026: (Un)Supervised",
+  "organizers": {
+    "title": "Conference Committees",
+    "chair": "Anastasia Salter, University of Central Florida",
+    "coChairs": [
+      "John Murray, University of Central Florida"
+    ],
+    "team": [
+      "Lyle Skains, Bournemouth University (Exhibition Co-Chair)",
+      "Daniel Cox, Illinois State University (Exhibition Developer)"
+    ]
+  },
+  "statement": {
+    "title": "(Un)Supervised CFP",
+    "paragraphs": [
+      "The theme of ELOnline 2026 is (Un)Supervised. One interpretation of this might regard a kind of LLM development, but we also consider perennial questions in the field around who is watching, who is reading, and who is learning about Electronic Literature, especially E-Lit cultures outside this institution. We particularly encourage submissions that center on computational research questions and generativity and the university as spaces where community and computational creativity are contested by many actors and parties. We invite attention to both un-institutioning (such as the decoupling of the federal government from research initiatives at public and international institutions) and the adaptive, critical, reflexive processes of institution-building, maintenance, and reinforcement (initiatives, pedagogies, technologies, labs, partnerships, research organizations, platforms, large-language-models, publications, etc.)."
+    ]
+  },
+  "licenses": {
+    "title": "Licenses and Software",
+    "entries": [
+      {
+        "prefix": "tagify: ",
+        "href": "https://github.com/yairEO/tagify/blob/master/LICENSE",
+        "linkText": "License"
+      }
+    ]
+  },
+  "citation": {
+    "exhibitionName": "ELO 2026 Online Exhibition",
+    "publicationYear": "2026",
+    "editors": "Skains, L., Cox, D.",
+    "publisher": "Electronic Literature Organization",
+    "language": "English",
+    "ogType": "book_section",
+    "twitterCard": "summary"
+  }
+}

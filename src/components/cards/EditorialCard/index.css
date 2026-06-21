@@ -1,0 +1,29 @@
+.editorialCard .card-title {
+  font-size: 2em;
+}
+
+.editorialCardStatement {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+.editorialCardStatement p {
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 16px;
+  color: #000000;
+}
+
+.editorialCardStatement h2,
+.editorialCardStatement h4 {
+  background: none;
+  border-bottom: 1px solid #fff1a3;
+  padding-left: 0px;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.editorialCardStatement h3 {
+  padding-left: 0px;
+}
