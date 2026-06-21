@@ -1,15 +1,2 @@
-:root {
-  --card-cover-width: 75%;
-  --card-cover-margin-left: 11%;
-  --card-cover-margin-y: 2%;
-  --card-cover-radius: 5px;
-  --card-cover-border-width: 5px;
-  --card-access-width: 40%;
-  --card-access-width-mobile: 75%;
-}
+/* Shared design tokens for card components. */
 
-@media (max-width: 1200px) {
-  :root {
-    --card-access-width: var(--card-access-width-mobile);
-  }
-}
