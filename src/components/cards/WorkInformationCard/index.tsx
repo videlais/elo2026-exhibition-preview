@@ -32,33 +32,23 @@ export default function WorkInformationCard(
       </Card.Header>
       <Card.Body>
         <h3>Title</h3>
-        <Card.Text>
-          <em><RichTextBlock content={title ?? ""} /></em>
-        </Card.Text>
+        <RichTextBlock className="card-text fst-italic" content={title ?? ""} />
         <h3>Description <WorkDescriptionPopover /></h3>
-        <Card.Text>
-          <RichTextBlock content={workDescription ?? ""} />
-        </Card.Text>
+        <RichTextBlock className="card-text" content={workDescription ?? ""} />
         {instructions.trim().length > 0 && (
           <>
             <hr />
             <h3>Instructions <InstructionsPopover /></h3>
-            <Card.Text id="instructions">
-              <RichTextBlock content={instructions ?? ""} />
-            </Card.Text>
+            <RichTextBlock id="instructions" className="card-text" content={instructions ?? ""} />
           </>
         )}
         <h3>Curatorial Statement <CuratorialStatementPopover /></h3>
-        <Card.Text id="curatorialStatement">
-          <RichTextBlock content={curatorialStatement ?? ""} />
-        </Card.Text>
+        <RichTextBlock id="curatorialStatement" className="card-text" content={curatorialStatement ?? ""} />
         {documentationLicense.trim().length > 0 && (
           <>
             <hr />
             <h3>Documentation License <DocumentationLicensePopover /></h3>
-            <Card.Text id="documentationLicense">
-              <RichTextBlock content={documentationLicense ?? ""} />
-            </Card.Text>
+            <RichTextBlock id="documentationLicense" className="card-text" content={documentationLicense ?? ""} />
           </>
         )}
       </Card.Body>
