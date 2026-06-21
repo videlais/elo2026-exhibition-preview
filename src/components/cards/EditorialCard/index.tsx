@@ -18,8 +18,8 @@ export default function EditorialCard({ editorialStatement, work }: { work: Work
   const citeKey = getEditorialCitationKey(work.url);
 
   return (
-    <Card className="elcCard editorialCard">
-      <Card.Header className="elcCardHeader">
+    <Card>
+      <Card.Header>
         <Card.Title as="h2">Editorial Statement</Card.Title>
       </Card.Header>
       <Card.Body className="elcCardBody">

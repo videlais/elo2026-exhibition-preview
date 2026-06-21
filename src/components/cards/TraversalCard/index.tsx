@@ -3,8 +3,8 @@ import { Work } from "../../../types";
 
 export default function TraversalCard({ work }: { work: Work }): JSX.Element {
   return (
-    <Card id="traversalCard" className="elcCard traversalCard">
-      <Card.Header className="elcCardHeader">
+    <Card>
+      <Card.Header>
         <Card.Title as="h2">Traversal Video</Card.Title>
       </Card.Header>
       <Card.Body className="elcCardBody">

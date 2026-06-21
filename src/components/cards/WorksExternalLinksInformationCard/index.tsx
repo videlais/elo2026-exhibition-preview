@@ -11,8 +11,8 @@ export default function WorksExternalLinksInformationCard(
   { entities }: { entities: ELMSWorksExternalLinksInformation[] }): JSX.Element {
 
   return (
-    <Card className="elcCard titleCard">
-      <Card.Header className="elcCardHeader">
+    <Card>
+      <Card.Header>
         <Card.Title as="h2">External Links</Card.Title>
       </Card.Header>
       <Card.Body className="elcCardBody">

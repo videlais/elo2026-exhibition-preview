@@ -80,8 +80,8 @@ export default function VersionInformationCard(
   }: ELMSVersionInformation): JSX.Element {
 
   return (
-    <Card className="elcCard titleCard">
-      <Card.Header className="elcCardHeader">
+    <Card>
+      <Card.Header>
         <Card.Title as="h2">Version Information <VersionInformationPopover /></Card.Title>
       </Card.Header>
       <Card.Body className="elcCardBody">

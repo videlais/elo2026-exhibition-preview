@@ -25,11 +25,11 @@ export default function EntityInformationCard(
 ): JSX.Element {
 
   return (
-    <Card className="elcCard titleCard">
-      <Card.Header className="elcCardHeader">
+    <Card>
+      <Card.Header>
         <Card.Title as="h2">Entity Information <EntityInformationPopover /></Card.Title>
       </Card.Header>
-      <Card.Body className="elcCardBody">
+      <Card.Body>
         {entities.map((entity) => (
           <ul key={entity.entityRoleId ?? entity.entityId}>
             {entity.entityName && <li className="mb-2"><strong>Entity Name:</strong> {entity.entityName} <EntityNamePopover /></li>}

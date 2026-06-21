@@ -1,5 +1,5 @@
 import { Card } from "react-bootstrap";
-import type { Work } from "../../../types/ELMSWork";
+import type ELMSWork from "../../../types/ELMSWork";
 import type { AccessibilityInformation } from "../../../types/elms";
 import "./index.css";
 
@@ -18,13 +18,13 @@ const FIELD_LABELS: Readonly<Record<keyof AccessibilityInformation, string>> = {
 
 const FIELD_ORDER = Object.keys(FIELD_LABELS) as (keyof AccessibilityInformation)[];
 
-export default function AccessibilityCard({ work }: { work: Work }) {
+export default function AccessibilityCard({ work }: { work: ELMSWork }) {
   const info = work.accessibilityInformation;
   if (!info) return null;
 
   return (
     <Card className="elcCard accessibilityCard">
-      <Card.Header className="elcCardHeader">
+      <Card.Header>
         <Card.Title as="h2">Accessibility</Card.Title>
       </Card.Header>
       <Card.Body className="elcCardBody accessibilityCard__body">

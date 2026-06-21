@@ -15,7 +15,7 @@ export default function MediaFilesInformationCard(
 
   return (
     <Card className="elcCard titleCard">
-      <Card.Header className="elcCardHeader">
+      <Card.Header>
         <Card.Title as="h2">Media Files</Card.Title>
       </Card.Header>
       <Card.Body className="elcCardBody">

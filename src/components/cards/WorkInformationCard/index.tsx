@@ -29,7 +29,7 @@ export default function WorkInformationCard(
 
   return (
     <Card className="elcCard titleCard" key={workId}>
-      <Card.Header className="elcCardHeader">
+      <Card.Header>
         <Card.Title as="h2">{title} <WorkInformationPopover /></Card.Title>
       </Card.Header>
       <Card.Body className="elcCardBody">

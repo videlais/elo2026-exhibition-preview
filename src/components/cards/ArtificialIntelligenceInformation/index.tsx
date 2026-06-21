@@ -38,7 +38,7 @@ export default function ArtificialIntelligenceInformationCard(
 
   return (
     <Card className="elcCard titleCard">
-      <Card.Header className="elcCardHeader">
+      <Card.Header>
         <Card.Title as="h2">Artificial Intelligence Information <ArtificialIntelligenceInformationPopover /></Card.Title>
       </Card.Header>
         <Card.Body className="elcCardBody">

@@ -21,7 +21,7 @@ export default function CreatorMetadataInformationCard(
 
   return (
     <Card className="elcCard titleCard">
-      <Card.Header className="elcCardHeader">
+      <Card.Header>
         <Card.Title as="h2">Creator Metadata Information <CreatorMetadataInformationPopover /></Card.Title>
       </Card.Header>
         <Card.Body className="elcCardBody">
