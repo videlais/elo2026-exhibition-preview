@@ -6,7 +6,7 @@ export default function Footer() {
   const { exhibitionName, editors, publicationYear, publisher } = aboutJson.citation;
   return (
     <footer id="siteFooter" role="contentinfo">
-      <Card className="elcCard w-100 m-0 rounded-0" id="elcCopyrightInfo">
+      <Card className="w-100 m-0 rounded-0" id="elcCopyrightInfo">
         <Card.Body>
           <p className="siteFooter__citation">
             <em>{exhibitionName}</em>. {editors} (eds.), {publisher}, {publicationYear}.

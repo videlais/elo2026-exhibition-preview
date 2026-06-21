@@ -15,7 +15,7 @@ export default function WorksExternalLinksInformationCard(
       <Card.Header>
         <Card.Title as="h2">External Links</Card.Title>
       </Card.Header>
-      <Card.Body className="elcCardBody">
+      <Card.Body>
         {entities.map((entity) => (
           <ul key={entity.externalLinkId ?? entity.externalLinkUrl}>
             {entity.externalLinkName && <li><strong>External Link Name:</strong> {entity.externalLinkName}</li>}

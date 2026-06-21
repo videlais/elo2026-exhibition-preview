@@ -20,13 +20,13 @@ export default function CreatorMetadataInformationCard(
 ): JSX.Element {
 
   return (
-    <Card className="elcCard titleCard">
+    <Card>
       <Card.Header>
         <Card.Title as="h2">Creator Metadata Information <CreatorMetadataInformationPopover /></Card.Title>
       </Card.Header>
-      <Card.Body className="elcCardBody">
+      <Card.Body>
         <h3>Biography <CreatorBiographyPopover /></h3>
-        <p><RichTextBlock content={creatorBiography ?? ""} /></p>
+        <RichTextBlock content={creatorBiography ?? ""} />
         {creatorKeywords && creatorKeywords.length > 0 && (
           <>
             <h3>Keywords <CreatorKeywordsPopover /></h3>

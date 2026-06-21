@@ -14,11 +14,11 @@ export default function MediaFilesInformationCard(
   }: ELMSMediaFilesInformation): JSX.Element {
 
   return (
-    <Card className="elcCard titleCard">
+    <Card>
       <Card.Header>
         <Card.Title as="h2">Media Files</Card.Title>
       </Card.Header>
-      <Card.Body className="elcCardBody">
+      <Card.Body>
         <div className="coverImage">
           {coverImage && (
             <>

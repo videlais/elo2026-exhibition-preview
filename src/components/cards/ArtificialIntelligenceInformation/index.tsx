@@ -37,11 +37,11 @@ export default function ArtificialIntelligenceInformationCard(
   const externalLinks = artificialIntelligenceExternalLinks?.length ? artificialIntelligenceExternalLinks.join(", ") : "None";
 
   return (
-    <Card className="elcCard titleCard">
+    <Card>
       <Card.Header>
         <Card.Title as="h2">Artificial Intelligence Information <ArtificialIntelligenceInformationPopover /></Card.Title>
       </Card.Header>
-      <Card.Body className="elcCardBody">
+      <Card.Body>
         <p><strong>Generated Content:</strong> {generatedContent} <ArtificialIntelligenceGeneratedContentPopover /></p>
         <p><strong>Generated Code:</strong> {generatedCode} <ArtificialIntelligenceGeneratedCodePopover /></p>
         <p><strong>Tools Used:</strong> {toolsUsed} <ArtificialIntelligenceToolsUsedPopover /></p>

@@ -82,7 +82,7 @@ export default function VersionInformationCard(
       <Card.Header>
         <Card.Title as="h2">Version Information <VersionInformationPopover /></Card.Title>
       </Card.Header>
-      <Card.Body className="elcCardBody">
+      <Card.Body>
         <ul>
           <li className="mb-2"><strong>Version:</strong> {version} <VersionPopover /></li>
           <li className="mb-2"><strong>Version ID:</strong> {versionId} <VersionIdPopover /></li>
