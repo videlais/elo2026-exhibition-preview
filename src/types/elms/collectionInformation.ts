@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { ELMSURISchema, ELMSYear } from './SharedTypes';
+import { z } from "zod";
+import { ELMSURISchema, ELMSYear } from "./SharedTypes";
 
 export interface ELMSCollectionInformation {
   collectionId?: string;

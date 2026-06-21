@@ -8,15 +8,15 @@ import {
 } from "./Popovers";
 
 /**
- * The CreatorMetadataInformationCard maps to the ELMSCreatorMetadataInformation 
+ * The CreatorMetadataInformationCard maps to the ELMSCreatorMetadataInformation
  *  object in the ELMS schema.
  */
 
 export default function CreatorMetadataInformationCard(
-  { 
-   creatorKeywords,
-   creatorBiography
-  }: ELMSCreatorMetadataInformation
+  {
+    creatorKeywords,
+    creatorBiography,
+  }: ELMSCreatorMetadataInformation,
 ): JSX.Element {
 
   return (
@@ -24,10 +24,10 @@ export default function CreatorMetadataInformationCard(
       <Card.Header>
         <Card.Title as="h2">Creator Metadata Information <CreatorMetadataInformationPopover /></Card.Title>
       </Card.Header>
-        <Card.Body className="elcCardBody">
-         <h3>Biography <CreatorBiographyPopover /></h3>
-         <p><RichTextBlock content={creatorBiography ?? ""} /></p>
-         {creatorKeywords && creatorKeywords.length > 0 && (
+      <Card.Body className="elcCardBody">
+        <h3>Biography <CreatorBiographyPopover /></h3>
+        <p><RichTextBlock content={creatorBiography ?? ""} /></p>
+        {creatorKeywords && creatorKeywords.length > 0 && (
           <>
             <h3>Keywords <CreatorKeywordsPopover /></h3>
             <ul>

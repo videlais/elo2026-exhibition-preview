@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { ELMSURISchema, ELMSMonth, ELMSYear, ELMSVPublicationStatus } from './SharedTypes';
+import { z } from "zod";
+import { ELMSURISchema, ELMSMonth, ELMSYear, ELMSVPublicationStatus } from "./SharedTypes";
 
 // Start of ELMS CopyInformation block
 export interface ELMSCopyInformation {

@@ -1,10 +1,8 @@
-import { Card, Col, Row } from "react-bootstrap";
-import "./index.css";
+import { Card } from "react-bootstrap";
 import { ELMSWorkInformation } from "../../../types/elms/workInformation";
 import { RichTextBlock } from "../../../utils/richText";
 import {
   WorkInformationPopover,
-  TitlePopover,
   WorkDescriptionPopover,
   CuratorialStatementPopover,
   InstructionsPopover,
@@ -12,53 +10,53 @@ import {
 } from "./Popovers";
 
 /**
- * The WorkInformationCard maps to the WorkInformation 
- *  object in the ELMS schema with the exception of the imageThumbnail field, 
+ * The WorkInformationCard maps to the WorkInformation
+ *  object in the ELMS schema with the exception of the imageThumbnail field,
  *  which is part of the VersionInformation object.
  */
 
 export default function WorkInformationCard(
-  { 
+  {
     title,
     workId,
     workDescription,
     curatorialStatement,
     instructions,
-    documentationLicense 
+    documentationLicense,
   }: ELMSWorkInformation): JSX.Element {
 
   return (
-    <Card className="elcCard titleCard" key={workId}>
+    <Card key={workId}>
       <Card.Header>
         <Card.Title as="h2">{title} <WorkInformationPopover /></Card.Title>
       </Card.Header>
       <Card.Body className="elcCardBody">
-            <h3>Description <WorkDescriptionPopover /></h3>
-            <Card.Text id="workDescription">
-              <RichTextBlock content={workDescription ?? ""} />
+        <h3>Description <WorkDescriptionPopover /></h3>
+        <Card.Text id="workDescription">
+          <RichTextBlock content={workDescription ?? ""} />
+        </Card.Text>
+        {instructions.trim().length > 0 && (
+          <>
+            <hr />
+            <h3>Instructions <InstructionsPopover /></h3>
+            <Card.Text id="instructions">
+              <RichTextBlock content={instructions ?? ""} />
             </Card.Text>
-            {instructions.trim().length > 0 && (
-              <>
-                <hr />
-                <h3>Instructions <InstructionsPopover /></h3>
-                <Card.Text id="instructions">
-                  <RichTextBlock content={instructions ?? ""} />
-                </Card.Text>
-              </>
-            )}
-            <h3>Curatorial Statement <CuratorialStatementPopover /></h3>
-            <Card.Text id="curatorialStatement">
-              <RichTextBlock content={curatorialStatement ?? ""} />
+          </>
+        )}
+        <h3>Curatorial Statement <CuratorialStatementPopover /></h3>
+        <Card.Text id="curatorialStatement">
+          <RichTextBlock content={curatorialStatement ?? ""} />
+        </Card.Text>
+        {documentationLicense.trim().length > 0 && (
+          <>
+            <hr />
+            <h3>Documentation License <DocumentationLicensePopover /></h3>
+            <Card.Text id="documentationLicense">
+              <RichTextBlock content={documentationLicense ?? ""} />
             </Card.Text>
-            {documentationLicense.trim().length > 0 && (
-              <>
-                <hr />
-                <h3>Documentation License <DocumentationLicensePopover /></h3>
-                <Card.Text id="documentationLicense">
-                  <RichTextBlock content={documentationLicense ?? ""} />
-                </Card.Text>
-              </>
-            )}
+          </>
+        )}
       </Card.Body>
     </Card>
   );

@@ -1,71 +1,57 @@
-const WORK_CITATION_EDITORS = [
+import type ELMSWork from "../types/ELMSWork";
+
+const PUBLISHER = "Electronic Literature Organization";
+const ADDRESS = "Université Grenoble Alpes, Grenoble, France";
+const LANGID = "en-US";
+const EXHIBITION_YEAR = 2026;
+const EXHIBITION_EDITORS = [
   { family: "Skains", given: "Lyle" },
   { family: "Cox", given: "Daniel" },
-  { family: "Edgar", given: "PD" },
-  { family: "Finch", given: "Ricky" },
-  { family: "Shier", given: "Mike" },
 ] as const;
 
-const WORK_CITATION_PUBLISHER = "Electronic Literature Organization";
-const WORK_CITATION_ADDRESS = "University of Central Florida, Orlando, Florida, USA";
-const WORK_CITATION_LANGID = "en-US";
-const WORK_CITATION_ISSUED_YEAR = 2024;
-
-function toCitationAuthors(authorDisplayName: string) {
-  return authorDisplayName
-    .replaceAll(/ *\(.*\) */gi, "")
-    .split(",")
-    .map((author) => author.trim())
-    .filter((author) => author.length > 0)
-    .map((author) => {
-      const split = author.split(" ").filter((part) => part.length > 0);
-      return {
-        family: split[split.length - 1] ?? "",
-        given: split.slice(0, split.length - 1).join(" "),
-      };
+function toCitationAuthors(work: ELMSWork) {
+  const entities = work.entityInformation ?? [];
+  return entities
+    .filter((e) => e.entityType !== "group" && e.entityName)
+    .map((e) => {
+      const parts = e.entityName.trim().split(/\s+/);
+      const family = parts[parts.length - 1] ?? "";
+      const given = parts.slice(0, -1).join(" ");
+      return { family, given };
     });
 }
 
-export function getWorkCitationCiteKey(authorDisplayName: string): string {
-  const authors = toCitationAuthors(authorDisplayName);
-  return authors[0]?.family || "work";
+function getPublicationYear(work: ELMSWork): number | undefined {
+  const v = work.versionInformation;
+  const year = v?.publicationYear ?? v?.originalPublicationYear;
+  return typeof year === "number" ? year : year ? Number(year) : undefined;
 }
 
-export function buildWorkCitation({
-  slug,
-  title,
-  authorDisplayName,
-  descriptionOfWork,
-  year,
-  publicUrl,
-}: {
-  slug: string;
-  title: string;
-  authorDisplayName: string;
-  descriptionOfWork?: string;
-  year?: string;
-  publicUrl: string;
-}) {
-  const authors = toCitationAuthors(authorDisplayName);
+export function getWorkCiteKey(work: ELMSWork): string {
+  const firstAuthor = toCitationAuthors(work)[0]?.family.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return `${firstAuthor || "work"}${EXHIBITION_YEAR}${work.workInformation.workId}`;
+}
+
+export function buildWorkCitation(work: ELMSWork, publicUrl: string): Record<string, unknown> {
   const today = new Date();
+  const authors = toCitationAuthors(work);
+  const year = getPublicationYear(work);
 
   return {
     type: "book",
-    id: slug,
+    id: getWorkCiteKey(work),
     author: authors,
-    editor: WORK_CITATION_EDITORS,
-    title,
-    issued: {
-      "date-parts": [[WORK_CITATION_ISSUED_YEAR]],
-    },
-    publisher: WORK_CITATION_PUBLISHER,
-    abstract: descriptionOfWork,
-    address: WORK_CITATION_ADDRESS,
-    langid: WORK_CITATION_LANGID,
+    editor: EXHIBITION_EDITORS,
+    title: work.workInformation.title,
+    issued: { "date-parts": [[EXHIBITION_YEAR]] },
+    publisher: PUBLISHER,
+    abstract: work.workInformation.workDescription,
+    address: ADDRESS,
+    langid: LANGID,
     accessed: {
-      "date-parts": [[today.getFullYear(), today.getMonth(), today.getDate()]],
+      "date-parts": [[today.getFullYear(), today.getMonth() + 1, today.getDate()]],
     },
-    "original-date": { "date-parts": [[year]] },
+    ...(year ? { "original-date": { "date-parts": [[year]] } } : {}),
     URL: publicUrl,
   };
 }

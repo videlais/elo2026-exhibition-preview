@@ -1,6 +1,5 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import React from 'react';
 import { sanitizeHtml } from '../src/utils/sanitizeHtml';
 import { ThemeProvider, useTheme } from '../src/context/ThemeContext';
 

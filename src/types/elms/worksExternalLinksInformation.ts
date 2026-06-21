@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { ELMSURISchema } from './SharedTypes';
+import { z } from "zod";
+import { ELMSURISchema } from "./SharedTypes";
 
 export interface ELMSWorksExternalLinksInformation {
   externalLinkName: string;

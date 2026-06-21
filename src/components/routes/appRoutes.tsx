@@ -1,9 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
-import { Navigate } from 'react-router-dom';
-import AboutPage from '../../pages/AboutPage';
-import HomePage from '../../pages/HomePage';
-import SearchPage from '../../pages/SearchPage';
-import WorkPage from '../../pages/WorkPage';
+import { lazy } from "react";
+import { Navigate } from "react-router-dom";
+import HomePage from "../../pages/HomePage";
+
+const SearchPage = lazy(() => import("../../pages/SearchPage"));
+const AboutPage = lazy(() => import("../../pages/AboutPage"));
+const WorkPage = lazy(() => import("../../pages/WorkPage"));
 
 export interface AppRoute {
   path: string;
@@ -11,9 +13,9 @@ export interface AppRoute {
 }
 
 export const appRoutes: AppRoute[] = [
-  { path: '/', element: <HomePage /> },
-  { path: '/search', element: <SearchPage /> },
-  { path: '/about', element: <AboutPage /> },
-  { path: '/work/:workId', element: <WorkPage /> },
-  { path: '/index', element: <Navigate to="/search" replace /> },
+  { path: "/", element: <HomePage /> },
+  { path: "/search", element: <SearchPage /> },
+  { path: "/about", element: <AboutPage /> },
+  { path: "/work/:workId", element: <WorkPage /> },
+  { path: "/index", element: <Navigate to="/search" replace /> },
 ];

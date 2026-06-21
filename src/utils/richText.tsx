@@ -39,14 +39,14 @@ export function RichTextBlock({
             ALLOWED_ATTR: allowedAttrs,
           }),
         }}
-      ></div>
+      />
     );
   }
 
   const paragraphs = toParagraphs(content);
 
   if (paragraphs.length === 0) {
-    return <div id={id} className={className}></div>;
+    return <div id={id} className={className} />;
   }
 
   return (

@@ -1,5 +1,5 @@
-import { z } from 'zod';
-import { ELMSURISchema, ELMSMonth, ELMSYear, ELMSVPublicationStatus } from './SharedTypes';
+import { z } from "zod";
+import { ELMSURISchema, ELMSMonth, ELMSYear, ELMSVPublicationStatus } from "./SharedTypes";
 
 export type ELMSVersionInformation = {
   version: string;
@@ -34,4 +34,4 @@ export type ELMSVersionInformation = {
   eldLink?: z.infer<typeof ELMSURISchema>;
   elmcipLink?: z.infer<typeof ELMSURISchema>;
   rebootingElectronicLiteratureLink?: z.infer<typeof ELMSURISchema>;
-}
+};

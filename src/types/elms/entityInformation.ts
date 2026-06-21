@@ -1,9 +1,9 @@
-import { z } from 'zod';
-import { ELMSURISchema } from './SharedTypes';
-import countries from 'i18n-iso-countries';
-import { ELMSRelatorSchema } from './marcRelator';
+import { z } from "zod";
+import { ELMSURISchema } from "./SharedTypes";
+import countries from "i18n-iso-countries";
+import { ELMSRelatorSchema } from "./marcRelator";
 
-export type ELMSEntityType = 'individual' | 'group';
+export type ELMSEntityType = "individual" | "group";
 
 // ISO 3166-1 alpha-2 country codes.
 const codes = Object.keys(countries.getAlpha2Codes()) as [string, ...string[]];

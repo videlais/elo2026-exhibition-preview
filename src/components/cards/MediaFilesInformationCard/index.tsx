@@ -3,14 +3,14 @@ import { ELMSMediaFilesInformation } from "../../../types/elms/mediaFilesInforma
 import "./index.css";
 
 /**
- * The MediaFilesInformationCard maps to the MediaFilesInformation 
+ * The MediaFilesInformationCard maps to the MediaFilesInformation
  *  object in the ELMS schema.
  */
 
 export default function MediaFilesInformationCard(
-  { 
-   coverImage,
-   traversalVideo
+  {
+    coverImage,
+    traversalVideo,
   }: ELMSMediaFilesInformation): JSX.Element {
 
   return (
@@ -20,12 +20,12 @@ export default function MediaFilesInformationCard(
       </Card.Header>
       <Card.Body className="elcCardBody">
         <div className="coverImage">
-            {coverImage && (
+          {coverImage && (
             <>
-                <h3>Cover Image</h3>
-                <img src={coverImage} alt="Cover Image" />
+              <h3>Cover Image</h3>
+              <img src={coverImage} alt="Cover Image" />
             </>
-            )}
+          )}
         </div>
         <div className="traversalVideo">
           <h3>Traversal Video</h3>

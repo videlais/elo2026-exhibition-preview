@@ -6,4 +6,4 @@ export type ELMSWorkInformation = {
   curatorialStatement: string;
   instructions: string;
   documentationLicense: string;
-}
+};

@@ -1,6 +1,6 @@
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
-import { InfoCircle } from 'react-bootstrap-icons';
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
+import { InfoCircle } from "react-bootstrap-icons";
 import schema from "../../../schema/elms-schema.json";
 
 const { properties: workProps } = schema.properties.workInformation;
@@ -15,7 +15,7 @@ const makePopover = (id: string, title: string, description: string) => (
 
 const InfoTrigger = ({ id, title, description }: { id: string; title: string; description: string }) => (
   <OverlayTrigger trigger="click" placement="right" overlay={makePopover(id, title, description)} rootClose>
-    <InfoCircle role="button" style={{ color: 'blue', cursor: 'pointer' }} tabIndex={0} aria-label={`Info about ${title}`} />
+    <InfoCircle role="button" style={{ color: "blue", cursor: "pointer" }} tabIndex={0} aria-label={`Info about ${title}`} />
   </OverlayTrigger>
 );
 

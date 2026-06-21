@@ -11,7 +11,13 @@ const Index = () => {
 
   return (
     <HashRouter>
-      <Suspense fallback={<div className="elcContainer">Loading...</div>}>
+      <Suspense
+        fallback={
+          <div role="status" aria-live="polite" className="elcContainer">
+            Loading…
+          </div>
+        }
+      >
         <Routes>
           {appRoutes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />

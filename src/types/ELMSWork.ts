@@ -9,15 +9,17 @@ import { ELMSArtificialIntelligenceInformation } from "./elms/artificialIntellig
 import { ELMSMediaFilesInformation } from "./elms/mediaFilesInformation";
 import { ELMSCreatorMetadataInformation } from "./elms/creatorMetadataInformation";
 
-export default interface ELMSWork {
-    workInformation: ELMSWorkInformation;
-    versionInformation: ELMSVersionInformation;
-    accessibilityInformation: ELMSAccessibilityInformation;
-    copyInformation?: ELMSCopyInformation;
-    entityInformation: ELMSEntityInformation[];
-    collectionInformation?: ELMSCollectionInformation;
-    worksExternalLinksInformation?: ELMSWorksExternalLinksInformation[];
-    artificialIntelligenceInformation: ELMSArtificialIntelligenceInformation;
-    mediaFilesInformation: ELMSMediaFilesInformation;
-    creatorMetadataInformation?: ELMSCreatorMetadataInformation;
+interface ELMSWork {
+  workInformation: ELMSWorkInformation;
+  versionInformation: ELMSVersionInformation;
+  accessibilityInformation: ELMSAccessibilityInformation;
+  copyInformation?: ELMSCopyInformation;
+  entityInformation: ELMSEntityInformation[];
+  collectionInformation?: ELMSCollectionInformation;
+  worksExternalLinksInformation?: ELMSWorksExternalLinksInformation[];
+  artificialIntelligenceInformation: ELMSArtificialIntelligenceInformation;
+  mediaFilesInformation: ELMSMediaFilesInformation;
+  creatorMetadataInformation?: ELMSCreatorMetadataInformation;
 }
+
+export default ELMSWork;

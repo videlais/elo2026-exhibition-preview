@@ -14,14 +14,13 @@ import {
   EntityRoleIdPopover,
 } from "./Popovers";
 
-
 /**
- * The EntityInformationCard maps to the ELMSEntityInformation 
+ * The EntityInformationCard maps to the ELMSEntityInformation
  *  object in the ELMS schema.
  */
 
 export default function EntityInformationCard(
-  { entities }: { entities: ELMSEntityInformation[] }
+  { entities }: { entities: ELMSEntityInformation[] },
 ): JSX.Element {
 
   return (
