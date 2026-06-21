@@ -7,15 +7,15 @@
   "properties": {
     "workInformation": {
       "type": "object",
-      "description": "This section defines general metadata about a work including its title, workId (unique identifier), and description. This information is used to identify and describe the work as a whole, regardless of its different versions and copies. The title should be the name by which the work is commonly known, and the description should provide an overview of the work's content, themes, and significance.",
+      "description": "This section defines general metadata about a work including its title, workId (internal identifier), and description. This information is used to identify and describe the work as a whole, regardless of its different versions and copies. The title should be the name by which the work is commonly known, and the description should provide an overview of the work's content, themes, and significance.",
       "properties": {
         "title": {
           "type": "string",
-          "description": "Names the specific work to which the entry refers. The title should be the name by which the work is commonly known and should be consistent across all versions and copies of the work. For example, if the work is a game called 'The Enchanted Forest', the title should be 'The Enchanted Forest' for all versions and copies of that game, even if they have different version numbers or media formats."
+          "description": "Names the specific work. The title should be the name by which the work is commonly known and should be consistent across all versions and copies of the work. For example, if the work is a game called 'The Enchanted Forest', the title should be 'The Enchanted Forest' for all versions and copies of that game, even if they have different version numbers or media formats."
         },
         "workId": {
           "type": "string",
-          "description": "Identifies a work with a unique identifier or slug value. The workId is used for tracking and possible URI generation purposes within the archive. For example, if a work was 'Web Example', the workId might be 'web-example'. The workId should be unique across all works in the archive."
+          "description": "Identifies a work with a unique identifier. The workId is used for tracking and possible URI generation purposes within the archive. For example, if a work was 'Web Example', the workId might be 'web-example'. The workId should be unique across all works in the archive."
         },
         "workDescription": {
           "type": "string",
@@ -23,7 +23,7 @@
         },
         "curatorialStatement": {
           "type": "string",
-          "description": "Every work should include a curatorial statement that provides context and insight into the work's creation, themes, and significance. This statement can help viewers understand the artist's intentions and the work's place within the broader field of electronic literature."
+          "description": "Every work includes a curatorial statement that provides context and insight into the work's creation, themes, and significance. This statement can help viewers understand the artist's intentions and the work's place within the broader field of electronic literature."
         },
         "instructions": {
           "type": "string",
@@ -520,7 +520,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "description": "This section defines metadata about pieces of content located outside of the collection, version, or copy. This can include links to external reviews, interviews, critical essays, or other relevant materials that provide additional context or information about the work.",
+        "description": "This section contains links to external content. This can include personal websites, external reviews, interviews, critical essays, or other relevant materials that provide additional access, context, or information about the work.",
         "properties": {
           "externalLinkName": {
             "type": "string",

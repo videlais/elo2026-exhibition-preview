@@ -1,5 +1,6 @@
 import { Card } from "react-bootstrap";
 import { ELMSWorksExternalLinksInformation } from "../../../types/elms/worksExternalLinksInformation";
+import { WorksExternalLinksInformationPopover } from "./Popovers";
 
 /**
  * The WorksExternalLinksInformationCard maps to the WorksExternalLinksInformation
@@ -13,13 +14,16 @@ export default function WorksExternalLinksInformationCard(
   return (
     <Card>
       <Card.Header>
-        <Card.Title as="h2">External Links</Card.Title>
+        <Card.Title as="h2">External Links <WorksExternalLinksInformationPopover /></Card.Title>
       </Card.Header>
       <Card.Body>
-        {entities.map((entity) => (
-          <ul key={entity.externalLinkId ?? entity.externalLinkUrl}>
-            {entity.externalLinkName && <li><strong>External Link Name:</strong> {entity.externalLinkName}</li>}
-            {entity.externalLinkUrl && <li><strong>External Link URL:</strong> {entity.externalLinkUrl}</li>}
+        {entities.map((entity, index) => (
+          <ul key={`${index}-${entity.externalLinkId}`}>
+            <li>
+              <strong>
+                <a href={entity.externalLinkUrl}>{entity.externalLinkName}</a>
+              </strong>
+            </li>
           </ul>
         ))}
       </Card.Body>
