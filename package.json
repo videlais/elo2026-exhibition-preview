@@ -1,9 +1,9 @@
 {
-  "name": "egg",
+  "name": "elo2026-exhibition-preview",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "homepage": "https://videlais.github.io/egg/",
+  "homepage": "https://videlais.github.io/elo2026-exhibition-preview/",
   "dependencies": {
     "@citation-js/core": "^0.7.21",
     "@citation-js/plugin-bibtex": "^0.7.21",
@@ -45,7 +45,7 @@
     "test:coverage": "vitest run --coverage",
     "lint": "eslint src --ext .ts,.tsx",
     "lint:fix": "eslint src --ext .ts,.tsx --fix",
-    "predeploy:gh": "VITE_APP_BASE_PATH=/egg/ npm run build:full",
+    "predeploy:gh": "VITE_APP_BASE_PATH=/elo2026-exhibition-preview/ npm run build:full",
     "deploy:gh": "gh-pages -d build",
     "all": "npm run lint && npm run type-check && npm run test:coverage"
   },
