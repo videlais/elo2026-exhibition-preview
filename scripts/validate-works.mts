@@ -122,12 +122,13 @@ const aiInformationSchema = z.object({
   artificialIntelligenceGeneratedCode: z.boolean(),
   artificialIntelligenceToolsUsed: z.array(z.string()).optional(),
   artificialIntelligenceModelsUsed: z.array(z.string()).optional(),
-  artificialIntelligenceExternalLinks: z.array(z.string().url()).optional(),
+  artificialIntelligenceExternalLinks: z.array(z.string()).optional(),
 });
 
+const mediaPath = z.string().url().or(z.string().startsWith('/')).or(z.literal('')).optional();
 const mediaFilesSchema = z.object({
-  coverImage: z.string().url().optional(),
-  traversalVideo: z.string().url().optional(),
+  coverImage: mediaPath,
+  traversalVideo: mediaPath,
 });
 
 const creatorMetadataSchema = z.object({

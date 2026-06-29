@@ -5,21 +5,22 @@ import aboutJson from "./json/about.json";
 const { exhibitionName, publicationYear, editors, publisher, ogType, twitterCard } = aboutJson.citation;
 const { description } = aboutJson;
 
+// This is needed because Vita can be deployed to a subdirectory, and we want to ensure that the favicon and other assets are correctly referenced regardless of the base URL.
+const buildAssetUrl = (path: string) => {
+  const normalizedBase = (import.meta.env.BASE_URL ?? "/").replace(/\/+$/, "/");
+  const normalizedPath = path.replace(/^\/+/, "");
+  return `${normalizedBase}${normalizedPath}`;
+};
+
 const siteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: exhibitionName,
   description,
   publisher: { "@type": "Organization", name: publisher },
+  image: buildAssetUrl("images/twitterPromo.png"),
   url: typeof window !== "undefined" ? window.location.origin + (import.meta.env.BASE_URL ?? "/") : (import.meta.env.BASE_URL ?? "/"),
   inLanguage: "English",
-};
-
-// This is needed because Vita can be deployed to a subdirectory, and we want to ensure that the favicon and other assets are correctly referenced regardless of the base URL.
-const buildAssetUrl = (path: string) => {
-  const normalizedBase = (import.meta.env.BASE_URL ?? "/").replace(/\/+$/, "/");
-  const normalizedPath = path.replace(/^\/+/, "");
-  return `${normalizedBase}${normalizedPath}`;
 };
 
 export default function App() {
@@ -64,11 +65,17 @@ export default function App() {
       <meta property="og:title" content={exhibitionName} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={buildAssetUrl("images/twitterPromo.png")} />
+      <meta property="og:image:secure_url" content={buildAssetUrl("images/twitterPromo.png")} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={exhibitionName} />
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:site" content="@eliterature" />
       <meta name="twitter:title" content={exhibitionName} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={buildAssetUrl("images/twitterPromo.png")} />
+      <meta name="twitter:image:alt" content={exhibitionName} />
       <script type="application/ld+json">
         {JSON.stringify(siteJsonLd)}
       </script>
