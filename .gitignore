@@ -148,3 +148,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Transcoded traversal videos (uploaded to GitHub Releases, not committed)
+video-dist/
