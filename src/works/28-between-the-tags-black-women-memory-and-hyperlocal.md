@@ -1,0 +1,71 @@
+---
+workId: '28'
+title: 'Between the Tags: Black Women, Memory, and Hyperlocal Digital Fandom'
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 28
+  versionNumber: '2.3'
+  publicationDay: 13
+  publicationYear: 2026
+  publicationMonth: June
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages: []
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - interactive fiction
+    - hypertext fiction
+    - exploration
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  textFormat:
+    - light fonts
+    - script fonts
+  colorAndContrast:
+    - visual noise
+  touch:
+    - cursor click
+entities:
+  - entityId: '1'
+    entityName: Diamond E. Beverly-Porter
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://diamondebp.itch.io/between-the-tags'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/1b2bc58d-01c6-47a1-9c3a-d382fdfe7ee8/image-950fa19b-3fb0-441f-9428-68283ba53725.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: false
+  artificialIntelligenceToolsUsed: []
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - African American Studies
+  - Digital Humanities
+  - Game Design
+  - Interactive Arts
+---
+
+# description
+
+<p><em>Between the Tags</em> is a short hypertext game about Black women, fandom, memory, and care.</p><p>Inspired by fanfiction archives, recommendation chains, and late-night reading sessions, the work invites players to navigate an interactive network of tags, comments, fragments, and digital traces. Rather than following a traditional narrative, players move through interconnected pathways of memory and association, uncovering the relational practices that allow Black women characters, and the communities that gather around them, to persist beyond the limits of canon.</p><p> Built in Decker, the experience transforms the soft data of fandom culture tags, author notes, comment threads, bookmarks, and hyperlinks into a navigable digital archive. Each click reveals new fragments, creating a space where care operates as a form of navigation and memory is held collectively rather than individually. The project explores how Black women are remembered, reimagined, and cared for within fan communities. It asks what kinds of knowledge exist between stories, what traces remain when archives disappear, and how digital communities create their own systems of preservation, recognition, and belonging. There are no levels to complete and no correct path through the work. Instead, players are encouraged to wander, revisit, and discover connections at their own pace.</p><p>My process is iterative and exploratory. I begin by analyzing and mapping the connections between stories and tags, sketching how relational networks might be visualized and experienced digitally. In Decker, these sketches are translated into clickable, multimedia nodes creating non-linear pathways that mimic human associative thinking. Each interaction is designed to foreground visibility, care, and communal memory, allowing users to engage with both the content and the relationality embedded in these networks. The work emphasizes hyperlocality, slow reading, and the in-between spaces of digital fandom, reflecting how African American women create, navigate, and signal care within these communities. This project exemplifies my broader practice of exploring identity, representation, and relationality through interactive media. By leveraging Decker's hypertext capabilities, I am able to craft a space where digital tools, narrative, and relational archives intersect, making the invisible patterns of care and memory in fanfiction visible, tangible, and experientially accessible.</p>
+
+# creatorBiography
+
+<p>I believe in the transformative power of storytelling, play, and critical making. Through a Black feminist lens, and with the visceral connection that art innately creates with its audience, Hello, my name is Diamond E. Beverly-Porter. I am a Black Artist game Designer, storyteller critical Maker and educator from Dallas, Texas. I am interested in the intersections of culture, communication, representation, and storytelling through digital games, physical media, digital technology, and design as communicative networks. I strive to educate and advocate for marginalized voices that are not often represented in mass media. To do this, I intentionally blend of my usage of medium at the intersects of critical making, play, and storytelling as an epistemological device. I have always been drawn to the multitude of ways we can navigate life and the existing structures of oppression that force us to negotiate our identity. I am drawn to themes of power, vulnerability, community, and self-discovery. My work is often colorful, character driven, and reflective. </p><p> As a game designer and artist, I center my personal experiences navigating the many spaces I inhabit and seek to capture the nuances of my intersecting identities. Through this lens, and with the visceral connection that art innately creates with its audience, I am interested in the communication across mediums that acknowledge and play with the existing relations of power, the destruction of power, and narrative. Many of the overlapping, fluid interwoven patterns and blending of mediums interdisciplinary themes across my art and digital games seek to capture the nuances of black experiences, particularly African Americans, in the present tense. My creative practice uses drawing, technology, and sculpture as means to explore the lived nuances of human emotion, specifically in black women, using the way we engage with the world and technology as a vehicle for creative expression.</p>

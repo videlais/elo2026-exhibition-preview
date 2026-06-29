@@ -1,0 +1,68 @@
+---
+workId: '8'
+title: '"Talan Memmott: Works on Screen, 1998-2016"'
+documentationLicense: ''
+version:
+  version: 'Talan Memmott: Works on Screen'
+  versionId: 8
+  versionNumber: '2.0'
+  publicationDay: 0
+  publicationYear: 2026
+  publicationMonth: July
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages:
+    - HTML
+    - CSS
+    - JavaScript
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - exhibition
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  touch:
+    - cursor click
+    - cursor movement
+    - physical buttons (mouse)
+  movementAndGesture:
+    - eye movement
+entities:
+  - entityId: '1'
+    entityName: Dene Grigar
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: curator
+    roleAbbreviation: cur
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://the-next.org/exhibition/works-on-screen/'
+media:
+  coverImage: /images/works/cover/talan-memmott.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: false
+  artificialIntelligenceToolsUsed: []
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Digital Humanities
+  - Interdisciplinary Arts and Media
+---
+
+# description
+
+This online exhibition created by members of the Electronic Literature Lab and curated by Dene Grigar features works of net art by Talan Memmott held by The NEXT that explores the aesthetic of code, language, and code language. Supported by funding from the Society of American Archivists (SAA), the exhibition was conceived when the lab was conducting formal video recordings, called Traversals, of works Memmott had produced on the Shockwave platform and others that were no longer accessible on contemporary computers. In conversation with the artist, it was clear that The NEXT held what may be the only copies of some of Memmott's net art output dating back to his earliest pieces, including the highly regarded "Lexia to Perplexia." Along with direct access to many of Memmott's works, visitors will also find those preserved via Traversals. Additionally, the exhibition features video testimonials, criticism about his work, ephemera, and video and sound recordings of his performances.</p><p>
+
+# creatorBiography
+
+<p><strong>Dene Grigar, PhD,</strong> is Professor and Director of <a href='http://dtc-wsuv.org/cmdc'>Creative Media & Digital Culture </a>in the Department of Digital Technology & Culture at Washington State University Vancouver whose research focuses on the creation, curation, preservation, and criticism of born-digital media. She has authored 16 media works, 79 scholarly articles, four print books, and seven open electronic resource publications. She has curated exhibits at the Bibliotheca Hertziana-Max Planck Institute for Art (Rome) British Computer Society (London), the Library of Congress (D.C.), and for the International Symposium on Electronic Art, among other venues. With Stuart Moulthrop (U of Wisconsin Milwaukee) she developed the methodology for documenting born-digital media, a project that culminated in an open-source, multimedia book, entitled <em>Pathfinders </em>(2015), and book of media art criticism, entitled <em>Traversals </em>(2017), for The MIT Press. With James O'Sullivan (University College Cork, Ireland) she has recently co-authored a collection of essays for Bloomsbury Press, entitled <em>Electronic Literature as Digital Humanities</em>. Her recent book, <em>Challenges of Born-Digital Literature: Editions, Translations, and Emulations</em>, is co-authored with Mariusz Pisarski (Adam Mickiewicz University, Poland) for Cambridge University Press (2024), involves the production of a theoretical print book accompanied by electronic open source book built on the Scalar platform containing over 90 media assets that demonstrate concepts expressed in the print book. Grigar serves as the Managing Director & Curator of organization's The NEXT and directs the Electronic Literature Lab.</p><p><strong>Holly Slocum</strong> is Project Manager and Senior Designer in the Electronic Literature Lab. She completed her B.A. in Digital Technology and Culture and specializes in user experience design, front-end web development, and digital preservation. Her work includes the reconstitution of several pieces of electronic literature, including Bill Bly's <em>We Descend: Complete Edition</em>, Richard Holeton's <em>Figurski at Findhorn on Acid</em>, <em>Amnesia: Restored</em>, and Deena Larsen's 17 hypertext kanji-ku poems. She also designed and manages the development of <a href='https://the-next.eliterature.org/'>The NEXT</a>, a multimedia museum and archive space owned by Electronic Literature Organization (ELO). Holly also serves as the Coordinator for ELO and designer for <em>The Digital Review</em>.</p>

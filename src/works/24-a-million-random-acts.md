@@ -1,0 +1,82 @@
+---
+workId: '24'
+title: A Million Random Acts
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 24
+  versionNumber: 1.1.0
+  publicationDay: 15
+  publicationYear: 2025
+  publicationMonth: October
+  authoringPlatform: 'HTML/CSS/JavaScript (including rita.js, p5.js)'
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages: []
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - procedural poetry
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  contentTiming:
+    - rapidly moving content
+  textFormat:
+    - moving text
+    - small fonts
+  visualImpact:
+    - sudden visual transition(s)
+  touch:
+    - capacitive touchscreen
+    - cursor click
+    - cursor movement
+    - physical buttons (mouse)
+    - directional input
+    - cursor drag
+entities:
+  - entityId: '1'
+    entityName: Mark Sample
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://fugitivetexts.net/acts/'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/fd105039-cc6d-4263-88d0-02d174f89755/image-bd51ffd8-28f2-4d8e-bd11-7b6e1718b620.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: true
+  artificialIntelligenceToolsUsed:
+    - Claude Code
+  artificialIntelligenceModelsUsed:
+    - Haiku
+    - Sonnet
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Digital Humanities
+  - Visual Studies
+---
+
+# description
+
+<p><em>A Million Random Acts</em> is a procedurally-generated grid of thousands of flash fiction stories drawn from the headlines, a futile attempt to capture the chaos of an America under attack from the inside by autocrats and oligarchs. Each of the stories comes from a bespoke small language model, handcrafted by the author. The model resides in a "grammar"—that is, a contextless, probabilistic template into which various curated words, phrases, and sentences may be slotted. A Million Random Acts fits into a long history of combinatory poetics, from Christopher Strachey's Love Letter Generator (1953) to Alison Knowles' The House of Dust (1967), to the contemporary work of J.R. Carpenter and Allison Parrish. In the case of A Million Random Acts, the nested structure of the complex grammar ensures a virtually uncountable number of variations. The grid can be explored with a keyboard (using the arrow keys to pan and the A and Z keys to zoom), a mouse (using the mouse to drag the grid and mousewheel to zoom), or touch on a mobile device (swiping to move the grid and pinching to zoom). The die icon in the bottom right corner shifts the work to a random location on the grid. The grid is bounded, but because it loops in every direction, the overall feeling is one of infinite expanse.</p><p>The nested grammars and interactive grid are made possible by two Javascript libraries: Daniel Howe's rita.js and Lauren McCarthy's p5.js. The top level of the grammar for A Million Random Acts contains 15 possible "story" types. These types range from accounts of censorship to acts of violence, from speculative stock exchanges to eavesdropped yet incomprehensible text conversations. Each story type has multiple sub-templates, each with their own sub-sub-templates. Many of the stanzas are complete. Others are fragments, or fragmented, as if language has failed the task set before it. </p><p>Importantly, A Million Random Acts has no beginning nor end. In "The Rejection of Closure," the language poet Lyn Hejinian makes the case for what she calls "open" poems. Open poems have no closure. An open poem "gives the impression that it begins and ends arbitrarily." With an open work like A Million Random Acts there is no origin point, and also no final moment. The work exceeds its own linguistic and semantic boundaries. The reader can never finish the work, will never exhaust the work. If they stop reading, it's not because, as Hejinian puts it, everything has been said, but because the reader has run out of time.</p>
+
+# curatorialStatement
+
+<em>A Million Random Acts</em> confronts readers with a landscape of accumulation: a seemingly boundless field of fragments that oscillate between reportage, speculation, personal communication, bureaucratic language, and poetic utterance. The work draws upon a long tradition of computational and combinatory writing while responding to the specific conditions of contemporary networked life. Headlines, rumours, exchanges, disclosures, warnings, and moments of private reflection coexist within the same visual space, collapsing distinctions between public events and intimate experience. The result is a portrait not of a singular narrative, but of a cultural atmosphere: one shaped by information overload, political instability, mediated crisis, and the continual circulation of competing truths. The grid presentation offers a sense of legibility and containment even as the material it contains resists coherence. The work thus stages a productive contradiction between chaos and organisation, reflecting the ways contemporary digital systems attempt to categorise, archive, and manage an increasingly turbulent social reality. <em>A Million Random Acts</em> functions as an extended archive of a particular historical moment. Political anxieties, cultural references, personal exchanges, and fleeting observations accumulate into a multifaceted snapshot of life in the United States during 2025, inviting reflection on how individuals make sense of overwhelming streams of information and experience.
+
+# creatorBiography
+
+Mark Sample is a Professor of Film, Media, and Digital Studies at Davidson College. His teaching and research focuses on algorithmic culture, digital narrative, and interactive design, while his creative work, like <a href="https://samplereality.itch.io/content-moderator-sim">Content Moderator Sim</a> and <a href="https://samplereality.itch.io/10-lost-boys">10 Lost Boys</a>, harnesses the expressive power of computation in order to critique contemporary life. <a href="https://notime.now/">No Time to Discourse</a>, his most recent digital project, is a speculative atlas of future climate disaster.

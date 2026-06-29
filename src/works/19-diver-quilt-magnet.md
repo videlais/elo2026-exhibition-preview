@@ -1,0 +1,104 @@
+---
+workId: '19'
+title: Diver Quilt Magnet
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 19
+  versionNumber: '1.7'
+  publicationDay: 15
+  publicationYear: 2026
+  publicationMonth: February
+  authoringPlatform: Custom by Jason Nelson
+  hardwareDependencies:
+    - 'A fairly good computer.  '
+  softwareDependencies:
+    - Web Browser
+    - JS
+    - HTML
+    - Human
+  peripheralDependencies:
+    - Mouse
+  computerLanguages:
+    - JavaScript
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - game
+    - digital poetry
+    - generative fiction
+    - net-art
+    - digital art
+    - electronic literature
+    - strange creatures
+    - wondrous creatures
+    - destroy
+    - art-game
+  languages: []
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  contentTiming:
+    - rapidly moving content
+    - fleeting content
+  textFormat:
+    - moving text
+    - sans-serif fonts
+    - small fonts
+  colorAndContrast:
+    - color impacts content
+    - visual noise
+  visualImpact:
+    - sudden visual transition(s)
+    - flashing lights hazard
+    - blinking lights hazard
+  auditory:
+    - sudden sounds
+    - high-pitch sounds
+    - low-pitch sounds
+  touch:
+    - cursor click
+    - cursor movement
+    - other
+entities:
+  - entityId: '1'
+    entityName: Jason Nelson
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://www.dpoetry.com/dqm/'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/6de56853-7731-4a54-a66d-cdc3f1155aa3/image-a38f5222-92e8-4383-ad04-3768a8d5c111.png
+  traversalVideo: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/6de56853-7731-4a54-a66d-cdc3f1155aa3/video-79a46d37-ecba-458e-90c3-e33c6a6165fc.mov
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: true
+  artificialIntelligenceToolsUsed: []
+  artificialIntelligenceModelsUsed:
+    - GTP-5
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Australian Studies
+  - Digital Humanities
+  - Fiction
+  - Game Design
+  - Interactive Arts
+  - Interdisciplinary Arts and Media
+  - Poetry
+---
+
+# description
+
+<p><em>Diver Quilt Magnet</em> generates a near infinite series of fictional creatures.  When you start the work, a creature comes alive with a name, a life and an embodied animated self.  It exists and is unique, has a digital existence.  However, to create a new creature, you must first end, kill, destroy the creature you've brought to breath.  And when you kill that creature, it becomes extinct, a certificate is issues and its name recorded in an evolving log.  </p><p>It will never appear again, as the only one of its kind. </p><p>While the work has humorous elements and is bright, colorful, animated and strange, the message is vitally important.  Human development, including the mining, energy, land-use and waste associated with digital infrastructure, results in the loss of unique more-than-human animals and plants and other creatures. We are creating something and causing the loss of many others.  </p><p>As well as the loss of unique and beautiful creatures, the modern content machine is also built on the ephemeral nature of throwaway media.  We consume and consume and consume.  We experience things briefly, throw them away and demand more. These are briefly existing monsters, small hits of serotonin and pleasure.  Must always have more. </p><p>Diver Quilt Magnet is part creature generator, part fictional life builder, and endless cycle of creation and destruction.   We can bring beauty into the world.  And we can equally destroy it. </p><p>Play/read/destroy/repeat.</p>
+
+# creatorBiography
+
+Born in Oklahoma and became a digital poet in Queensland, <strong>Jason Nelson</strong> is a creator of wondrous digital poems and fictions, builder of art games and all manner of digital art creatures. While the wilds of Queensland is his home, he is currently a Professor of Digital Art and Writing at the University of Bergen in Norway and a PI in the Center for Digital Narrative. Aside from coaxing his students into breaking, playing and morphing their creativity with all manner of technologies, he exhibits widely in galleries and journals, with work featured around the globe at FILE, ACM, LEA, ISEA, SIGGRAPH, ELO and dozens of other acronyms. There are awards to list (Paris Biennale Media Poetry Prize, Webby, Maverick Award, Digital Writing Prize), organizational boards he's frequented (Australia Council Literature Board and the Electronic Literature Organization), and Fellowships he's adventured into Fulbright Fellowship at the University of Bergen, Moore Fellowship at the National University of Ireland, and other strange and appreciated accolades.

@@ -1,0 +1,73 @@
+---
+workId: '12'
+title: Alice in the Forest
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 12
+  versionNumber: '1.0'
+  publicationDay: 6
+  publicationYear: 2026
+  publicationMonth: June
+  authoringPlatform: Twine
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages: []
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - hypertext fiction
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  contentTiming:
+    - rapidly moving content
+    - fleeting content
+  textFormat:
+    - italics
+    - short reading time
+    - other inaccessible text
+  colorAndContrast:
+    - color impacts content
+  touch:
+    - cursor click
+entities:
+  - entityId: '1'
+    entityName: Yuankai Xu
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://strandeddeer.itch.io/alice-in-the-forest'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/baf3e973-469f-43ba-88b4-20cface9a803/image-a662f104-72e8-4f36-b2e2-121f162cbda7.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: false
+  artificialIntelligenceToolsUsed: []
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Fiction
+  - Game Design
+  - Interactive Arts
+---
+
+# description
+
+<p><em>Alice in the Forest</em> is a Twine-based hypertext novel about dream logic and associative storytelling in which I try my best to play Wittgenstein's Language Game, exploring the possibilities of language and signifiers in general.</p><p>Dream logic differs from conventional fiction in that actions are not performed, but thought. One's train of thought is the greatest guiding force in the direction of a dream. Therefore, instead of having the reader choose which actions to perform, the story is navigated with only words within the text itself linking to other passages. To click on a word is like dwelling on a thought in a dream - soon you'll find yourself riding along that thought towards unknown depths of the dream. </p><p>The two main characters are based on Dodgson and Alice. Charles Dodgson had a very complex relationship with the Liddell family, which serves as groundwork for juxtaposing fiction and reality. It also demands an exploration of the relationship between writer and fiction. Many can construct grand worlds with many characters in their minds, but frequently those characters are just marionettes which act out the author's fantasies. How, then, will the dynamic between them be, when Dodgson used Alice the girl as a blueprint for Alice the character?</p><p>I also took inspiration from the Japanese word for "word" - "言葉". It contains the kanji for "leaf", and there is a deep parallel between a word and a leaf. Leaves grow on branches, branches on trees, and trees form forests. Words are individual meaning-making symbols in a grand scheme of intersecting texts, ideas, and ever-shifting semiotic landscape. </p><p>The way these ideas started from a point of intersection and grew into an intertwining narrative is also very similar to the structure of tree branches. The way the story is written inspired the forest metaphor, and the metaphor opened up new ways to write the story. When viewing all the paragraphs and their relationships in the Twine Editor, they form a tree.</p>
+
+# creatorBiography
+
+ Steven Xu</p><p>NYU Tisch undergraduate</p><p>Game Design major</p><p> yx3626@nyu.edu 

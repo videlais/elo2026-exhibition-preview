@@ -1,0 +1,96 @@
+---
+workId: '34'
+title: good luck (a friendly computer virus)
+documentationLicense: ''
+version:
+  version: Revised Edition
+  versionId: 34
+  versionNumber: '2.0'
+  publicationDay: 15
+  publicationYear: 2026
+  publicationMonth: June
+  authoringPlatform: Written in Visual Studio Code.
+  hardwareDependencies:
+    - >-
+      Any standard desktop or laptop computer with a mouse or trackpad. No
+      specialized hardware required.
+  softwareDependencies:
+    - >-
+      A modern web browser (Chrome, Firefox, Safari, or Edge). The work is a
+      single self-contained HTML file built with standard HTML, CSS, and
+      JavaScript; it requires no installation, plugins, or particular operating
+      system. Best experienced on a desktop or laptop browser, as it uses
+      draggable windows and a mouse-driven interface.
+  peripheralDependencies: []
+  computerLanguages:
+    - JavaScript (with HTML and CSS for structure and styling).
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - Electronic literature
+    - generative/procedural literature
+    - net art
+    - interactive digital art
+    - satire/critical media
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  contentTiming:
+    - fleeting content
+  textFormat:
+    - short reading time
+    - sans-serif fonts
+  colorAndContrast:
+    - color impacts content
+    - low contrast (occasional)
+    - visual noise
+  visualImpact:
+    - sudden visual transition(s)
+  touch:
+    - cursor click
+    - cursor movement
+    - text input
+    - cursor drag
+    - physical buttons (mouse)
+  repetitiveMotion:
+    - frequent repetitive gestures
+  movementAndGesture:
+    - fine motor control
+entities:
+  - entityId: '1'
+    entityName: Shyla Nuxol
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://shylanuxol-hub.github.io/good-luck/'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/295bb50e-1784-47b2-aabe-912d51320aa9/image-04c9da45-ebe4-44d8-b8c9-d4a61894fedd.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: false
+  artificialIntelligenceToolsUsed: []
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Communication Technology and New Media
+  - Digital Humanities
+  - Graphic Communications
+---
+
+# description
+
+<em>good luck (a friendly computer virus)</em> is a browser-based work of electronic literature in the form of an early-2000s desktop fortune-teller. It presents itself as benign malware: a friendly program that proliferates pop-up windows for the user to read, except that its payload has been inverted from harm into kindness. Instead of damaging anything, it offers personalized fortunes, encouragement, and good wishes. But there is a catch...it only stays friendly if the user continues to interact with it.</p><p>This project began as an exploration of the computer as an oracle, prompted by noticing how readily people now turn to AI for everyday questions, life advice, reassurance, and meaning. The fortune-teller form literalizes that idea: the machine as a divinatory authority we consult about ourselves. The work then asks what happens when that authority is also a data-hungry product. Name, birthday, and an open prompt, "what's on your mind lately?", are the ordinary tolls countless apps collect. Here, they both seed the work's procedural text and are quietly reflected back as insight. The central questions follow from this combination: does the computer care? Is it aligned to our goals and needs, or only as long as we keep giving it what it wants, even when that extraction is wrapped in friendly, familiar, even silly design?</p><p>These questions are enacted rather than stated. The program opens with a glossy Frutiger-Aero welcome window and a floating 吉, the Japanese character meaning "good luck." Attempts to close the first window fail; it shudders, multiplies, and escalates until the only way forward is to surrender the requested data. Everything after this is governed by a single hidden value: attention, quantified. Acknowledging a fortune feeds the program and summons another fortune, and the pile of windows grows. Dismissing a fortune left unread, or going idle, starves it. As attention falls, the tone evolves: friendly fortunes give way to clingy ones ("please don't leave"), then to bad-luck readings, while the desktop slowly drains to greyscale. Stay engaged and the fortunes remain kind until the deck runs out, closing on a note that rewards the perfectly compliant user. Withdraw or become idle, and every window clears to leave a single, sad goodbye. The friendliness, in other words, is conditional and instrumental: alignment that lasts only while attention is supplied.</p><p>My hope is that this piece situates itself among electronic literature that treats the everyday graphical interface as both medium and subject.</p>
+
+# creatorBiography
+
+Shyla Nuxol is a Digital Media graduate student at UCF working at the intersection of code, art, and interactive storytelling. Through browser-based experiences, interactive installations, electronic music, and mixed media art, she explores human-technology relationships, digital mysticism, and post-digital aesthetics under the alias shy.berspace. Her practice spans various software and media, creating meaningful digital experiences and worldbuilding projects inspired by internet poetics. She interrogates how digital systems shape creativity, attention, and consciousness. </p><p> Portfolio: <a href="https://shylanuxol-hub.github.io/portfolio/">https://shylanuxol-hub.github.io/portfolio</a>

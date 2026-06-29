@@ -31,15 +31,16 @@
     "build": "vite build",
     "build:ssr": "vite build --ssr src/entry-server.tsx",
     "prerender": "node scripts/prerender.mjs",
-    "build:full": "npm run build && npm run build:ssr && npm run prerender && rm -rf dist-ssr",
+    "build:full": "npm run build:works && npm run build && npm run build:ssr && npm run prerender && rm -rf dist-ssr",
     "type-check": "tsc",
     "preview": "vite preview",
     "test": "vitest run --coverage",
     "lint": "eslint src --ext .ts,.tsx --fix",
+    "build:works": "tsx scripts/build-works.mts",
     "validate": "tsx scripts/validate-works.mts",
     "predeploy:gh": "VITE_APP_BASE_PATH=/elo2026-exhibition-preview/ npm run build:full",
     "deploy:gh": "gh-pages -d build",
-    "all": "npm run lint && npm run type-check && npm run validate && npm run test"
+    "all": "npm run build:works && npm run lint && npm run type-check && npm run validate && npm run test"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -66,7 +67,9 @@
     "gh-pages": "^6.3.0",
     "globals": "^17.6.0",
     "googleapis": "^173.0.0",
+    "gray-matter": "^4.0.3",
     "jsdom": "^29.1.1",
+    "marked": "^18.0.5",
     "tsx": "^4.20.6",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.0",

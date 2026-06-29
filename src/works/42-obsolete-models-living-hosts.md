@@ -1,0 +1,62 @@
+---
+workId: '42'
+title: 'Obsolete Models, Living Hosts'
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 42
+  versionNumber: '1.0'
+  publicationDay: 15
+  publicationYear: 2026
+  publicationMonth: July
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages: []
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - Interactive fiction
+    - Interactive Poetry
+    - Web-based art
+  languages: []
+  accessibility: ''
+  rightsNotice: ''
+accessibility: {}
+entities:
+  - entityId: '1'
+    entityName: Daniel Lichtman
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://www.accumulations.online/livinghosts/'
+media:
+  coverImage: /images/works/cover/obsolete.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: false
+  artificialIntelligenceToolsUsed: []
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Digital Humanities
+  - Interactive Arts
+  - Interdisciplinary Arts and Media
+  - Poetry
+---
+
+# description
+
+<p>Over the past several years I have developed a series of web-based literary artworks that explore the poetic and conceptual possibilities of collaborating with generative AI. These works take public domain natural history texts as points of departure and recombine them with my own writing and AI-generated language to produce hybrid, interactive prose environments.</p><p>In Cicada Mountain, I worked with an early GPT-3 model to generate absurdist prose poems spoken by insects, plants, and hybrid species who dream of spiritual grandeur and machine intelligence. The piece stages vulnerability and aspiration through anthropomorphic and post-human voices that blur distant pasts and speculative futures. In The home-life of the spoonbill, the stork and some herons, I layered fragments of a 1910 naturalist text with my own writing and text produced by the now-retired davinci-002 model; each page begins with a photograph from the source book, and the resulting assemblages telescope between colonial natural history, obsolete AI tone, and contemporary language. Pearls and Parasites extends this format to animal forms of love—parasitism, hybrid breeding, invasive bodies—interweaving archival photographs, historical prose, and generative text into an interactive meditation on symbiosis and vulnerability. Most recently, Our Humble Helpers reimagines a 1918 farm-animal narrative by Jean-Henri Fabre, braiding translated fragments, machine-generated passages, and subtle ambient sound into playful, layered vignettes about labor, companionship, and care across species.</p><p>Across these projects, I have become increasingly interested in authorship as a form of symbiosis—human, animal, and machine voices entangled across time.</p><p>For this new series, I propose to extend this inquiry by focusing more directly on the conditions of collaboration itself: dependency, misalignment, affection, training, extraction, and care. As in the recent work, I will draw upon archival and obsolete media—public domain books, natural history manuals, agricultural guides, early cybernetic theory, spiritualist writing, historic websites, or fragments of vernacular web culture—to construct a set of interactive literary works that stage encounters between organisms and systems: parasite and host, farmer and animal, user and algorithm, teacher and student, model and dataset.</p><p>Each work will emerge from a historical artifact—an archival image, a public domain volume, a defunct website, or another remnant of networked culture—that anchors the piece in a specific temporal and material context. From there, text will unfold through layered composition: fragments from the source material, newly written passages, and text generated through dialogue with a deliberately constrained or outdated AI model. The friction between these registers produces associative leaps, tonal shifts, and anachronistic collisions. By telescoping between early twentieth-century natural history, early web culture, and present-day generative systems, the project frames AI not as rupture but as part of a longer continuum of cross-species and cross-technology entanglements—foregrounding poetic worldmaking as a site of speculative ethics.</p>
+
+# creatorBiography
+
+<strong>Daniel Lichtman</strong> is an artist, researcher and community practitioner based in NYC. Lichtman's work explores how communities can use the tools of game design and visual art to tell stories about their culture and heritage, and imagine possible futures. Lichtman's framework for interactive storytelling, the Community Game Development Toolkit, is used by community members, artists and researchers internationally. Exhibitions and publications include Oral.Pub; ICA, London; Ammerman Center for Art and Technology; BRIC, The Bronx Museum and The Queens Museum. Lichtman is Assistant Professor, and Program Coordinator, of Game Development and Emerging Media at St. John's University, New York.

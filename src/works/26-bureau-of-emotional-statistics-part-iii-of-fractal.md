@@ -1,0 +1,70 @@
+---
+workId: '26'
+title: Bureau of Emotional Statistics (Part III of FRACTALIZE)
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 26
+  versionNumber: '1.0'
+  publicationDay: 8
+  publicationYear: 2026
+  publicationMonth: July
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages: []
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - Document fiction
+    - constrained writing
+    - prose poetry
+    - speculative fiction
+    - transmedia narrative
+    - inter-arts
+  languages: []
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  contentTiming:
+    - fleeting content
+  colorAndContrast:
+    - visual noise
+entities:
+  - entityId: '1'
+    entityName: Tony Vieira
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://tonyvieira.com/#works/bureau'
+media:
+  coverImage: /images/works/cover/bureau.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: true
+  artificialIntelligenceGeneratedCode: false
+  artificialIntelligenceToolsUsed:
+    - Claude
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Audio Arts and Acoustics
+  - Composition
+  - Fiction
+  - Other Film and Media Studies
+---
+
+# description
+
+<p><em>Bureau of Emotional Statistics</em> is a poetic hypermedia narrative experiment disguised as a bureaucratic department — a fictional office dedicated to collecting, classifying, and expressing the data of human feeling. Each performance/media instalment becomes a kind of "emotional audit" conducted in soundscape, music, and narrative and aleatoric editing processes will be distilled into short media pieces that function as public service announcements from the bureau to the general public. </p><p>These PSAs will invite audiences (the watchers) into the speculative fiction world and to reflect on how we quantify, express, and share emotion in a data-driven age. </p><p>The watchers will be provided with links to follow for access to secret messages from the resistance movement that is quietly trying to hold onto the language of emotion and fighting against the statisticization and discontinuation/cancelling of a category feelings, and the trend of reducing complex human emotions to data points, metrics and facts.</p>
+
+# creatorBiography
+
+<strong>Tony Vieira</strong> is a Hamilton-based composer, sound & media artist, and immersive media producer whose work bridges music, storytelling, and emerging technologies. With a background in ethnomusicology (PhD, York University) and music composition (MA, York University), Tony's practice explores how sound shapes emotional experience, memory, and place. His work spans VR cinema, augmented reality, location-aware media, orchestral collaborations, hypermedia narratives, community arts initiatives, and interdisciplinary performance/installation. </p><p> As a composer and performer, Tony has created original music and soundscapes for virtual reality environments, locative storytelling projects, public art installations, documentaries, and interactive exhibitions. His compositions have been featured internationally at the Electronic Literature Organization Festival (Porto, Bergen, Montréal), HASTAC (Toronto, Orlando), Galway Digital Cultures Initiative (Ireland), and major Canadian arts events including Supercrawl and the Art Gallery of Hamilton. His VR, AR, and immersive audio pieces, <em>Fractalize</em>, <em>Nightmares for Children</em>, <em>Mother|Home|Heaven</em>, and <em>Can You Hear What I See?</em>, reflect a long-standing commitment to exploring how technology can expand the expressive power of sound. </p><p> In addition to his artistic practice, Tony contributes music and sound design to large-scale interdisciplinary projects, including the award-winning Ohneganos/Water is Life research initiative with the Six Nations of the Grand River, and the African Nova Scotian Climate Justice Ambassadors Program, where he serves as media and music producer. </p><p> Whether composing for VR, performing live, or crafting intimate sound experiences for public spaces, Tony's work is rooted in a belief that sound is a uniquely powerful tool for connection between people, places, histories, and imagined futures.

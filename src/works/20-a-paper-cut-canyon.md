@@ -1,0 +1,101 @@
+---
+workId: '20'
+title: A Paper-Cut Canyon
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 20
+  versionNumber: '1.0'
+  versionLetter: '2.3'
+  publicationDay: 23
+  publicationYear: 2026
+  publicationMonth: March
+  authoringPlatform: Javascript
+  hardwareDependencies:
+    - >-
+      Needs a fairly good computer with a graphics card.  Fancy 3D throughout
+      the work. 
+  softwareDependencies:
+    - Web Browser
+    - Ideally Chrome
+  peripheralDependencies:
+    - Needs Mouse and Speakers and Screen/Projector
+  computerLanguages:
+    - Webgl
+    - JavaScript
+    - CSS
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - digital poetry
+    - concrete poetry
+    - interactive writing
+    - kinetic poetry
+    - most wonderful work every made
+    - amazing work of spirit crushing imagination
+    - good stuff
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  contentTiming:
+    - rapidly moving content
+  textFormat:
+    - moving text
+    - sans-serif fonts
+  colorAndContrast:
+    - color impacts navigation
+    - color impacts content
+    - visual noise
+  visualImpact:
+    - sudden visual transition(s)
+    - blinking lights hazard
+  auditory:
+    - sudden sounds
+    - low-pitch sounds
+    - high-pitch sounds
+  touch:
+    - other
+  movementAndGesture:
+    - spatial peripheral manipulation
+entities:
+  - entityId: '1'
+    entityName: Jason Nelson
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://dpoetry.com/papercut/'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/4fa5d4c5-0326-41f2-986d-778181e449c4/image-9d3b3b94-dd97-430b-bfed-9cbadfc1925b.png
+  traversalVideo: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/4fa5d4c5-0326-41f2-986d-778181e449c4/video-ce73a62f-0ea1-44a6-939c-bb26b134b714.mov
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: false
+  artificialIntelligenceToolsUsed: []
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Art Practice
+  - Australian Studies
+  - Digital Humanities
+  - Interactive Arts
+  - Interdisciplinary Arts and Media
+  - Poetry
+---
+
+# description
+
+<p><em>A Paper-Cut Canyon</em> is an infinite journey through high walls cluttered with large 3D texts. In the distance the texts are only outlines, unrealised, not fully formed. As you move (arrow keys, mouse to look around) the texts become real, full and solid.  When you press the Process button, the texts are selected from the walls, tossed into the middle, a prompt falling from the sky. </p><p>This work attempts to replicate how AI might see and understand language.  Not as an ordered grammar or a flowing story, but as cluttered and crushed words, toppling from walls.  Those words are then picked and tossed into our field of view.  Language isn't a beautiful vehicle for joy or story, it's a pile of numbered options intersecting and colliding.   </p><p>There is no end and no beginning in this work.  Just as AI contains no start and no conclusion.  The work, like AI, is a messy space of collisions falling from the canyon walls. </p>
+
+# creatorBiography
+
+<p>https://www.dpoetry.com/</p><p>Born in Oklahoma and became a digital poet in Queensland, Jason Nelson is a creator of wondrous digital poems and fictions, builder of art games and all manner of digital art creatures. While the wilds of Queensland is his home, he is currently a Professor of Digital Art and Writing at the University of Bergen in Norway and a PI in the Center for Digital Narrative. Aside from coaxing his students into breaking, playing and morphing their creativity with all manner of technologies, he exhibits widely in galleries and journals, with work featured around the globe at FILE, ACM, LEA, ISEA, SIGGRAPH, ELO and dozens of other acronyms. There are awards to list (Paris Biennale Media Poetry Prize, Webby, Maverick Award, Digital Writing Prize), organizational boards he's frequented (Australia Council Literature Board and the Electronic Literature Organization), and Fellowships he's adventured into Fulbright Fellowship at the University of Bergen, Moore Fellowship at the National University of Ireland, and other strange and appreciated accolades.</p>

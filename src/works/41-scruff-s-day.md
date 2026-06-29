@@ -1,0 +1,92 @@
+---
+workId: '41'
+title: Scruff's Day
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 41
+  versionNumber: '1.0'
+  publicationDay: 18
+  publicationYear: 2026
+  publicationMonth: June
+  authoringPlatform: P5.js
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages:
+    - JavaScript
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - Adventure Game
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  touch:
+    - capacitive touchscreen
+    - cursor click
+    - cursor movement
+    - physical buttons (mouse)
+  auditory:
+    - sudden sounds
+    - inconsistent volume
+    - high-pitch sounds
+  textFormat:
+    - serif fonts
+    - rasterized text
+  visualImpact:
+    - sudden visual transition(s)
+entities:
+  - entityId: '1'
+    entityName: Anastasia Salter
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+  - entityId: '2'
+    entityName: John T. Murray
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: false
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://jtm.io/elit/scruffsday/'
+media:
+  coverImage: /images/works/cover/scruff.png
+  traversalVideo: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/54db9563-3a48-492c-a55c-32c56e7cbeae/video-4b3226cc-bfc6-45d3-af28-6cbbbf2421b9.mp4
+ai:
+  artificialIntelligenceGeneratedContent: true
+  artificialIntelligenceGeneratedCode: true
+  artificialIntelligenceToolsUsed:
+    - Claude Code
+  artificialIntelligenceModelsUsed:
+    - Qwen3-TTS
+    - Claude Opus 4.8 & 4.7
+    - gpt-image-1.5
+  artificialIntelligenceExternalLinks:
+    - 'https://claude.ai'
+    - 'https://comfy.org/'
+    - 'https://github.com/QwenLM/Qwen3-TTS'
+keywords:
+  - Fiction
+  - Game Design
+  - Interactive Arts
+---
+
+# description
+
+<p><em>Scruff's Day</em> is a browser-based point-and-click adventure set in a fictionalized version of Lyonia Preserve, a remnant of ancient Florida scrub habitat adjacent to the University of Central Florida. Players guide Scruff, a young Florida Scrub Jay, through six illustrated scenes as he gathers native plant materials, assists displaced animal neighbors, and navigates the slow-motion crisis of habitat invasion. Through exploration, dialogue, and small acts of repair, the game introduces players to one of the rarest ecosystems on Earth: Florida scrub.</p><p>The Florida Scrub Jay is the only bird species endemic to a single U.S. state and is federally listed as threatened. Its survival depends on a paradox. Scrub habitat requires periodic fire to persist. Without prescribed burns—careful, intentional disturbance—the open landscape succeeds to dense oak canopy, eliminating the low-growth terrain the jays need to cache acorns, watch for predators, and raise young. What appears destructive is, in fact, necessary care.</p><p>Scruff's Day translates this ecological tension into adventure-game form. Each character embodies a specific environmental pressure. Shelly the gopher tortoise struggles to reopen her burrow entrance, blocked by invasive Brazilian pepper. Flicker the woodpecker contends with air potato vines strangling a sand pine. Sunny the lizard watches her sandy barrens disappear beneath non-native groundcover. Every encounter pairs a playable task—a vine-cutting minigame, a seed-scattering challenge, a nighttime watch—with ecological knowledge embedded in dialogue. The game draws from the inventory puzzle tradition: gather the right native material, bring it to the right neighbor, restore a small piece of the world.</p><p>The conference theme, "(Un)Supervised," resonates at the ecological level. Florida scrub cannot be left unsupervised. Without active management—burning, clearing, monitoring—it disappears, and its endemic species disappear with it. Conservation here is ongoing labor, not passive preservation. The player participates in that labor at a modest scale: walking trails, listening to neighbors, carrying what is needed from one place to another. The game frames environmental stewardship as community care enacted through attention and presence.</p><p>The work is built in PixiJS and TypeScript and runs entirely in the browser without server dependencies.</p><p>Tools: Core code and SVG assets were developed through iterative dialogue with Claude Code (Anthropic, Claude Opus). Character spritesheet art was generated with ChatGPT (OpenAI, GPT-4o). Background illustrations were painted by the author in Procreate. The full development history is preserved in version control.</p>
+
+# creatorBiography
+
+https://lucidbard.github.io/ScruffsDay/

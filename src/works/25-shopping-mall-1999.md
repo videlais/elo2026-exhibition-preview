@@ -1,0 +1,62 @@
+---
+workId: '25'
+title: Shopping Mall 1999
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 25
+  versionNumber: '1.0'
+  publicationDay: 8
+  publicationYear: 2026
+  publicationMonth: June
+  authoringPlatform: 'Twine Chapbook format '
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages: []
+  digitalQualities: []
+  sensoryModalities: []
+  genres: []
+  languages: []
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  textFormat:
+    - italics
+    - light fonts
+entities:
+  - entityId: '1'
+    entityName: Ricky Finch
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://otter1038.github.io/shopping-mall-1999-ELO/'
+media:
+  coverImage: /images/works/cover/shopping-mall.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: true
+  artificialIntelligenceToolsUsed:
+    - Claude Code
+  artificialIntelligenceModelsUsed:
+    - Claude
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Digital Humanities
+---
+
+# description
+
+<p><em>Shopping Mall 1999</em> is a work of interactive fiction built in Twine using the Chapbook story format, designed so that completing the story means learning the platform it is built on. After a simulated system failure that accelerates into a "reality buffer overflow," the player wakes on a bench inside Bellevue Shopping Center, a mall frozen in 1999, empty and flickering, with no phone signal and no other visitor. A cat named Oliver guides the player through the mall's two anchor stores and central atrium, leading them to five skill stations where the narrative pauses to teach a core Twine concept (story structure, bracket syntax for links, markdown formatting, reveal links, and inserting images) through the fiction itself rather than as separate tutorials. </p><p><em>Shopping Mall 1999</em> was part of a dissertation in the Texts and Technology program at the University of Central Florida, the work serves as the primary case study for an argument, drawing on Jane Friedhoff, Nick Montfort and Ian Bogost, and Stuart Moulthrop and Anastasia Salter, a platform's affordances shape what a work can express and how it can teach. It was the focus of an IRB-approved study with UCF undergraduates measuring attitudes toward coding before and after play, and it positions itself within a tradition of electronic literature that is self-reflexive about its own platform and form, teaching Twine by having a character demonstrate its mechanics rather than explain them.</p>
+
+# creatorBiography
+
+Ricky Finch is a PhD candidate in the Texts and Technology program at UCF. A Twine enthusiast, game maker, and writer, he is interested in the compositional process in which code and narrative converge — the moment when a double bracket becomes a path and an author's word choice becomes infrastructure. His work explores how making Twine games is never purely technical or purely literary, but always both at once, and how that entanglement can open coding literacy to those encountering code for the first time through storytelling practices

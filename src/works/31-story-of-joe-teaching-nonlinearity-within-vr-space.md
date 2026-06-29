@@ -1,0 +1,82 @@
+---
+workId: '31'
+title: 'Story of Joe: teaching nonlinearity within VR spaces'
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 31
+  versionNumber: '1.0'
+  publicationDay: 8
+  publicationYear: 2026
+  publicationMonth: June
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+    - 'Google Chrome '
+  peripheralDependencies: []
+  computerLanguages: []
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - 'Interactive Fiction '
+    - Game
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  contentTiming:
+    - fleeting content
+  textFormat:
+    - moving text
+    - short reading time
+  colorAndContrast:
+    - low contrast (occasional)
+  auditory:
+    - inconsistent volume
+    - sudden sounds
+  touch:
+    - cursor movement
+    - cursor drag
+    - cursor click
+    - physical buttons (other)
+  movementAndGesture:
+    - head tracking
+entities:
+  - entityId: '1'
+    entityName: Jasmine Darman
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://little-fifth.itch.io/story-of-joe-vr-demo'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/2f024614-c6e3-4893-b383-fe0a5f4a112f/image-ebd890da-0d04-4cbd-a7a7-78ec80a9cacb.png
+  traversalVideo: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/2f024614-c6e3-4893-b383-fe0a5f4a112f/video-f6eeb724-222c-4a73-8b08-ea283a891b34.mp4
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: true
+  artificialIntelligenceToolsUsed:
+    - Claude Sonnet
+    - Github Copilot
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Educational Methods
+  - Game Design
+---
+
+# description
+
+<p><em>The Story of Joe</em> is a Non-linear story that uses player choices and puzzle solving to both create informal, student-driven learning and self-checks for student comprehension to proceed. The medium of the demo is VR, with the web-based version using an XR Simulator. As pointed out, motivation that stems from high-fidelity interactions helps boost retention within classrooms. For this prototype, the scope is meant to teach and touch on characterization, unreliable narrators, the beginning of the Hero's Journey, and the dynamic between the reader and author; in this case, player and developer. The main design goals of the prototype are to demonstrate a high-fidelity VR simulation demo of the intended gameplay loop, including sound, writing, environment, and mechanics.</p><p>During this, I had Critical Design Goals:</p><p>1. Education- There must be content that is required to be understood to progress, and content that is external in the background to explore deeper.</p><p>2. Engaging - There must be multiple routes for nonlinear exploration</p><p>3. Consistent- Every route should touch upon the core concepts while keeping a cohesive experience</p><p>This work has 4 separate rooms to explore. It begins with the player in a white room reminiscent of white paper, as black text and a voice-over introduce basic characterization of Jow and his potential motivation. It introduces the idea of the ordinary world and uses vocal emphasis along with bolding specific words to convey importance. Once the dialog finishes, the world fades into the first place the player is able to interact with: A hallway with multiple doors, with only one that leads to a place at the end. The user is prompted to go to the end and ignore the doors, creating a conflict between the reader's (Player) agency and the author's (Narrator). The room is obviously a hall with no external options, and the plaque by it reads "Linearity" to distinguish between linear and nonlinear narratives. If the user chooses a door without a destination, they get prompted with more dialogue to progress, furthering the divide between the player and narrator while keeping cohesion to the linear lesson taught. The next room is "Convergent Decisions," where the player sees a reflection to interact with to further learn about the main character's core feelings and motivations. As the name of the room implies, picking either door at the end of the hall leads to the same place. The next room is the start of "Divergent Decisions," where two doors are very distinct, with a red versus blue side of the room to imply a clearer decision than before. The art depicted in the space also metaphorically aligns with a branching split, with one work being interactable as Freytag's Pyramid. It is through these simple interactions that the player can choose to participate in learning.</p>
+
+# creatorBiography
+
+My name is Jasmine Darman. I'm a student at UCF in the Master's Digital Media Track. I work on games and teach at UCF. You can check out my portfolio and other projects here: <br><br>https://linocut.github.io/

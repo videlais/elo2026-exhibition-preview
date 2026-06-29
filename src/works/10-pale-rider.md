@@ -1,0 +1,87 @@
+---
+workId: '10'
+title: '"Pale Rider"'
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 10
+  versionNumber: '0.1'
+  versionLetter: a
+  publicationDay: 8
+  publicationYear: 2026
+  publicationMonth: June
+  hardwareDependencies:
+    - A Computer with a working graphics card
+  softwareDependencies:
+    - Web Browser for installing the game
+  peripheralDependencies:
+    - 'Speakers to experience dialogue, music, and sound effects'
+  computerLanguages:
+    - English
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - Role-Playing Game
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  textFormat:
+    - serif fonts
+    - sans-serif fonts
+    - small fonts
+  visualImpact:
+    - sudden visual transition(s)
+  auditory:
+    - sudden sounds
+    - low-pitch sounds
+  touch:
+    - cursor click
+    - cursor movement
+    - physical buttons (other)
+    - physical buttons (mouse)
+entities:
+  - entityId: '1'
+    entityName: Lucas Sanchez
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://lucasp0326.itch.io/pale-rider'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/f35b4edc-284b-423b-827a-987ecdf5cb3f/image-157d0109-2216-4bcc-964c-9847ea2b744f.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: true
+  artificialIntelligenceToolsUsed:
+    - Github Copilot
+  artificialIntelligenceModelsUsed:
+    - GPT 5-mini
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Broadcast and Video Studies
+  - Communication Technology and New Media
+  - Discourse and Text Linguistics
+  - Electrical and Electronics
+  - Gender
+  - 'Race, Sexuality, and Ethnicity in Communication'
+  - Mass Communication
+  - Social Justice
+  - Theory and Philosophy
+---
+
+# description
+
+<p><em>Pale Rider</em> is an isometric role-playing game that will see players take on the role of a Pale Rider near the end of his life hoping to be of help to the world one last time. Players will navigate a world that, from an artistic and aesthetic perspective, is a blend of the European Medieval and the American Wild West. Across this Pale-touched alternate world, players will roam across varying environments from untrodden wastes to tense and nerve-racked town, and brave the Pale not only to perform their job of forecasting where this apocalyptic storm is to head next, but also make themselves useful in smaller contexts, aiding those their career would normally see them never coming in contact with, all while battling the effects of decades' worth of Pale exposure, a deteriorating mental state, and malignant forces acting against the survival of this crumbling world.</p><p><em>Pale Rider</em> is to be built in Unity engine for PC with an emphasis placed on nonlinear storytelling, characterized by branching narratives, story-critical decisions, and character creation through the assignment of stats and use of different clothing and equipment.  Such aims are to be assisted through the use of third-party software, one such being Articy, a storytelling program with Unity integration capable of importing dialogue flows, characters, sound, items, scripts, etc.</p>
+
+# creatorBiography
+
+Hello there! My name is <strong>Lucas Sanchez</strong>, a video game producer, designer (level and narrative), and programmer, with a passion for creating video games that immerse players with immersive gameplay and enthralling, deep storytelling.</p><p>I grew up in Miami, Florida, and from a young age, as far back as middle school, began exploring my passion for video game storytelling, creating Role-Playing Games in scratch initially as a school project, but inevitably continuing even past submission to create the kind of game I always wanted to see in the world. It was around this time that I also began writing, initially, where many writers begin, with fanfiction, this eventually evolving into my own short stories, book series, and even comics. Now, nearly a decade later, after honing my skills in this time and having graduated with a dual major in Game Design and Creative Writing at the University of Central Florida, I continue to pursue these passions.

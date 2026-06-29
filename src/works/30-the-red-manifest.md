@@ -1,0 +1,76 @@
+---
+workId: '30'
+title: The Red Manifest
+documentationLicense: ''
+version:
+  version: ELO2026
+  versionId: 30
+  versionNumber: '1.0'
+  publicationDay: 8
+  publicationYear: 2026
+  publicationMonth: June
+  hardwareDependencies: []
+  softwareDependencies:
+    - Web Browser
+  peripheralDependencies: []
+  computerLanguages:
+    - Inky
+  digitalQualities: []
+  sensoryModalities: []
+  genres:
+    - Choice-Based Narrative Game
+    - Electronic Literature (E-Lit)
+    - Interactive Fiction (IF)
+    - Narrative Adventure
+  languages:
+    - English
+  accessibility: ''
+  rightsNotice: ''
+accessibility:
+  textFormat:
+    - sans-serif fonts
+  auditory:
+    - sudden sounds
+    - high-pitch sounds
+  touch:
+    - cursor click
+    - cursor movement
+    - physical buttons (mouse)
+entities:
+  - entityId: '1'
+    entityName: Joao de Mendonca Salim
+    entityType: individual
+    entityCountryOfOrigin: ''
+    role: creator
+    roleAbbreviation: crt
+    primaryRole: true
+    rolePseudonym: ''
+externalLinks:
+  - externalLinkName: Website
+    externalLinkId: 1
+    externalLinkUrl: 'https://red-manifest.vercel.app/'
+media:
+  coverImage: >-
+    https://pub-bfa6e30265b143cd8da33627d0b310b1.r2.dev/0a1d3d17-df35-4c69-8617-5256ae61be52/image-2cfe18a1-b734-4c1b-8a2c-8feed0076740.png
+  traversalVideo: ''
+ai:
+  artificialIntelligenceGeneratedContent: false
+  artificialIntelligenceGeneratedCode: false
+  artificialIntelligenceToolsUsed: []
+  artificialIntelligenceModelsUsed: []
+  artificialIntelligenceExternalLinks: []
+keywords:
+  - Audio Arts and Acoustics
+  - Fiction
+  - Game Design
+  - Graphic Design
+  - Interactive Arts
+---
+
+# description
+
+<p><em>The Red Manifest</em> is an interactive digital storytelling experience that invites audiences into a mysterious journey through the atmospheric landscapes of Transylvania. Developed using the **Ink narrative engine**, the project combines literary writing, player agency, and immersive sound design to create a story that is not simply read, but actively experienced.</p><p>Inspired by the rich folklore, myths, and cultural history of Transylvania, Red Manifest reimagines storytelling as an exploratory process. Rather than following a fixed, linear path, players navigate the narrative through choices and discoveries that shape the rhythm of the experience. Fragments of text, environmental details, and branching dialogues gradually reveal a larger mystery, encouraging curiosity and rewarding attentive exploration.</p><p>The use of the Ink engine allows the story to unfold dynamically. Players influence the progression of events through their decisions, creating a personalized narrative journey that reflects their own interpretations and priorities. This branching structure transforms readers into participants, giving them an active role in constructing meaning and engaging with the world around them.</p><p>Sound design plays an equally important role in the experience. Ambient audio, environmental effects, and carefully crafted musical elements work alongside the written narrative to deepen immersion and emotional impact. The distant sounds of forests, echoes within abandoned spaces, and subtle shifts in atmosphere guide the player's attention and reinforce the tone of each moment. Audio becomes more than accompaniment. It functions as an essential storytelling tool that shapes tension, anticipation, and emotional connection.</p><p>Red Manifest explores the unique possibilities of digital media by blending elements of literature, interactive fiction, and game design. It challenges traditional distinctions between books and games, demonstrating how stories can emerge through participation rather than passive consumption. The project invites audiences to slow down, pay attention to sensory details, and uncover meaning through interaction.</p><p>At its core, Red Manifest is an experiment in narrative design and a reflection on how technology can expand the ways we tell stories. It highlights the potential of interactive fiction to foster empathy, curiosity, and wonder through active engagement.</p><p>The Red Manifest is a literary experience shaped by choice, atmosphere, and sound. It invites players to wander through the shadows of Transylvania and discover that some of the most powerful stories are those we help bring to life ourselves.</p>
+
+# creatorBiography
+
+<strong>Joao de Mendonca Salim</strong> is a current GTA at the UCF's Digital Media M.A. program, he is a digital media developer and interactive artist based in Orlando, Florida. Joao's work frequently explores the intersection of programming, interactive design, and unconventional narrative structures.
