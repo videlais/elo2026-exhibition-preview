@@ -6,6 +6,7 @@ import HomePage from "../../pages/HomePage";
 const SearchPage = lazy(() => import("../../pages/SearchPage"));
 const AboutPage = lazy(() => import("../../pages/AboutPage"));
 const WorkPage = lazy(() => import("../../pages/WorkPage"));
+const PlaylistPage = lazy(() => import("../../pages/PlaylistPage"));
 
 export interface AppRoute {
   path: string;
@@ -15,6 +16,7 @@ export interface AppRoute {
 export const appRoutes: AppRoute[] = [
   { path: "/", element: <HomePage /> },
   { path: "/search", element: <SearchPage /> },
+  { path: "/playlist", element: <PlaylistPage /> },
   { path: "/about", element: <AboutPage /> },
   { path: "/work/:workId", element: <WorkPage /> },
   { path: "/index", element: <Navigate to="/search" replace /> },

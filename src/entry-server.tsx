@@ -11,6 +11,7 @@ import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import AboutPage from "./pages/AboutPage";
 import WorkPage from "./pages/WorkPage";
+import PlaylistPage from "./pages/PlaylistPage";
 
 const { exhibitionName, publicationYear, editors, publisher, ogType, twitterCard } = aboutJson.citation;
 const { description } = aboutJson;
@@ -23,7 +24,7 @@ const buildAssetUrl = (path: string) => {
 
 /** All static and per-work routes to pre-render. */
 export function getStaticRoutes(): string[] {
-  const staticRoutes = ["/", "/search", "/about"];
+  const staticRoutes = ["/", "/search", "/playlist", "/about"];
   const workRoutes = works.map((work) => `/work/${work.workInformation.workId}`);
   return [...staticRoutes, ...workRoutes];
 }
@@ -94,6 +95,7 @@ export function render(url: string, base = ""): { html: string } {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/playlist" element={<PlaylistPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/work/:workId" element={<WorkPage />} />
             <Route path="/index" element={<Navigate to="/search" replace />} />
