@@ -11,6 +11,7 @@ export default function Header() {
   const navLinks: { label: string; path: string }[] = [
     { label: "Home", path: "/" },
     { label: "Search", path: "/search" },
+    { label: "Playlist", path: "/playlist" },
     { label: "About", path: "/about" },
   ];
 
