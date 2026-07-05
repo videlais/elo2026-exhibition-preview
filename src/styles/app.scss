@@ -136,6 +136,18 @@ a:hover {
     font-size: 1rem;
 }
 
+.elcContainer blockquote {
+    margin-inline: 6% 3%;
+    padding-inline-start: 1.25em;
+    border-inline-start: 3px solid var(--elc-teal, #d5d5d5);
+    color: var(--containertext_light, inherit);
+    font-style: italic;
+}
+
+.elcContainer blockquote p {
+    padding-inline: 0;
+}
+
 /* ── About page sections ────────────────────────────────────────── */
 
 .aboutSubHeader {
@@ -613,6 +625,14 @@ span.navLink:hover a {
 .workPage .card p {
     margin-top: 0.75em;
     margin-bottom: 0.75em;
+}
+
+.workPage .card-text blockquote {
+    margin: 1em 1em 1em 0;
+    padding-inline-start: 1.25em;
+    border-inline-start: 3px solid var(--elc-teal, #d5d5d5);
+    color: var(--textcolor_light, inherit);
+    font-style: italic;
 }
 
 .workPage .editorialCardStatement {
