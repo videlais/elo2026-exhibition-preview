@@ -7,7 +7,7 @@ export default function HomePage() {
   const works = useWorks();
   return (
     <PageLayout id="galleryMain">
-      <Container id="galleryGrid" as="section">
+      <Container id="galleryGrid" as="section" className="contentSurface">
         <WorkGrid works={works} ariaLabel="Works in the exhibition" />
       </Container>
     </PageLayout>

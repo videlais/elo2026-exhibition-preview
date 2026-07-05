@@ -36,7 +36,7 @@ export default function SearchPage() {
 
   return (
     <PageLayout id="searchMain">
-      <Container className="py-4">
+      <Container className="contentSurface">
         <Form role="search" aria-label="Search works" className="mb-4">
           <InputGroup>
             <Form.Select

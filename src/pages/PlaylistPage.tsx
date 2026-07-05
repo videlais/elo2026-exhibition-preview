@@ -310,7 +310,7 @@ function PlaylistBuilder({
   };
 
   return (
-    <Container className="py-4">
+    <Container className="contentSurface">
       <h1 className="h3 mb-2">Build a playlist</h1>
       <p className="text-muted mb-4">
         Using the search and filters, create your own sub-gallery of works with a shareable URL.
@@ -632,7 +632,7 @@ function PlaylistGallery({
   }
 
   return (
-    <Container className="py-4">
+    <Container className="contentSurface">
       <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
         <h1 className="h3 mb-0">{filters.name.trim().length > 0 ? filters.name : "Playlist"}</h1>
         <div className="d-flex gap-2">

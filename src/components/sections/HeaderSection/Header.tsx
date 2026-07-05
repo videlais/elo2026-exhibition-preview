@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import aboutJson from "../../../json/about.json";
+import { assetUrl } from "../../../utils/assetUrl";
 
 export default function Header() {
   const location = useLocation();
@@ -20,6 +21,11 @@ export default function Header() {
       {/* Centered branding — in normal flow so it contributes to header height */}
       <div className="siteHeader__brandRow text-center py-3">
         <Container>
+          <img
+            src={assetUrl("header.png")}
+            alt={`${aboutJson.citation.exhibitionName} banner`}
+            className="siteHeader__banner img-fluid mb-2"
+          />
           <h1 className="siteHeader__title mb-1">{aboutJson.citation.exhibitionName}</h1>
           <p className="siteHeader__description mb-0">{aboutJson.description}</p>
           <p className="siteHeader__organizers mb-0">

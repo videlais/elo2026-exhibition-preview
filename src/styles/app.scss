@@ -1,34 +1,42 @@
 /* ── Design tokens ──────────────────────────────────────────────── */
 
 :root {
-    --elc-teal: #5eadc7;
-    --elc-teal-dark: #3d8b9e;
-    --elc-teal-light: #80cbc4;
-    --elc-orange: #ff9800;
+    /* Core palette (ELO 2026 refresh) */
+    --elc-pink: #f9609c;        /* page background */
+    --elc-cyan: #1ec1f0;        /* card header background */
+    --elc-indigo: #57669b;      /* primary accent */
+    --elc-green: #36a969;       /* secondary accent */
+    --elc-coral: #fd7b56;       /* provided coral */
+
+    /* Semantic aliases (kept as --elc-teal* / --elc-orange so existing rules follow) */
+    --elc-teal: #57669b;        /* indigo primary */
+    --elc-teal-dark: #3f4c78;   /* darker indigo for text on light backgrounds */
+    --elc-teal-light: #aab3d6;  /* lighter indigo for text on dark backgrounds */
+    --elc-orange: #e05f33;      /* darker coral for accessible hover / contrast */
     --elc-header-bg: #424242;
     --elc-nav-bg: #e8e8e8;
-    --elc-page-bg: #eeeeee;
+    --elc-page-bg: #f9609c;     /* pink page background */
     --textcolor_light: #333333;
     --backgroundcream_light: #eeeeee;
     --workbackground_light: #e0e0e0;
     --containerborder_light: #bdbdbd;
     --containerbackground_light: #fff;
-    --navgrouptext_hover_light: #ff9800;
+    --navgrouptext_hover_light: #e05f33;
     --title_shadow_light: rgba(0, 0, 0, 0.32);
-    --contrast_color_light: #ff9800;
-    --contrast2_color_light: #5eadc7;
+    --contrast_color_light: #e05f33;
+    --contrast2_color_light: #57669b;
     --current_work_foreground_light: white;
     --current_work_background_light: rgba(0, 0, 0, .5);
-    --keyword_tag_selected_light: #b2dfdb;
+    --keyword_tag_selected_light: #c9d0ea;
     --feature_image_border_light: #bdbdbd;
-    --header_light: #5eadc7;
-    --selected_work_borderleft_light: #5eadc7;
-    --contrast1_color_light: #5eadc7;
-    --contrast3_color_light: #80cbc4;
-    --contrast4_color_light: #80cbc4;
-    --nav_link_color_light: #3d8b9e;
+    --header_light: #57669b;
+    --selected_work_borderleft_light: #57669b;
+    --contrast1_color_light: #57669b;
+    --contrast3_color_light: #aab3d6;
+    --contrast4_color_light: #aab3d6;
+    --nav_link_color_light: #3f4c78;
     --header_background_light: #424242;
-    --begin_link_border_light: #e68900;
+    --begin_link_border_light: #c24e28;
     --navgroup_sep_light: #bdbdbd;
     --begin_link_color: white;
 }
@@ -148,6 +156,12 @@ a:hover {
     padding-inline: 0;
 }
 
+/* ── Card headers (Bootstrap Card on work detail pages) ─────────── */
+
+.card-header {
+    background-color: var(--elc-cyan);
+}
+
 /* ── About page sections ────────────────────────────────────────── */
 
 .aboutSubHeader {
@@ -156,7 +170,7 @@ a:hover {
     text-transform: uppercase;
     font-weight: 600;
     color: #ffffff;
-    background: var(--elc-teal);
+    background: var(--elc-green);
     padding: 16px 10px 9px 25px;
     border-radius: 10px 10px 0 0;
     font-family: "Open Sans", sans-serif;
@@ -452,6 +466,7 @@ span.navLink:hover a {
 #galleryMain,
 #collectionMain,
 #searchMain,
+#playlistMain,
 #aboutMain {
     background-color: var(--elc-page-bg);
     padding: 2rem 0 3rem;
@@ -461,6 +476,17 @@ span.navLink:hover a {
 #collectionMain > .container,
 #aboutContainer {
     max-width: 80%;
+}
+
+/* ── White content surface (readable panel over the page background) ─ */
+
+.contentSurface {
+    background-color: var(--containerbackground_light);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin: 1rem auto 1.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e4c3d2;
 }
 
 /* ── Gallery card ───────────────────────────────────────────────── */
@@ -511,7 +537,7 @@ span.navLink:hover a {
     &__author {
         font-size: 0.72rem;
         font-style: italic;
-        color: #666;
+        color: #2c2c2c;
         margin: 0.15rem 0 0;
     }
 }
