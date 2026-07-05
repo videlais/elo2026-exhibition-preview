@@ -2,15 +2,28 @@ import type ELMSWork from "../types/ELMSWork";
 
 export type PlaylistAIFilter = "any" | "used" | "content" | "code" | "none";
 
+/** A facet where each value can be an include (additive) or exclude (subtractive). */
+export interface FacetSelection {
+  include: string[];
+  exclude: string[];
+}
+
+/** A publication-year range; either bound may be left open. */
+export interface YearRangeSelection {
+  from?: number;
+  to?: number;
+}
+
 export interface PlaylistFilters {
   name: string;
-  workIds: string[];
-  genres: string[];
-  keywords: string[];
-  platforms: string[];
-  yearFrom?: number;
-  yearTo?: number;
-  ai: PlaylistAIFilter;
+  works: FacetSelection;
+  genres: FacetSelection;
+  keywords: FacetSelection;
+  platforms: FacetSelection;
+  yearInclude: YearRangeSelection;
+  yearExclude: YearRangeSelection;
+  aiInclude: PlaylistAIFilter;
+  aiExclude: PlaylistAIFilter;
 }
 
 const AI_VALUES: readonly PlaylistAIFilter[] = [
@@ -21,15 +34,20 @@ const AI_VALUES: readonly PlaylistAIFilter[] = [
   "none",
 ];
 
+function emptyFacet(): FacetSelection {
+  return { include: [], exclude: [] };
+}
+
 export const EMPTY_FILTERS: PlaylistFilters = {
   name: "",
-  workIds: [],
-  genres: [],
-  keywords: [],
-  platforms: [],
-  yearFrom: undefined,
-  yearTo: undefined,
-  ai: "any",
+  works: emptyFacet(),
+  genres: emptyFacet(),
+  keywords: emptyFacet(),
+  platforms: emptyFacet(),
+  yearInclude: {},
+  yearExclude: {},
+  aiInclude: "any",
+  aiExclude: "any",
 };
 
 /** Splits a semicolon/comma separated authoring platform string into trimmed parts. */
@@ -54,6 +72,10 @@ function isAIFilter(value: string | null): value is PlaylistAIFilter {
   return value !== null && (AI_VALUES as readonly string[]).includes(value);
 }
 
+function parseAI(value: string | null): PlaylistAIFilter {
+  return isAIFilter(value) ? value : "any";
+}
+
 /**
  * Expands repeated params and delimiter-separated values into a trimmed list.
  * Genre/keyword values can themselves contain commas, so those facets use a
@@ -68,29 +90,56 @@ function splitParamValues(values: string[], separator: string): string[] {
 
 /** Reads playlist filters from URL search parameters. */
 export function parsePlaylistFilters(params: URLSearchParams): PlaylistFilters {
-  const aiParam = params.get("ai");
   return {
     name: params.get("name")?.trim() ?? "",
-    workIds: splitParamValues(params.getAll("work"), ","),
-    genres: splitParamValues(params.getAll("genre"), "|"),
-    keywords: splitParamValues(params.getAll("keyword"), "|"),
-    platforms: splitParamValues(params.getAll("platform"), "|"),
-    yearFrom: parseYear(params.get("yearFrom")),
-    yearTo: parseYear(params.get("yearTo")),
-    ai: isAIFilter(aiParam) ? aiParam : "any",
+    works: {
+      include: splitParamValues(params.getAll("work"), ","),
+      exclude: splitParamValues(params.getAll("exWork"), ","),
+    },
+    genres: {
+      include: splitParamValues(params.getAll("genre"), "|"),
+      exclude: splitParamValues(params.getAll("exGenre"), "|"),
+    },
+    keywords: {
+      include: splitParamValues(params.getAll("keyword"), "|"),
+      exclude: splitParamValues(params.getAll("exKeyword"), "|"),
+    },
+    platforms: {
+      include: splitParamValues(params.getAll("platform"), "|"),
+      exclude: splitParamValues(params.getAll("exPlatform"), "|"),
+    },
+    yearInclude: {
+      from: parseYear(params.get("yearFrom")),
+      to: parseYear(params.get("yearTo")),
+    },
+    yearExclude: {
+      from: parseYear(params.get("exYearFrom")),
+      to: parseYear(params.get("exYearTo")),
+    },
+    aiInclude: parseAI(params.get("ai")),
+    aiExclude: parseAI(params.get("exAi")),
   };
+}
+
+function yearActive(range: YearRangeSelection): boolean {
+  return range.from !== undefined || range.to !== undefined;
+}
+
+function facetActive(facet: FacetSelection): boolean {
+  return facet.include.length > 0 || facet.exclude.length > 0;
 }
 
 /** True when at least one filter would narrow the result set. */
 export function hasActiveFilters(filters: PlaylistFilters): boolean {
   return (
-    filters.workIds.length > 0 ||
-    filters.genres.length > 0 ||
-    filters.keywords.length > 0 ||
-    filters.platforms.length > 0 ||
-    filters.yearFrom !== undefined ||
-    filters.yearTo !== undefined ||
-    filters.ai !== "any"
+    facetActive(filters.works) ||
+    facetActive(filters.genres) ||
+    facetActive(filters.keywords) ||
+    facetActive(filters.platforms) ||
+    yearActive(filters.yearInclude) ||
+    yearActive(filters.yearExclude) ||
+    filters.aiInclude !== "any" ||
+    filters.aiExclude !== "any"
   );
 }
 
@@ -100,26 +149,37 @@ export function buildPlaylistParams(filters: PlaylistFilters): URLSearchParams {
   if (filters.name.trim().length > 0) {
     params.set("name", filters.name.trim());
   }
-  if (filters.workIds.length > 0) {
-    params.set("work", filters.workIds.join(","));
+
+  const setList = (key: string, values: string[], separator: string) => {
+    if (values.length > 0) params.set(key, values.join(separator));
+  };
+
+  setList("work", filters.works.include, ",");
+  setList("exWork", filters.works.exclude, ",");
+  setList("genre", filters.genres.include, "|");
+  setList("exGenre", filters.genres.exclude, "|");
+  setList("keyword", filters.keywords.include, "|");
+  setList("exKeyword", filters.keywords.exclude, "|");
+  setList("platform", filters.platforms.include, "|");
+  setList("exPlatform", filters.platforms.exclude, "|");
+
+  if (filters.yearInclude.from !== undefined) {
+    params.set("yearFrom", String(filters.yearInclude.from));
   }
-  if (filters.genres.length > 0) {
-    params.set("genre", filters.genres.join("|"));
+  if (filters.yearInclude.to !== undefined) {
+    params.set("yearTo", String(filters.yearInclude.to));
   }
-  if (filters.keywords.length > 0) {
-    params.set("keyword", filters.keywords.join("|"));
+  if (filters.yearExclude.from !== undefined) {
+    params.set("exYearFrom", String(filters.yearExclude.from));
   }
-  if (filters.platforms.length > 0) {
-    params.set("platform", filters.platforms.join("|"));
+  if (filters.yearExclude.to !== undefined) {
+    params.set("exYearTo", String(filters.yearExclude.to));
   }
-  if (filters.yearFrom !== undefined) {
-    params.set("yearFrom", String(filters.yearFrom));
+  if (filters.aiInclude !== "any") {
+    params.set("ai", filters.aiInclude);
   }
-  if (filters.yearTo !== undefined) {
-    params.set("yearTo", String(filters.yearTo));
-  }
-  if (filters.ai !== "any") {
-    params.set("ai", filters.ai);
+  if (filters.aiExclude !== "any") {
+    params.set("exAi", filters.aiExclude);
   }
   return params;
 }
@@ -132,92 +192,175 @@ export function workAuthorText(work: ELMSWork): string {
     .toLowerCase();
 }
 
-/** True when a work satisfies every active facet filter (AND across facets). */
-function matchesFacets(work: ELMSWork, filters: PlaylistFilters): boolean {
-  const genres = filters.genres.map((g) => g.toLowerCase());
-  const keywords = filters.keywords.map((k) => k.toLowerCase());
-  const platforms = filters.platforms.map((p) => p.toLowerCase());
+function lower(values: string[]): string[] {
+  return values.map((value) => value.toLowerCase());
+}
 
-  if (genres.length > 0) {
-    const workGenres = (work.versionInformation?.genres ?? []).map((g) =>
-      g.toLowerCase(),
-    );
-    if (!genres.some((g) => workGenres.includes(g))) return false;
-  }
+function workGenres(work: ELMSWork): string[] {
+  return lower(work.versionInformation?.genres ?? []);
+}
 
-  if (keywords.length > 0) {
-    const workKeywords = (
-      work.creatorMetadataInformation?.creatorKeywords ?? []
-    ).map((k) => k.toLowerCase());
-    if (!keywords.some((k) => workKeywords.includes(k))) return false;
-  }
+function workKeywords(work: ELMSWork): string[] {
+  return lower(work.creatorMetadataInformation?.creatorKeywords ?? []);
+}
 
-  if (platforms.length > 0) {
-    const workPlatforms = splitPlatforms(
-      work.versionInformation?.authoringPlatform,
-    ).map((p) => p.toLowerCase());
-    if (!platforms.some((p) => workPlatforms.includes(p))) return false;
-  }
+function workPlatforms(work: ELMSWork): string[] {
+  return lower(splitPlatforms(work.versionInformation?.authoringPlatform));
+}
 
+function workYear(work: ELMSWork): number | undefined {
   const year = work.versionInformation?.publicationYear;
-  if (filters.yearFrom !== undefined) {
-    if (year === undefined || year < filters.yearFrom) return false;
-  }
-  if (filters.yearTo !== undefined) {
-    if (year === undefined || year > filters.yearTo) return false;
-  }
+  return typeof year === "number" && Number.isFinite(year) ? year : undefined;
+}
 
-  if (filters.ai !== "any") {
-    const ai = work.artificialIntelligenceInformation;
-    const content = ai?.artificialIntelligenceGeneratedContent ?? false;
-    const code = ai?.artificialIntelligenceGeneratedCode ?? false;
-    switch (filters.ai) {
-      case "used":
-        if (!content && !code) return false;
-        break;
-      case "content":
-        if (!content) return false;
-        break;
-      case "code":
-        if (!code) return false;
-        break;
-      case "none":
-        if (content || code) return false;
-        break;
-    }
-  }
+/** True when any of the work's values matches any of the (lowercased) filter values. */
+function matchesAny(workValues: string[], filterValues: string[]): boolean {
+  if (filterValues.length === 0) return false;
+  const set = new Set(workValues);
+  return lower(filterValues).some((value) => set.has(value));
+}
 
+function matchesAI(work: ELMSWork, mode: PlaylistAIFilter): boolean {
+  const ai = work.artificialIntelligenceInformation;
+  const content = ai?.artificialIntelligenceGeneratedContent ?? false;
+  const code = ai?.artificialIntelligenceGeneratedCode ?? false;
+  switch (mode) {
+    case "used":
+      return content || code;
+    case "content":
+      return content;
+    case "code":
+      return code;
+    case "none":
+      return !content && !code;
+    default:
+      return true;
+  }
+}
+
+function yearInRange(
+  year: number | undefined,
+  range: YearRangeSelection,
+): boolean {
+  if (!yearActive(range)) return false;
+  if (year === undefined) return false;
+  if (range.from !== undefined && year < range.from) return false;
+  if (range.to !== undefined && year > range.to) return false;
   return true;
 }
 
-/** True when any facet filter (genre/keyword/platform/year/AI) is active. */
-function hasFacetFilters(filters: PlaylistFilters): boolean {
+/** True when any additive (include) facet is set. */
+function hasIncludeFacets(filters: PlaylistFilters): boolean {
   return (
-    filters.genres.length > 0 ||
-    filters.keywords.length > 0 ||
-    filters.platforms.length > 0 ||
-    filters.yearFrom !== undefined ||
-    filters.yearTo !== undefined ||
-    filters.ai !== "any"
+    filters.genres.include.length > 0 ||
+    filters.keywords.include.length > 0 ||
+    filters.platforms.include.length > 0 ||
+    yearActive(filters.yearInclude) ||
+    filters.aiInclude !== "any"
   );
 }
 
+/** True when any include constraint (selected works or include facets) is set. */
+function hasIncludeFilters(filters: PlaylistFilters): boolean {
+  return filters.works.include.length > 0 || hasIncludeFacets(filters);
+}
+
+/** True when a work satisfies every active include facet (AND across facets). */
+function matchesIncludeFacets(work: ELMSWork, filters: PlaylistFilters): boolean {
+  if (
+    filters.genres.include.length > 0 &&
+    !matchesAny(workGenres(work), filters.genres.include)
+  ) {
+    return false;
+  }
+  if (
+    filters.keywords.include.length > 0 &&
+    !matchesAny(workKeywords(work), filters.keywords.include)
+  ) {
+    return false;
+  }
+  if (
+    filters.platforms.include.length > 0 &&
+    !matchesAny(workPlatforms(work), filters.platforms.include)
+  ) {
+    return false;
+  }
+  if (
+    yearActive(filters.yearInclude) &&
+    !yearInRange(workYear(work), filters.yearInclude)
+  ) {
+    return false;
+  }
+  if (filters.aiInclude !== "any" && !matchesAI(work, filters.aiInclude)) {
+    return false;
+  }
+  return true;
+}
+
 /**
- * Resolves a playlist to its works: the union of explicitly selected works
- * (by id) and any works matching the active facet filters.
+ * True when a work is admitted by the additive filters: either it is an
+ * explicitly included work id, or it matches the active include facets.
+ */
+function passesIncludes(work: ELMSWork, filters: PlaylistFilters): boolean {
+  if (filters.works.include.includes(work.workInformation.workId)) return true;
+  if (!hasIncludeFacets(filters)) return false;
+  return matchesIncludeFacets(work, filters);
+}
+
+/** True when a work matches any subtractive (exclude) filter. */
+function matchesAnyExclude(work: ELMSWork, filters: PlaylistFilters): boolean {
+  if (filters.works.exclude.includes(work.workInformation.workId)) return true;
+  if (matchesAny(workGenres(work), filters.genres.exclude)) return true;
+  if (matchesAny(workKeywords(work), filters.keywords.exclude)) return true;
+  if (matchesAny(workPlatforms(work), filters.platforms.exclude)) return true;
+  if (yearInRange(workYear(work), filters.yearExclude)) return true;
+  if (filters.aiExclude !== "any" && matchesAI(work, filters.aiExclude)) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Resolves a playlist to its works. Additive (include) filters define the base
+ * set — the union of explicitly selected works and works matching the include
+ * facets. When only subtractive (exclude) filters are set, the base set is all
+ * works. Excludes always win: any work matching an exclude filter is removed.
  */
 export function filterWorks(
   works: ELMSWork[],
   filters: PlaylistFilters,
 ): ELMSWork[] {
-  const selected = new Set(filters.workIds);
-  const facetActive = hasFacetFilters(filters);
+  if (!hasActiveFilters(filters)) return [];
+  const includeActive = hasIncludeFilters(filters);
 
   return works.filter((work) => {
-    if (selected.has(work.workInformation.workId)) return true;
-    if (!facetActive) return false;
-    return matchesFacets(work, filters);
+    if (includeActive && !passesIncludes(work, filters)) return false;
+    if (matchesAnyExclude(work, filters)) return false;
+    return true;
   });
+}
+
+/**
+ * Toggles a facet value in the given mode. A value can be in at most one mode:
+ * selecting include clears any exclude on the same value, and vice versa.
+ * Selecting the mode a value already occupies removes it.
+ */
+export function toggleFacetValue(
+  selection: FacetSelection,
+  value: string,
+  mode: "include" | "exclude",
+): FacetSelection {
+  const alreadySet = selection[mode].includes(value);
+  const nextInMode = alreadySet
+    ? selection[mode].filter((item) => item !== value)
+    : [...selection[mode], value];
+  const otherValues = (
+    mode === "include" ? selection.exclude : selection.include
+  ).filter((item) => item !== value);
+
+  return mode === "include"
+    ? { include: nextInMode, exclude: otherValues }
+    : { include: otherValues, exclude: nextInMode };
 }
 
 function collectSorted(values: Iterable<string>): string[] {

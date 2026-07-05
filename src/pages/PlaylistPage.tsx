@@ -15,10 +15,14 @@ import {
   getYearRange,
   hasActiveFilters,
   parsePlaylistFilters,
+  toggleFacetValue,
   workAuthorText,
+  type FacetSelection,
   type PlaylistAIFilter,
   type PlaylistFilters,
 } from "../utils/playlist";
+
+type FacetMode = "include" | "exclude";
 
 const AI_OPTIONS: { value: PlaylistAIFilter; label: string }[] = [
   { value: "any", label: "Any" },
@@ -30,33 +34,68 @@ const AI_OPTIONS: { value: PlaylistAIFilter; label: string }[] = [
 
 function authorNameFor(work: ELMSWork): string {
   const names = (work.entityInformation ?? [])
-    .filter((entity) => entity.entityType !== "group" && entity.entityName)
+    .filter((entity) => entity.entityName)
     .map((entity) => entity.entityName);
   if (names.length <= 1) return names[0] ?? "";
   return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
 }
 
-function toggleValue(list: string[], value: string): string[] {
-  return list.includes(value)
-    ? list.filter((item) => item !== value)
-    : [...list, value];
+interface IncludeExcludeRowProps {
+  idBase: string;
+  label: string;
+  included: boolean;
+  excluded: boolean;
+  onToggle: (mode: FacetMode) => void;
 }
 
-interface CheckboxGroupProps {
+/** A single value that can be marked as an include (additive) or exclude (subtractive). */
+function IncludeExcludeRow({
+  idBase,
+  label,
+  included,
+  excluded,
+  onToggle,
+}: IncludeExcludeRowProps) {
+  return (
+    <div className="playlistBuilder__row">
+      <span className="playlistBuilder__rowLabel">{label}</span>
+      <div className="playlistBuilder__rowControls">
+        <Form.Check
+          type="checkbox"
+          id={`${idBase}-include`}
+          label="Include"
+          aria-label={`Include ${label}`}
+          checked={included}
+          onChange={() => onToggle("include")}
+        />
+        <Form.Check
+          type="checkbox"
+          id={`${idBase}-exclude`}
+          label="Exclude"
+          aria-label={`Exclude ${label}`}
+          checked={excluded}
+          onChange={() => onToggle("exclude")}
+        />
+      </div>
+    </div>
+  );
+}
+
+interface FacetGroupProps {
   legend: string;
   name: string;
   options: string[];
-  selected: string[];
-  onToggle: (value: string) => void;
+  selection: FacetSelection;
+  onToggle: (value: string, mode: FacetMode) => void;
 }
 
-function CheckboxGroup({
+function FacetGroup({
   legend,
   name,
   options,
-  selected,
+  selection,
   onToggle,
-}: CheckboxGroupProps) {
+}: FacetGroupProps) {
   if (options.length === 0) return null;
   return (
     <Form.Group
@@ -67,13 +106,13 @@ function CheckboxGroup({
       <legend className="playlistBuilder__legend h6 mb-2">{legend}</legend>
       <div className="playlistBuilder__options">
         {options.map((option) => (
-          <Form.Check
+          <IncludeExcludeRow
             key={option}
-            type="checkbox"
-            id={`playlist-${name}-${option}`}
+            idBase={`playlist-${name}-${option}`}
             label={option}
-            checked={selected.includes(option)}
-            onChange={() => onToggle(option)}
+            included={selection.include.includes(option)}
+            excluded={selection.exclude.includes(option)}
+            onToggle={(mode) => onToggle(option, mode)}
           />
         ))}
       </div>
@@ -86,9 +125,9 @@ interface WorkSearchPickerProps {
   name: string;
   placeholder: string;
   works: ELMSWork[];
-  selectedIds: string[];
+  selection: FacetSelection;
   matches: (work: ELMSWork, query: string) => boolean;
-  onToggle: (workId: string) => void;
+  onToggle: (workId: string, mode: FacetMode) => void;
   maxResults?: number;
 }
 
@@ -97,7 +136,7 @@ function WorkSearchPicker({
   name,
   placeholder,
   works,
-  selectedIds,
+  selection,
   matches,
   onToggle,
   maxResults = 20,
@@ -136,13 +175,13 @@ function WorkSearchPicker({
                 const title = work.workInformation.title;
                 const author = authorNameFor(work);
                 return (
-                  <Form.Check
+                  <IncludeExcludeRow
                     key={workId}
-                    type="checkbox"
-                    id={`playlist-${name}-${workId}`}
-                    checked={selectedIds.includes(workId)}
-                    onChange={() => onToggle(workId)}
+                    idBase={`playlist-${name}-${workId}`}
                     label={author ? `${title} — ${author}` : title}
+                    included={selection.include.includes(workId)}
+                    excluded={selection.exclude.includes(workId)}
+                    onToggle={(mode) => onToggle(workId, mode)}
                   />
                 );
               })}
@@ -156,6 +195,32 @@ function WorkSearchPicker({
           )}
         </div>
       )}
+    </Form.Group>
+  );
+}
+
+interface AIModeGroupProps {
+  legend: string;
+  name: string;
+  value: PlaylistAIFilter;
+  onChange: (value: PlaylistAIFilter) => void;
+}
+
+function AIModeGroup({ legend, name, value, onChange }: AIModeGroupProps) {
+  return (
+    <Form.Group as="fieldset" className="mb-3" controlId={`playlist-${name}`}>
+      <legend className="h6 mb-2">{legend}</legend>
+      {AI_OPTIONS.map((option) => (
+        <Form.Check
+          key={option.value}
+          type="radio"
+          name={`playlist-${name}`}
+          id={`playlist-${name}-${option.value}`}
+          label={option.label}
+          checked={value === option.value}
+          onChange={() => onChange(option.value)}
+        />
+      ))}
     </Form.Group>
   );
 }
@@ -186,18 +251,51 @@ function PlaylistBuilder({
   );
   const active = hasActiveFilters(draft);
 
-  const toggleWork = (workId: string) =>
+  const toggleWork = (workId: string, mode: FacetMode) =>
     setDraft((prev) => ({
       ...prev,
-      workIds: toggleValue(prev.workIds, workId),
+      works: toggleFacetValue(prev.works, workId, mode),
     }));
 
-  const selectedWorks = useMemo(
+  const toggleFacet = (
+    key: "genres" | "keywords" | "platforms",
+    value: string,
+    mode: FacetMode,
+  ) =>
+    setDraft((prev) => ({
+      ...prev,
+      [key]: toggleFacetValue(prev[key], value, mode),
+    }));
+
+  const setYear = (
+    key: "yearInclude" | "yearExclude",
+    bound: "from" | "to",
+    raw: string,
+  ) =>
+    setDraft((prev) => ({
+      ...prev,
+      [key]: {
+        ...prev[key],
+        [bound]: raw === "" ? undefined : Number.parseInt(raw, 10),
+      },
+    }));
+
+  const worksById = useMemo(() => {
+    const map = new Map<string, ELMSWork>();
+    for (const work of works) map.set(work.workInformation.workId, work);
+    return map;
+  }, [works]);
+
+  const chosenWorkIds = useMemo(
+    () => [...draft.works.include, ...draft.works.exclude],
+    [draft.works.include, draft.works.exclude],
+  );
+  const chosenWorks = useMemo(
     () =>
-      draft.workIds
-        .map((id) => works.find((work) => work.workInformation.workId === id))
+      chosenWorkIds
+        .map((id) => worksById.get(id))
         .filter((work): work is ELMSWork => work !== undefined),
-    [draft.workIds, works],
+    [chosenWorkIds, worksById],
   );
 
   const matchesTitle = useMemo(
@@ -240,7 +338,7 @@ function PlaylistBuilder({
           name="title"
           placeholder="Search by title…"
           works={works}
-          selectedIds={draft.workIds}
+          selection={draft.works}
           matches={matchesTitle}
           onToggle={toggleWork}
         />
@@ -250,29 +348,29 @@ function PlaylistBuilder({
           name="author"
           placeholder="Search by author…"
           works={works}
-          selectedIds={draft.workIds}
+          selection={draft.works}
           matches={matchesAuthor}
           onToggle={toggleWork}
         />
 
-        {selectedWorks.length > 0 && (
+        {chosenWorks.length > 0 && (
           <fieldset className="mb-4 playlistBuilder__group">
             <legend className="playlistBuilder__legend h6 mb-2">
-              Selected works ({selectedWorks.length})
+              Chosen works ({chosenWorks.length})
             </legend>
-            <div className="playlistBuilder__results">
-              {selectedWorks.map((work) => {
+            <div className="playlistBuilder__options">
+              {chosenWorks.map((work) => {
                 const workId = work.workInformation.workId;
                 const title = work.workInformation.title;
                 const author = authorNameFor(work);
                 return (
-                  <Form.Check
+                  <IncludeExcludeRow
                     key={workId}
-                    type="checkbox"
-                    id={`playlist-selected-${workId}`}
-                    checked
-                    onChange={() => toggleWork(workId)}
+                    idBase={`playlist-selected-${workId}`}
                     label={author ? `${title} — ${author}` : title}
+                    included={draft.works.include.includes(workId)}
+                    excluded={draft.works.exclude.includes(workId)}
+                    onToggle={(mode) => toggleWork(workId, mode)}
                   />
                 );
               })}
@@ -280,35 +378,31 @@ function PlaylistBuilder({
           </fieldset>
         )}
 
-        <CheckboxGroup
+        <FacetGroup
           legend="Genre (Creator Provided Folksonomy)"
           name="genre"
           options={genres}
-          selected={draft.genres}
-          onToggle={(value) =>
-            setDraft((prev) => ({
-              ...prev,
-              genres: toggleValue(prev.genres, value),
-            }))
-          }
+          selection={draft.genres}
+          onToggle={(value, mode) => toggleFacet("genres", value, mode)}
         />
 
-        <CheckboxGroup
+        <FacetGroup
           legend="Keywords (Controlled Vocabulary)"
           name="keyword"
           options={keywords}
-          selected={draft.keywords}
-          onToggle={(value) =>
-            setDraft((prev) => ({
-              ...prev,
-              keywords: toggleValue(prev.keywords, value),
-            }))
-          }
+          selection={draft.keywords}
+          onToggle={(value, mode) => toggleFacet("keywords", value, mode)}
         />
 
         <fieldset className="mb-4">
-          <legend className="h6 mb-2">Publication year range</legend>
-          <Row className="g-2 align-items-end">
+          <legend className="h6 mb-2">Publication year</legend>
+          <p className="text-muted small mb-2">
+            Include works within a year range, and/or exclude works within one.
+          </p>
+          <Row className="g-2 align-items-end mb-2">
+            <Col xs={12} sm={3} className="fw-semibold small">
+              Include years
+            </Col>
             <Col xs={6} sm={4} md={3}>
               <Form.Label htmlFor="playlist-yearFrom" className="small">
                 From
@@ -320,15 +414,9 @@ function PlaylistBuilder({
                 min={yearRange?.min}
                 max={yearRange?.max}
                 placeholder={yearRange ? String(yearRange.min) : undefined}
-                value={draft.yearFrom ?? ""}
+                value={draft.yearInclude.from ?? ""}
                 onChange={(event) =>
-                  setDraft((prev) => ({
-                    ...prev,
-                    yearFrom:
-                      event.target.value === ""
-                        ? undefined
-                        : Number.parseInt(event.target.value, 10),
-                  }))
+                  setYear("yearInclude", "from", event.target.value)
                 }
               />
             </Col>
@@ -343,54 +431,81 @@ function PlaylistBuilder({
                 min={yearRange?.min}
                 max={yearRange?.max}
                 placeholder={yearRange ? String(yearRange.max) : undefined}
-                value={draft.yearTo ?? ""}
+                value={draft.yearInclude.to ?? ""}
                 onChange={(event) =>
-                  setDraft((prev) => ({
-                    ...prev,
-                    yearTo:
-                      event.target.value === ""
-                        ? undefined
-                        : Number.parseInt(event.target.value, 10),
-                  }))
+                  setYear("yearInclude", "to", event.target.value)
+                }
+              />
+            </Col>
+          </Row>
+          <Row className="g-2 align-items-end">
+            <Col xs={12} sm={3} className="fw-semibold small">
+              Exclude years
+            </Col>
+            <Col xs={6} sm={4} md={3}>
+              <Form.Label htmlFor="playlist-exYearFrom" className="small">
+                From
+              </Form.Label>
+              <Form.Control
+                id="playlist-exYearFrom"
+                type="number"
+                inputMode="numeric"
+                min={yearRange?.min}
+                max={yearRange?.max}
+                placeholder={yearRange ? String(yearRange.min) : undefined}
+                value={draft.yearExclude.from ?? ""}
+                onChange={(event) =>
+                  setYear("yearExclude", "from", event.target.value)
+                }
+              />
+            </Col>
+            <Col xs={6} sm={4} md={3}>
+              <Form.Label htmlFor="playlist-exYearTo" className="small">
+                To
+              </Form.Label>
+              <Form.Control
+                id="playlist-exYearTo"
+                type="number"
+                inputMode="numeric"
+                min={yearRange?.min}
+                max={yearRange?.max}
+                placeholder={yearRange ? String(yearRange.max) : undefined}
+                value={draft.yearExclude.to ?? ""}
+                onChange={(event) =>
+                  setYear("yearExclude", "to", event.target.value)
                 }
               />
             </Col>
           </Row>
         </fieldset>
 
-        <CheckboxGroup
+        <FacetGroup
           legend="Authoring Platform (Normalized)"
           name="platform"
           options={platforms}
-          selected={draft.platforms}
-          onToggle={(value) =>
-            setDraft((prev) => ({
-              ...prev,
-              platforms: toggleValue(prev.platforms, value),
-            }))
-          }
+          selection={draft.platforms}
+          onToggle={(value, mode) => toggleFacet("platforms", value, mode)}
         />
 
-        <Form.Group
-          as="fieldset"
-          className="mb-4"
-          controlId="playlist-ai"
-        >
+        <fieldset className="mb-4">
           <legend className="h6 mb-2">Artificial Intelligence Usage</legend>
-          {AI_OPTIONS.map((option) => (
-            <Form.Check
-              key={option.value}
-              type="radio"
-              name="playlist-ai"
-              id={`playlist-ai-${option.value}`}
-              label={option.label}
-              checked={draft.ai === option.value}
-              onChange={() =>
-                setDraft((prev) => ({ ...prev, ai: option.value }))
-              }
-            />
-          ))}
-        </Form.Group>
+          <AIModeGroup
+            legend="Require AI usage (include)"
+            name="ai-include"
+            value={draft.aiInclude}
+            onChange={(value) =>
+              setDraft((prev) => ({ ...prev, aiInclude: value }))
+            }
+          />
+          <AIModeGroup
+            legend="Exclude AI usage (subtract)"
+            name="ai-exclude"
+            value={draft.aiExclude}
+            onChange={(value) =>
+              setDraft((prev) => ({ ...prev, aiExclude: value }))
+            }
+          />
+        </fieldset>
 
         <div className="d-flex flex-wrap gap-2 align-items-center">
           <Button type="submit" variant="primary" disabled={!active}>
@@ -450,23 +565,51 @@ function PlaylistGallery({
     }
   };
 
-  const chips: string[] = [];
-  if (filters.workIds.length > 0) {
-    chips.push(
-      `${filters.workIds.length} selected work${filters.workIds.length !== 1 ? "s" : ""}`,
+  const chips: { label: string; kind: FacetMode }[] = [];
+  const pushCount = (facet: FacetSelection, noun: string) => {
+    if (facet.include.length > 0) {
+      chips.push({
+        label: `${facet.include.length} ${noun}${facet.include.length !== 1 ? "s" : ""}`,
+        kind: "include",
+      });
+    }
+    if (facet.exclude.length > 0) {
+      chips.push({
+        label: `${facet.exclude.length} excluded ${noun}${facet.exclude.length !== 1 ? "s" : ""}`,
+        kind: "exclude",
+      });
+    }
+  };
+  const pushFacet = (facet: FacetSelection, prefix: string) => {
+    facet.include.forEach((value) =>
+      chips.push({ label: `${prefix}: ${value}`, kind: "include" }),
     );
+    facet.exclude.forEach((value) =>
+      chips.push({ label: `${prefix}: ${value}`, kind: "exclude" }),
+    );
+  };
+
+  pushCount(filters.works, "selected work");
+  pushFacet(filters.genres, "Genre");
+  pushFacet(filters.keywords, "Keyword");
+  pushFacet(filters.platforms, "Platform");
+  if (filters.yearInclude.from !== undefined || filters.yearInclude.to !== undefined) {
+    const from = filters.yearInclude.from ?? "…";
+    const to = filters.yearInclude.to ?? "…";
+    chips.push({ label: `Year: ${from}–${to}`, kind: "include" });
   }
-  filters.genres.forEach((genre) => chips.push(`Genre: ${genre}`));
-  filters.keywords.forEach((keyword) => chips.push(`Keyword: ${keyword}`));
-  filters.platforms.forEach((platform) => chips.push(`Platform: ${platform}`));
-  if (filters.yearFrom !== undefined || filters.yearTo !== undefined) {
-    const from = filters.yearFrom ?? "…";
-    const to = filters.yearTo ?? "…";
-    chips.push(`Year: ${from}–${to}`);
+  if (filters.yearExclude.from !== undefined || filters.yearExclude.to !== undefined) {
+    const from = filters.yearExclude.from ?? "…";
+    const to = filters.yearExclude.to ?? "…";
+    chips.push({ label: `Year: ${from}–${to}`, kind: "exclude" });
   }
-  if (filters.ai !== "any") {
-    const aiLabel = AI_OPTIONS.find((option) => option.value === filters.ai);
-    if (aiLabel) chips.push(`AI: ${aiLabel.label}`);
+  if (filters.aiInclude !== "any") {
+    const aiLabel = AI_OPTIONS.find((option) => option.value === filters.aiInclude);
+    if (aiLabel) chips.push({ label: `AI: ${aiLabel.label}`, kind: "include" });
+  }
+  if (filters.aiExclude !== "any") {
+    const aiLabel = AI_OPTIONS.find((option) => option.value === filters.aiExclude);
+    if (aiLabel) chips.push({ label: `AI: ${aiLabel.label}`, kind: "exclude" });
   }
 
   return (
@@ -486,8 +629,12 @@ function PlaylistGallery({
       {chips.length > 0 && (
         <div className="d-flex flex-wrap gap-2 mb-3" aria-label="Active filters">
           {chips.map((chip) => (
-            <Badge key={chip} bg="secondary" className="fw-normal">
-              {chip}
+            <Badge
+              key={`${chip.kind}:${chip.label}`}
+              bg={chip.kind === "exclude" ? "danger" : "secondary"}
+              className="fw-normal"
+            >
+              {chip.kind === "exclude" ? `Exclude · ${chip.label}` : chip.label}
             </Badge>
           ))}
         </div>

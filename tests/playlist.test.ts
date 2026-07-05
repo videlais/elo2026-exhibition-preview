@@ -10,10 +10,17 @@ import {
   hasActiveFilters,
   parsePlaylistFilters,
   splitPlatforms,
+  toggleFacetValue,
   workAuthorText,
   EMPTY_FILTERS,
   type PlaylistFilters,
 } from "../src/utils/playlist";
+
+function withFilters(overrides: Partial<PlaylistFilters>): PlaylistFilters {
+  return { ...EMPTY_FILTERS, ...overrides };
+}
+
+const ids = (result: ELMSWork[]) => result.map((w) => w.workInformation.workId);
 
 function makeWork(overrides: {
   workId: string;
@@ -120,19 +127,20 @@ describe("workAuthorText", () => {
 });
 
 describe("parsePlaylistFilters", () => {
-  it("reads all supported params", () => {
+  it("reads all supported include and exclude params", () => {
     const params = new URLSearchParams(
-      "name=My%20Mix&work=1,3&genre=Hypertext|Archival&keyword=Poetry&platform=HTML&yearFrom=2020&yearTo=2025&ai=content",
+      "name=My%20Mix&work=1,3&exWork=2&genre=Hypertext|Archival&exGenre=Twine&keyword=Poetry&exKeyword=Archives&platform=HTML&exPlatform=Unity&yearFrom=2020&yearTo=2025&exYearFrom=2010&exYearTo=2012&ai=content&exAi=none",
     );
     expect(parsePlaylistFilters(params)).toEqual<PlaylistFilters>({
       name: "My Mix",
-      workIds: ["1", "3"],
-      genres: ["Hypertext", "Archival"],
-      keywords: ["Poetry"],
-      platforms: ["HTML"],
-      yearFrom: 2020,
-      yearTo: 2025,
-      ai: "content",
+      works: { include: ["1", "3"], exclude: ["2"] },
+      genres: { include: ["Hypertext", "Archival"], exclude: ["Twine"] },
+      keywords: { include: ["Poetry"], exclude: ["Archives"] },
+      platforms: { include: ["HTML"], exclude: ["Unity"] },
+      yearInclude: { from: 2020, to: 2025 },
+      yearExclude: { from: 2010, to: 2012 },
+      aiInclude: "content",
+      aiExclude: "none",
     });
   });
 
@@ -141,8 +149,8 @@ describe("parsePlaylistFilters", () => {
       "work=12&work=36&genre=Hypertext&genre=Archival",
     );
     const parsed = parsePlaylistFilters(params);
-    expect(parsed.workIds).toEqual(["12", "36"]);
-    expect(parsed.genres).toEqual(["Hypertext", "Archival"]);
+    expect(parsed.works.include).toEqual(["12", "36"]);
+    expect(parsed.genres.include).toEqual(["Hypertext", "Archival"]);
   });
 
   it("preserves commas inside pipe-delimited genre and keyword values", () => {
@@ -150,8 +158,10 @@ describe("parsePlaylistFilters", () => {
       "genre=Poetic, Sonic and Visual hypermedia&keyword=Literature in English, North America|Poetry",
     );
     const parsed = parsePlaylistFilters(params);
-    expect(parsed.genres).toEqual(["Poetic, Sonic and Visual hypermedia"]);
-    expect(parsed.keywords).toEqual([
+    expect(parsed.genres.include).toEqual([
+      "Poetic, Sonic and Visual hypermedia",
+    ]);
+    expect(parsed.keywords.include).toEqual([
       "Literature in English, North America",
       "Poetry",
     ]);
@@ -168,11 +178,21 @@ describe("hasActiveFilters", () => {
     expect(hasActiveFilters(EMPTY_FILTERS)).toBe(false);
   });
 
-  it("is true when any filter is set", () => {
-    expect(hasActiveFilters({ ...EMPTY_FILTERS, workIds: ["1"] })).toBe(true);
-    expect(hasActiveFilters({ ...EMPTY_FILTERS, genres: ["y"] })).toBe(true);
-    expect(hasActiveFilters({ ...EMPTY_FILTERS, yearFrom: 2020 })).toBe(true);
-    expect(hasActiveFilters({ ...EMPTY_FILTERS, ai: "used" })).toBe(true);
+  it("is true when any include or exclude filter is set", () => {
+    expect(
+      hasActiveFilters(withFilters({ works: { include: ["1"], exclude: [] } })),
+    ).toBe(true);
+    expect(
+      hasActiveFilters(withFilters({ genres: { include: [], exclude: ["y"] } })),
+    ).toBe(true);
+    expect(hasActiveFilters(withFilters({ yearInclude: { from: 2020 } }))).toBe(
+      true,
+    );
+    expect(hasActiveFilters(withFilters({ yearExclude: { to: 2020 } }))).toBe(
+      true,
+    );
+    expect(hasActiveFilters(withFilters({ aiInclude: "used" }))).toBe(true);
+    expect(hasActiveFilters(withFilters({ aiExclude: "none" }))).toBe(true);
   });
 
   it("ignores the playlist name when determining active state", () => {
@@ -183,16 +203,17 @@ describe("hasActiveFilters", () => {
 });
 
 describe("buildPlaylistParams", () => {
-  it("round-trips through parsePlaylistFilters", () => {
+  it("round-trips include and exclude filters through parsePlaylistFilters", () => {
     const filters: PlaylistFilters = {
       name: "Weekend Reading",
-      workIds: ["1", "2"],
-      genres: ["Hypertext"],
-      keywords: ["Poetry", "Archives"],
-      platforms: ["HTML"],
-      yearFrom: 2020,
-      yearTo: 2026,
-      ai: "used",
+      works: { include: ["1", "2"], exclude: ["3"] },
+      genres: { include: ["Hypertext"], exclude: ["Twine"] },
+      keywords: { include: ["Poetry", "Archives"], exclude: [] },
+      platforms: { include: ["HTML"], exclude: ["Unity"] },
+      yearInclude: { from: 2020, to: 2026 },
+      yearExclude: { from: 2000, to: 2005 },
+      aiInclude: "used",
+      aiExclude: "content",
     };
     const params = buildPlaylistParams(filters);
     expect(parsePlaylistFilters(params)).toEqual(filters);
@@ -206,32 +227,39 @@ describe("buildPlaylistParams", () => {
     expect(params.toString()).toBe("name=Poems+%26+Play");
   });
 
-  it("serializes selected works as a single comma-separated param", () => {
-    const params = buildPlaylistParams({
-      ...EMPTY_FILTERS,
-      workIds: ["12", "36", "38"],
-    });
+  it("serializes included and excluded works as comma-separated params", () => {
+    const params = buildPlaylistParams(
+      withFilters({ works: { include: ["12", "36", "38"], exclude: ["7"] } }),
+    );
     expect(params.getAll("work")).toEqual(["12,36,38"]);
+    expect(params.getAll("exWork")).toEqual(["7"]);
   });
 
   it("serializes text facets as single pipe-delimited params", () => {
-    const params = buildPlaylistParams({
-      ...EMPTY_FILTERS,
-      genres: ["Hypertext", "Archival"],
-      keywords: ["Poetry"],
-      platforms: ["HTML", "Twine"],
-    });
+    const params = buildPlaylistParams(
+      withFilters({
+        genres: { include: ["Hypertext", "Archival"], exclude: [] },
+        keywords: { include: ["Poetry"], exclude: [] },
+        platforms: { include: ["HTML", "Twine"], exclude: ["Unity"] },
+      }),
+    );
     expect(params.getAll("genre")).toEqual(["Hypertext|Archival"]);
     expect(params.getAll("keyword")).toEqual(["Poetry"]);
     expect(params.getAll("platform")).toEqual(["HTML|Twine"]);
+    expect(params.getAll("exPlatform")).toEqual(["Unity"]);
   });
 
   it("round-trips genre and keyword values that contain commas", () => {
-    const filters: PlaylistFilters = {
-      ...EMPTY_FILTERS,
-      genres: ["Poetic, Sonic and Visual hypermedia", "Hypertext"],
-      keywords: ["Literature in English, North America"],
-    };
+    const filters: PlaylistFilters = withFilters({
+      genres: {
+        include: ["Poetic, Sonic and Visual hypermedia", "Hypertext"],
+        exclude: [],
+      },
+      keywords: {
+        include: ["Literature in English, North America"],
+        exclude: [],
+      },
+    });
     const params = buildPlaylistParams(filters);
     expect(parsePlaylistFilters(params)).toEqual(filters);
   });
@@ -247,77 +275,149 @@ describe("filterWorks", () => {
   });
 
   it("includes explicitly selected works by id", () => {
-    const result = filterWorks(works, {
-      ...EMPTY_FILTERS,
-      workIds: ["1", "3"],
-    });
-    expect(result.map((w) => w.workInformation.workId)).toEqual(["1", "3"]);
+    const result = filterWorks(
+      works,
+      withFilters({ works: { include: ["1", "3"], exclude: [] } }),
+    );
+    expect(ids(result)).toEqual(["1", "3"]);
   });
 
-  it("unions explicitly selected works with facet matches", () => {
-    const result = filterWorks(works, {
-      ...EMPTY_FILTERS,
-      workIds: ["1"],
-      genres: ["Archival"],
-    });
-    expect(result.map((w) => w.workInformation.workId)).toEqual(["1", "2"]);
+  it("unions explicitly included works with facet matches", () => {
+    const result = filterWorks(
+      works,
+      withFilters({
+        works: { include: ["1"], exclude: [] },
+        genres: { include: ["Archival"], exclude: [] },
+      }),
+    );
+    expect(ids(result)).toEqual(["1", "2"]);
   });
 
-  it("matches any selected genre", () => {
-    const result = filterWorks(works, {
-      ...EMPTY_FILTERS,
-      genres: ["Archival", "interactive fiction"],
-    });
-    expect(result.map((w) => w.workInformation.workId)).toEqual(["2", "3"]);
+  it("matches any included genre", () => {
+    const result = filterWorks(
+      works,
+      withFilters({
+        genres: { include: ["Archival", "interactive fiction"], exclude: [] },
+      }),
+    );
+    expect(ids(result)).toEqual(["2", "3"]);
   });
 
-  it("matches any selected keyword", () => {
-    const result = filterWorks(works, { ...EMPTY_FILTERS, keywords: ["Poetry"] });
-    expect(result.map((w) => w.workInformation.workId)).toEqual(["1", "3"]);
+  it("matches any included keyword", () => {
+    const result = filterWorks(
+      works,
+      withFilters({ keywords: { include: ["Poetry"], exclude: [] } }),
+    );
+    expect(ids(result)).toEqual(["1", "3"]);
   });
 
   it("matches split authoring platforms", () => {
-    const result = filterWorks(works, {
-      ...EMPTY_FILTERS,
-      platforms: ["3DVista"],
-    });
-    expect(result.map((w) => w.workInformation.workId)).toEqual(["1"]);
+    const result = filterWorks(
+      works,
+      withFilters({ platforms: { include: ["3DVista"], exclude: [] } }),
+    );
+    expect(ids(result)).toEqual(["1"]);
   });
 
-  it("filters by publication year range", () => {
-    const result = filterWorks(works, {
-      ...EMPTY_FILTERS,
-      yearFrom: 2024,
-      yearTo: 2026,
-    });
-    expect(result.map((w) => w.workInformation.workId)).toEqual(["1", "2"]);
+  it("filters by an include publication-year range", () => {
+    const result = filterWorks(
+      works,
+      withFilters({ yearInclude: { from: 2024, to: 2026 } }),
+    );
+    expect(ids(result)).toEqual(["1", "2"]);
   });
 
   it("filters by AI usage", () => {
-    expect(
-      filterWorks(works, { ...EMPTY_FILTERS, ai: "none" }).map(
-        (w) => w.workInformation.workId,
-      ),
-    ).toEqual(["1"]);
-    expect(
-      filterWorks(works, { ...EMPTY_FILTERS, ai: "used" }).map(
-        (w) => w.workInformation.workId,
-      ),
-    ).toEqual(["2", "3"]);
-    expect(
-      filterWorks(works, { ...EMPTY_FILTERS, ai: "code" }).map(
-        (w) => w.workInformation.workId,
-      ),
-    ).toEqual(["3"]);
+    expect(ids(filterWorks(works, withFilters({ aiInclude: "none" })))).toEqual([
+      "1",
+    ]);
+    expect(ids(filterWorks(works, withFilters({ aiInclude: "used" })))).toEqual([
+      "2",
+      "3",
+    ]);
+    expect(ids(filterWorks(works, withFilters({ aiInclude: "code" })))).toEqual([
+      "3",
+    ]);
   });
 
-  it("combines filters with AND logic across facets", () => {
-    const result = filterWorks(works, {
-      ...EMPTY_FILTERS,
-      keywords: ["Poetry"],
-      ai: "used",
-    });
-    expect(result.map((w) => w.workInformation.workId)).toEqual(["3"]);
+  it("combines filters with AND logic across include facets", () => {
+    const result = filterWorks(
+      works,
+      withFilters({
+        keywords: { include: ["Poetry"], exclude: [] },
+        aiInclude: "used",
+      }),
+    );
+    expect(ids(result)).toEqual(["3"]);
+  });
+
+  it("starts from all works when only exclude filters are set", () => {
+    const result = filterWorks(
+      works,
+      withFilters({ genres: { include: [], exclude: ["Archival"] } }),
+    );
+    expect(ids(result)).toEqual(["1", "3"]);
+  });
+
+  it("subtracts excluded works by id", () => {
+    const result = filterWorks(
+      works,
+      withFilters({ works: { include: [], exclude: ["2"] } }),
+    );
+    expect(ids(result)).toEqual(["1", "3"]);
+  });
+
+  it("lets exclude win over include for the same work id", () => {
+    const result = filterWorks(
+      works,
+      withFilters({ works: { include: ["1", "2"], exclude: ["2"] } }),
+    );
+    expect(ids(result)).toEqual(["1"]);
+  });
+
+  it("removes works matching an exclude facet even when they match an include", () => {
+    const result = filterWorks(
+      works,
+      withFilters({
+        keywords: { include: ["Poetry"], exclude: [] },
+        platforms: { include: [], exclude: ["Twine"] },
+      }),
+    );
+    // Works 1 and 3 have the Poetry keyword; work 3 is on Twine and is subtracted.
+    expect(ids(result)).toEqual(["1"]);
+  });
+
+  it("excludes works by AI usage", () => {
+    const result = filterWorks(works, withFilters({ aiExclude: "used" }));
+    expect(ids(result)).toEqual(["1"]);
+  });
+
+  it("excludes works by publication-year range", () => {
+    const result = filterWorks(
+      works,
+      withFilters({ yearExclude: { from: 2024, to: 2026 } }),
+    );
+    expect(ids(result)).toEqual(["3"]);
+  });
+});
+
+describe("toggleFacetValue", () => {
+  it("adds a value to the requested mode", () => {
+    expect(
+      toggleFacetValue({ include: [], exclude: [] }, "A", "include"),
+    ).toEqual({ include: ["A"], exclude: [] });
+  });
+
+  it("removes a value when toggled in the mode it already occupies", () => {
+    expect(
+      toggleFacetValue({ include: ["A"], exclude: [] }, "A", "include"),
+    ).toEqual({ include: [], exclude: [] });
+  });
+
+  it("moves a value from include to exclude", () => {
+    expect(
+      toggleFacetValue({ include: ["A"], exclude: [] }, "A", "exclude"),
+    ).toEqual({ include: [], exclude: ["A"] });
   });
 });
 
