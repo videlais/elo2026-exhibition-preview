@@ -83,16 +83,12 @@ Then commit any resulting diff.
 
 | Route | Page | Description |
 |---|---|---|
-| `/` | `HomePage` | Gallery grid of all (filtered) works as clickable tile images |
-| `/search` | `SearchPage` | Tagify-powered keyword search with filterable badge buttons per category |
+| `/` | `HomePage` | Gallery grid of all works as clickable cover tiles (shared `WorkGrid`) |
+| `/search` | `SearchPage` | Free-text keyword search (title, description, author, genre, language) backed by the shared playlist filter engine; links through to the playlist builder to refine |
+| `/playlist` | `PlaylistPage` | Build a shareable sub-gallery: free-text query plus include/exclude facet filters (works, genre, keyword, publication year, authoring platform, AI usage), all persisted in the URL |
 | `/about` | `AboutPage` | Exhibition statement, organizer credits, software licenses |
-| `/:collectionSlug` | `CollectionPageRoute` → `CollectionPage` | Lists all works in a multi-work collection; single-work collections redirect to the work directly |
-| `/:collectionSlug/:workSlug` | `WorkPageRoute` → `WorkPage` | Full work detail page |
-| `/:collectionSlug/:workSlug/:versionToken` | `WorkPageRoute` → `WorkPage` | Work detail for a specific version; non-canonical tokens redirect to canonical |
-| `/:collectionSlug/:workSlug/:versionToken/:copyId` | `WorkPageRoute` → `WorkPage` | Work detail for a specific version and copy |
-| `/data/:collectionSlug/:workSlug[/version[/copy]]` | `DataPage` | Debug view — renders raw JSON for a work; redirects non-canonical paths |
+| `/work/:workId` | `WorkPage` | Full work detail page |
 | `/index` | — | Redirects to `/search` |
-| `/filters` | — | Redirects to `/search` |
 
 ### Work detail page sections (`WorkPage`)
 

@@ -1,9 +1,9 @@
 import { useMemo, useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Container, Row, Col, Form, Button, Badge, InputGroup } from "react-bootstrap";
 import PageLayout from "../components/PageLayout";
+import WorkGrid from "../components/WorkGrid";
 import useWorks from "../hooks/useWorks";
-import { assetUrl } from "../utils/assetUrl";
 import type ELMSWork from "../types/ELMSWork";
 import {
   buildPlaylistParams,
@@ -21,6 +21,7 @@ import {
   type PlaylistAIFilter,
   type PlaylistFilters,
 } from "../utils/playlist";
+import { workAuthorName } from "../utils/works";
 
 type FacetMode = "include" | "exclude";
 
@@ -31,14 +32,6 @@ const AI_OPTIONS: { value: PlaylistAIFilter; label: string }[] = [
   { value: "code", label: "AI-generated code" },
   { value: "none", label: "No AI used" },
 ];
-
-function authorNameFor(work: ELMSWork): string {
-  const names = (work.entityInformation ?? [])
-    .filter((entity) => entity.entityName)
-    .map((entity) => entity.entityName);
-  if (names.length <= 1) return names[0] ?? "";
-  return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
-}
 
 interface IncludeExcludeRowProps {
   idBase: string;
@@ -173,7 +166,7 @@ function WorkSearchPicker({
               {results.map((work) => {
                 const workId = work.workInformation.workId;
                 const title = work.workInformation.title;
-                const author = authorNameFor(work);
+                const author = workAuthorName(work);
                 return (
                   <IncludeExcludeRow
                     key={workId}
@@ -333,6 +326,18 @@ function PlaylistBuilder({
           />
         </Form.Group>
 
+        <Form.Group className="mb-4" controlId="playlist-query">
+          <Form.Label className="h6">Keyword search</Form.Label>
+          <Form.Control
+            type="search"
+            placeholder="Match title, description, author, genre, or language…"
+            value={draft.query}
+            onChange={(event) =>
+              setDraft((prev) => ({ ...prev, query: event.target.value }))
+            }
+          />
+        </Form.Group>
+
         <WorkSearchPicker
           legend="Find works by title"
           name="title"
@@ -362,7 +367,7 @@ function PlaylistBuilder({
               {chosenWorks.map((work) => {
                 const workId = work.workInformation.workId;
                 const title = work.workInformation.title;
-                const author = authorNameFor(work);
+                const author = workAuthorName(work);
                 return (
                   <IncludeExcludeRow
                     key={workId}
@@ -590,6 +595,9 @@ function PlaylistGallery({
   };
 
   pushCount(filters.works, "selected work");
+  if (filters.query.trim().length > 0) {
+    chips.push({ label: `Search: “${filters.query.trim()}”`, kind: "include" });
+  }
   pushFacet(filters.genres, "Genre");
   pushFacet(filters.keywords, "Keyword");
   pushFacet(filters.platforms, "Platform");
@@ -647,40 +655,7 @@ function PlaylistGallery({
       {results.length === 0 ? (
         <p>No works match this playlist. Try adjusting the filters.</p>
       ) : (
-        <Row className="g-3" role="list" aria-label="Playlist works">
-          {results.map((work) => {
-            const workId = work.workInformation.workId;
-            const title = work.workInformation.title;
-            const coverSrc = assetUrl(work.mediaFilesInformation?.coverImage);
-            const authorName = authorNameFor(work);
-
-            return (
-              <Col key={workId} xs={12} sm={6} md={4} xl={2} role="listitem">
-                <article className="galleryCard h-100">
-                  <Link
-                    to={`/work/${workId}`}
-                    aria-label={`View ${title} by ${authorName}`}
-                  >
-                    {coverSrc && (
-                      <img
-                        src={coverSrc}
-                        alt={`Cover image for ${title}`}
-                        className="galleryCard__cover w-100"
-                        loading="lazy"
-                      />
-                    )}
-                    <div className="galleryCard__info">
-                      <h2 className="galleryCard__title">{title}</h2>
-                      {authorName && (
-                        <p className="galleryCard__author">{authorName}</p>
-                      )}
-                    </div>
-                  </Link>
-                </article>
-              </Col>
-            );
-          })}
-        </Row>
+        <WorkGrid works={results} ariaLabel="Playlist works" />
       )}
 
       <div className="mt-4 pt-3 border-top">

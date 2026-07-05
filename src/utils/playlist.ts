@@ -16,6 +16,7 @@ export interface YearRangeSelection {
 
 export interface PlaylistFilters {
   name: string;
+  query: string;
   works: FacetSelection;
   genres: FacetSelection;
   keywords: FacetSelection;
@@ -40,6 +41,7 @@ function emptyFacet(): FacetSelection {
 
 export const EMPTY_FILTERS: PlaylistFilters = {
   name: "",
+  query: "",
   works: emptyFacet(),
   genres: emptyFacet(),
   keywords: emptyFacet(),
@@ -92,6 +94,7 @@ function splitParamValues(values: string[], separator: string): string[] {
 export function parsePlaylistFilters(params: URLSearchParams): PlaylistFilters {
   return {
     name: params.get("name")?.trim() ?? "",
+    query: params.get("q")?.trim() ?? "",
     works: {
       include: splitParamValues(params.getAll("work"), ","),
       exclude: splitParamValues(params.getAll("exWork"), ","),
@@ -132,6 +135,7 @@ function facetActive(facet: FacetSelection): boolean {
 /** True when at least one filter would narrow the result set. */
 export function hasActiveFilters(filters: PlaylistFilters): boolean {
   return (
+    filters.query.trim().length > 0 ||
     facetActive(filters.works) ||
     facetActive(filters.genres) ||
     facetActive(filters.keywords) ||
@@ -148,6 +152,9 @@ export function buildPlaylistParams(filters: PlaylistFilters): URLSearchParams {
   const params = new URLSearchParams();
   if (filters.name.trim().length > 0) {
     params.set("name", filters.name.trim());
+  }
+  if (filters.query.trim().length > 0) {
+    params.set("q", filters.query.trim());
   }
 
   const setList = (key: string, values: string[], separator: string) => {
@@ -208,6 +215,58 @@ function workPlatforms(work: ELMSWork): string[] {
   return lower(splitPlatforms(work.versionInformation?.authoringPlatform));
 }
 
+/** A field the free-text query can be scoped to. "all" searches every field below. */
+export type SearchField =
+  | "all"
+  | "title"
+  | "author"
+  | "genre"
+  | "keyword"
+  | "language";
+
+/** Lowercased searchable text for a work, scoped to a single field (or all fields). */
+function workFieldText(work: ELMSWork, field: SearchField): string {
+  const info = work.workInformation;
+  const genres = (work.versionInformation?.genres ?? []).join(" ");
+  const keywords = (work.creatorMetadataInformation?.creatorKeywords ?? []).join(" ");
+  const languages = (work.versionInformation?.languages ?? []).join(" ");
+  switch (field) {
+    case "title":
+      return (info.title ?? "").toLowerCase();
+    case "author":
+      return workAuthorText(work);
+    case "genre":
+      return genres.toLowerCase();
+    case "keyword":
+      return keywords.toLowerCase();
+    case "language":
+      return languages.toLowerCase();
+    case "all":
+    default:
+      return [
+        info.title ?? "",
+        info.workDescription ?? "",
+        workAuthorText(work),
+        genres,
+        keywords,
+        languages,
+      ]
+        .join(" ")
+        .toLowerCase();
+  }
+}
+
+/** True when the query matches the work within the given field (defaults to all fields). */
+export function workMatchesQuery(
+  work: ELMSWork,
+  query: string,
+  field: SearchField = "all",
+): boolean {
+  const q = query.trim().toLowerCase();
+  if (q.length === 0) return true;
+  return workFieldText(work, field).includes(q);
+}
+
 function workYear(work: ELMSWork): number | undefined {
   const year = work.versionInformation?.publicationYear;
   return typeof year === "number" && Number.isFinite(year) ? year : undefined;
@@ -252,6 +311,7 @@ function yearInRange(
 /** True when any additive (include) facet is set. */
 function hasIncludeFacets(filters: PlaylistFilters): boolean {
   return (
+    filters.query.trim().length > 0 ||
     filters.genres.include.length > 0 ||
     filters.keywords.include.length > 0 ||
     filters.platforms.include.length > 0 ||
@@ -267,6 +327,9 @@ function hasIncludeFilters(filters: PlaylistFilters): boolean {
 
 /** True when a work satisfies every active include facet (AND across facets). */
 function matchesIncludeFacets(work: ELMSWork, filters: PlaylistFilters): boolean {
+  if (filters.query.trim().length > 0 && !workMatchesQuery(work, filters.query)) {
+    return false;
+  }
   if (
     filters.genres.include.length > 0 &&
     !matchesAny(workGenres(work), filters.genres.include)

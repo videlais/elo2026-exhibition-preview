@@ -12,6 +12,7 @@ import {
   splitPlatforms,
   toggleFacetValue,
   workAuthorText,
+  workMatchesQuery,
   EMPTY_FILTERS,
   type PlaylistFilters,
 } from "../src/utils/playlist";
@@ -129,10 +130,11 @@ describe("workAuthorText", () => {
 describe("parsePlaylistFilters", () => {
   it("reads all supported include and exclude params", () => {
     const params = new URLSearchParams(
-      "name=My%20Mix&work=1,3&exWork=2&genre=Hypertext|Archival&exGenre=Twine&keyword=Poetry&exKeyword=Archives&platform=HTML&exPlatform=Unity&yearFrom=2020&yearTo=2025&exYearFrom=2010&exYearTo=2012&ai=content&exAi=none",
+      "name=My%20Mix&q=poems&work=1,3&exWork=2&genre=Hypertext|Archival&exGenre=Twine&keyword=Poetry&exKeyword=Archives&platform=HTML&exPlatform=Unity&yearFrom=2020&yearTo=2025&exYearFrom=2010&exYearTo=2012&ai=content&exAi=none",
     );
     expect(parsePlaylistFilters(params)).toEqual<PlaylistFilters>({
       name: "My Mix",
+      query: "poems",
       works: { include: ["1", "3"], exclude: ["2"] },
       genres: { include: ["Hypertext", "Archival"], exclude: ["Twine"] },
       keywords: { include: ["Poetry"], exclude: ["Archives"] },
@@ -193,6 +195,7 @@ describe("hasActiveFilters", () => {
     );
     expect(hasActiveFilters(withFilters({ aiInclude: "used" }))).toBe(true);
     expect(hasActiveFilters(withFilters({ aiExclude: "none" }))).toBe(true);
+    expect(hasActiveFilters(withFilters({ query: "poems" }))).toBe(true);
   });
 
   it("ignores the playlist name when determining active state", () => {
@@ -206,6 +209,7 @@ describe("buildPlaylistParams", () => {
   it("round-trips include and exclude filters through parsePlaylistFilters", () => {
     const filters: PlaylistFilters = {
       name: "Weekend Reading",
+      query: "vr",
       works: { include: ["1", "2"], exclude: ["3"] },
       genres: { include: ["Hypertext"], exclude: ["Twine"] },
       keywords: { include: ["Poetry", "Archives"], exclude: [] },
@@ -398,6 +402,70 @@ describe("filterWorks", () => {
       withFilters({ yearExclude: { from: 2024, to: 2026 } }),
     );
     expect(ids(result)).toEqual(["3"]);
+  });
+
+  it("matches a free-text query across title, author, genre, and language", () => {
+    expect(ids(filterWorks(works, withFilters({ query: "vr" })))).toEqual(["1"]);
+    expect(ids(filterWorks(works, withFilters({ query: "story" })))).toEqual([
+      "3",
+    ]);
+    expect(ids(filterWorks(works, withFilters({ query: "jane doe" })))).toEqual([
+      "2",
+    ]);
+  });
+
+  it("combines a free-text query with facet filters using AND", () => {
+    const result = filterWorks(
+      works,
+      withFilters({
+        query: "story",
+        genres: { include: ["Hypertext"], exclude: [] },
+      }),
+    );
+    expect(ids(result)).toEqual([]);
+  });
+});
+
+describe("workMatchesQuery", () => {
+  it("matches across all fields by default", () => {
+    expect(ids(works.filter((w) => workMatchesQuery(w, "poetry")))).toEqual([
+      "1",
+      "3",
+    ]);
+  });
+
+  it("scopes to the title field", () => {
+    expect(ids(works.filter((w) => workMatchesQuery(w, "story", "title")))).toEqual(
+      ["3"],
+    );
+    expect(
+      works.filter((w) => workMatchesQuery(w, "poetry", "title")),
+    ).toHaveLength(0);
+  });
+
+  it("scopes to the author field", () => {
+    expect(ids(works.filter((w) => workMatchesQuery(w, "jane", "author")))).toEqual(
+      ["2"],
+    );
+  });
+
+  it("scopes to the genre field", () => {
+    expect(
+      ids(works.filter((w) => workMatchesQuery(w, "hypertext", "genre"))),
+    ).toEqual(["2"]);
+  });
+
+  it("scopes to the keyword field", () => {
+    expect(
+      ids(works.filter((w) => workMatchesQuery(w, "archives", "keyword"))),
+    ).toEqual(["2"]);
+    expect(
+      ids(works.filter((w) => workMatchesQuery(w, "poetry", "keyword"))),
+    ).toEqual(["1", "3"]);
+  });
+
+  it("matches every work for an empty query", () => {
+    expect(works.filter((w) => workMatchesQuery(w, "", "title"))).toHaveLength(3);
   });
 });
 
