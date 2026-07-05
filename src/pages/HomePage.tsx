@@ -20,7 +20,7 @@ export default function HomePage() {
             const title = work.workInformation.title;
             const coverSrc = assetUrl(work.mediaFilesInformation?.coverImage);
             const names = (work.entityInformation ?? [])
-              .filter((e) => e.entityType !== "group" && e.entityName)
+              .filter((e) => e.entityName)
               .map((e) => e.entityName);
             const authorName =
               names.length <= 1
