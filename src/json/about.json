@@ -9,7 +9,9 @@
     ],
     "team": [
       "Lyle Skains, Bournemouth University (Exhibition Co-Chair)",
-      "Daniel Cox, Illinois State University (Exhibition Co-Chair)"
+      "Daniel Cox, Illinois State University (Exhibition Co-Chair)",
+      "Richard Finch, University of Central Florida",
+      "Alyssa Barrack, University of Central Florida"
     ]
   },
   "statement": {
@@ -22,7 +24,7 @@
     "title": "Licenses and Software",
     "entries": [
       {
-        "prefix": "tagify: ",
+        "prefix": "tagify",
         "href": "https://github.com/yairEO/tagify/blob/master/LICENSE",
         "linkText": "License"
       }
@@ -36,5 +38,9 @@
     "language": "English",
     "ogType": "book_section",
     "twitterCard": "summary"
+  },
+  "credit": {
+    "history": "This exhibition software was originally created by John Murray for Electronic Literature Collection 4 (2022). It was then updated by John Murray and Dan Cox for use with the ELO 2024 online exhibition. ELMS metadata functionality was added by Dan Cox in 2025 and additional search and playlist functionality was added by Dan Cox in 2026.",
+    "metadata": "<p><a href='https://the-next.org/elms'>Extended eLectronic Metadata Schema (ELMS)</a> is a metadata schema developed by The NEXT. This exhibition software adapts ELMS 3.0 with changes to multiple major sections to create a more generic schema through extending description fields for more lay audiences and adding extensions for artificial intelligence metadata.</p>"
   }
 }

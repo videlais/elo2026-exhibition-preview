@@ -1,9 +1,10 @@
 import { Container } from "react-bootstrap";
 import PageLayout from "../components/PageLayout";
+import { RichTextBlock } from "../utils/richText";
 import aboutJson from "../json/about.json";
 
 export default function AboutPage() {
-  const { organizers, statement } = aboutJson;
+  const { organizers, statement, credit } = aboutJson;
 
   return (
     <PageLayout id="aboutMain">
@@ -29,8 +30,17 @@ export default function AboutPage() {
         <section aria-label={statement.title} className="elcContainer">
           <h2 className="aboutSubHeader">{statement.title}</h2>
           {statement.paragraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
+            <RichTextBlock key={index} content={paragraph} />
           ))}
+        </section>
+        <section aria-label="History" className="elcContainer mt-2">
+          <h2 className="aboutSubHeader">History</h2>
+          <RichTextBlock content={credit.history} />
+        </section>
+
+        <section aria-label="Metadata" className="elcContainer mt-2">
+          <h2 className="aboutSubHeader">Metadata</h2>
+          <RichTextBlock content={credit.metadata} />
         </section>
       </Container>
     </PageLayout>
