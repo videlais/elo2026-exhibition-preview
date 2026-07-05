@@ -4,6 +4,7 @@ import {
   buildPlaylistParams,
   collectGenres,
   collectKeywords,
+  collectLanguages,
   collectPlatforms,
   filterWorks,
   getYearRange,
@@ -29,6 +30,7 @@ function makeWork(overrides: {
   authors?: string[];
   genres?: string[];
   keywords?: string[];
+  languages?: string[];
   authoringPlatform?: string;
   publicationYear?: number;
   aiContent?: boolean;
@@ -47,6 +49,7 @@ function makeWork(overrides: {
       version: "ELO2026",
       versionId: Number(overrides.workId),
       genres: overrides.genres ?? [],
+      languages: overrides.languages ?? [],
       authoringPlatform: overrides.authoringPlatform,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       publicationYear: overrides.publicationYear as any,
@@ -75,6 +78,7 @@ const works: ELMSWork[] = [
     authors: ["Collier Nogues"],
     genres: ["interactive poetry", "immersive tour"],
     keywords: ["Poetry", "Interactive Arts"],
+    languages: ["English"],
     authoringPlatform: "A-Frame; 3DVista",
     publicationYear: 2026,
     aiContent: false,
@@ -86,6 +90,7 @@ const works: ELMSWork[] = [
     authors: ["Jane Doe"],
     genres: ["Hypertext", "Archival"],
     keywords: ["Archives"],
+    languages: ["English"],
     authoringPlatform: "HTML",
     publicationYear: 2024,
     aiContent: true,
@@ -96,6 +101,7 @@ const works: ELMSWork[] = [
     title: "Generative Story",
     genres: ["interactive fiction"],
     keywords: ["Poetry"],
+    languages: ["Spanish"],
     authoringPlatform: "Twine",
     publicationYear: 2020,
     aiContent: true,
@@ -130,7 +136,7 @@ describe("workAuthorText", () => {
 describe("parsePlaylistFilters", () => {
   it("reads all supported include and exclude params", () => {
     const params = new URLSearchParams(
-      "name=My%20Mix&q=poems&work=1,3&exWork=2&genre=Hypertext|Archival&exGenre=Twine&keyword=Poetry&exKeyword=Archives&platform=HTML&exPlatform=Unity&yearFrom=2020&yearTo=2025&exYearFrom=2010&exYearTo=2012&ai=content&exAi=none",
+      "name=My%20Mix&q=poems&work=1,3&exWork=2&genre=Hypertext|Archival&exGenre=Twine&keyword=Poetry&exKeyword=Archives&platform=HTML&exPlatform=Unity&language=English|Spanish&exLanguage=French&yearFrom=2020&yearTo=2025&exYearFrom=2010&exYearTo=2012&ai=content&exAi=none",
     );
     expect(parsePlaylistFilters(params)).toEqual<PlaylistFilters>({
       name: "My Mix",
@@ -139,6 +145,7 @@ describe("parsePlaylistFilters", () => {
       genres: { include: ["Hypertext", "Archival"], exclude: ["Twine"] },
       keywords: { include: ["Poetry"], exclude: ["Archives"] },
       platforms: { include: ["HTML"], exclude: ["Unity"] },
+      languages: { include: ["English", "Spanish"], exclude: ["French"] },
       yearInclude: { from: 2020, to: 2025 },
       yearExclude: { from: 2010, to: 2012 },
       aiInclude: "content",
@@ -214,6 +221,7 @@ describe("buildPlaylistParams", () => {
       genres: { include: ["Hypertext"], exclude: ["Twine"] },
       keywords: { include: ["Poetry", "Archives"], exclude: [] },
       platforms: { include: ["HTML"], exclude: ["Unity"] },
+      languages: { include: ["English"], exclude: ["Spanish"] },
       yearInclude: { from: 2020, to: 2026 },
       yearExclude: { from: 2000, to: 2005 },
       aiInclude: "used",
@@ -321,6 +329,22 @@ describe("filterWorks", () => {
       withFilters({ platforms: { include: ["3DVista"], exclude: [] } }),
     );
     expect(ids(result)).toEqual(["1"]);
+  });
+
+  it("matches an included language", () => {
+    const result = filterWorks(
+      works,
+      withFilters({ languages: { include: ["Spanish"], exclude: [] } }),
+    );
+    expect(ids(result)).toEqual(["3"]);
+  });
+
+  it("excludes works by language", () => {
+    const result = filterWorks(
+      works,
+      withFilters({ languages: { include: [], exclude: ["English"] } }),
+    );
+    expect(ids(result)).toEqual(["3"]);
   });
 
   it("filters by an include publication-year range", () => {
@@ -515,6 +539,10 @@ describe("facet collectors", () => {
       "HTML",
       "Twine",
     ]);
+  });
+
+  it("collects unique, sorted languages", () => {
+    expect(collectLanguages(works)).toEqual(["English", "Spanish"]);
   });
 
   it("computes the year range", () => {

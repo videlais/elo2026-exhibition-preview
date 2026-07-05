@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import "./index.css";
 import { ELMSVersionInformation } from "../../../types/elms/versionInformation";
+import SearchResultLink from "../../SearchResultLink";
 import {
   VersionInformationPopover,
   VersionPopover,
@@ -131,9 +132,39 @@ export default function VersionInformationCard(
 
           {sensoryModalities && sensoryModalities.length > 0 && <li className="mb-2"><strong>Sensory Modalities:</strong> {sensoryModalities.join(", ")} <SensoryModalitiesPopover /></li>}
 
-          {genres && genres.length > 0 && <li className="mb-2"><strong>Genres:</strong> {genres.join(", ")} <GenresPopover /></li>}
+          {genres && genres.length > 0 && (
+            <li className="mb-2">
+              <strong>Genres:</strong> <GenresPopover />
+              {genres.length > 1 ? (
+                <ul>
+                  {genres.map((genre) => (
+                    <li key={genre}>
+                      <SearchResultLink param="genre" value={genre} />
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <> <SearchResultLink param="genre" value={genres[0]} /></>
+              )}
+            </li>
+          )}
 
-          {languages && languages.length > 0 && <li className="mb-2"><strong>Languages:</strong> {languages.join(", ")} <LanguagesPopover /></li>}
+          {languages && languages.length > 0 && (
+            <li className="mb-2">
+              <strong>Languages:</strong> <LanguagesPopover />
+              {languages.length > 1 ? (
+                <ul>
+                  {languages.map((language) => (
+                    <li key={language}>
+                      <SearchResultLink param="language" value={language} />
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <> <SearchResultLink param="language" value={languages[0]} /></>
+              )}
+            </li>
+          )}
 
           {accessibility && <li className="mb-2"><strong>Accessibility:</strong> {accessibility} <AccessibilityPopover /></li>}
 

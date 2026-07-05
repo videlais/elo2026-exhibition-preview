@@ -21,6 +21,7 @@ export interface PlaylistFilters {
   genres: FacetSelection;
   keywords: FacetSelection;
   platforms: FacetSelection;
+  languages: FacetSelection;
   yearInclude: YearRangeSelection;
   yearExclude: YearRangeSelection;
   aiInclude: PlaylistAIFilter;
@@ -46,6 +47,7 @@ export const EMPTY_FILTERS: PlaylistFilters = {
   genres: emptyFacet(),
   keywords: emptyFacet(),
   platforms: emptyFacet(),
+  languages: emptyFacet(),
   yearInclude: {},
   yearExclude: {},
   aiInclude: "any",
@@ -111,6 +113,10 @@ export function parsePlaylistFilters(params: URLSearchParams): PlaylistFilters {
       include: splitParamValues(params.getAll("platform"), "|"),
       exclude: splitParamValues(params.getAll("exPlatform"), "|"),
     },
+    languages: {
+      include: splitParamValues(params.getAll("language"), "|"),
+      exclude: splitParamValues(params.getAll("exLanguage"), "|"),
+    },
     yearInclude: {
       from: parseYear(params.get("yearFrom")),
       to: parseYear(params.get("yearTo")),
@@ -140,6 +146,7 @@ export function hasActiveFilters(filters: PlaylistFilters): boolean {
     facetActive(filters.genres) ||
     facetActive(filters.keywords) ||
     facetActive(filters.platforms) ||
+    facetActive(filters.languages) ||
     yearActive(filters.yearInclude) ||
     yearActive(filters.yearExclude) ||
     filters.aiInclude !== "any" ||
@@ -169,6 +176,8 @@ export function buildPlaylistParams(filters: PlaylistFilters): URLSearchParams {
   setList("exKeyword", filters.keywords.exclude, "|");
   setList("platform", filters.platforms.include, "|");
   setList("exPlatform", filters.platforms.exclude, "|");
+  setList("language", filters.languages.include, "|");
+  setList("exLanguage", filters.languages.exclude, "|");
 
   if (filters.yearInclude.from !== undefined) {
     params.set("yearFrom", String(filters.yearInclude.from));
@@ -213,6 +222,10 @@ function workKeywords(work: ELMSWork): string[] {
 
 function workPlatforms(work: ELMSWork): string[] {
   return lower(splitPlatforms(work.versionInformation?.authoringPlatform));
+}
+
+function workLanguages(work: ELMSWork): string[] {
+  return lower(work.versionInformation?.languages ?? []);
 }
 
 /** A field the free-text query can be scoped to. "all" searches every field below. */
@@ -315,6 +328,7 @@ function hasIncludeFacets(filters: PlaylistFilters): boolean {
     filters.genres.include.length > 0 ||
     filters.keywords.include.length > 0 ||
     filters.platforms.include.length > 0 ||
+    filters.languages.include.length > 0 ||
     yearActive(filters.yearInclude) ||
     filters.aiInclude !== "any"
   );
@@ -349,6 +363,12 @@ function matchesIncludeFacets(work: ELMSWork, filters: PlaylistFilters): boolean
     return false;
   }
   if (
+    filters.languages.include.length > 0 &&
+    !matchesAny(workLanguages(work), filters.languages.include)
+  ) {
+    return false;
+  }
+  if (
     yearActive(filters.yearInclude) &&
     !yearInRange(workYear(work), filters.yearInclude)
   ) {
@@ -376,6 +396,7 @@ function matchesAnyExclude(work: ELMSWork, filters: PlaylistFilters): boolean {
   if (matchesAny(workGenres(work), filters.genres.exclude)) return true;
   if (matchesAny(workKeywords(work), filters.keywords.exclude)) return true;
   if (matchesAny(workPlatforms(work), filters.platforms.exclude)) return true;
+  if (matchesAny(workLanguages(work), filters.languages.exclude)) return true;
   if (yearInRange(workYear(work), filters.yearExclude)) return true;
   if (filters.aiExclude !== "any" && matchesAI(work, filters.aiExclude)) {
     return true;
@@ -459,6 +480,13 @@ export function collectPlatforms(works: ELMSWork[]): string[] {
     works.flatMap((work) =>
       splitPlatforms(work.versionInformation?.authoringPlatform),
     ),
+  );
+}
+
+/** Unique, sorted list of all languages present across works. */
+export function collectLanguages(works: ELMSWork[]): string[] {
+  return collectSorted(
+    works.flatMap((work) => work.versionInformation?.languages ?? []),
   );
 }
 

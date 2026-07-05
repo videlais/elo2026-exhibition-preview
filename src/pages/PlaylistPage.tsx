@@ -9,6 +9,7 @@ import {
   buildPlaylistParams,
   collectGenres,
   collectKeywords,
+  collectLanguages,
   collectPlatforms,
   EMPTY_FILTERS,
   filterWorks,
@@ -236,6 +237,7 @@ function PlaylistBuilder({
   const genres = useMemo(() => collectGenres(works), [works]);
   const keywords = useMemo(() => collectKeywords(works), [works]);
   const platforms = useMemo(() => collectPlatforms(works), [works]);
+  const languages = useMemo(() => collectLanguages(works), [works]);
   const yearRange = useMemo(() => getYearRange(works), [works]);
 
   const matchCount = useMemo(
@@ -251,7 +253,7 @@ function PlaylistBuilder({
     }));
 
   const toggleFacet = (
-    key: "genres" | "keywords" | "platforms",
+    key: "genres" | "keywords" | "platforms" | "languages",
     value: string,
     mode: FacetMode,
   ) =>
@@ -492,6 +494,14 @@ function PlaylistBuilder({
           onToggle={(value, mode) => toggleFacet("platforms", value, mode)}
         />
 
+        <FacetGroup
+          legend="Language"
+          name="language"
+          options={languages}
+          selection={draft.languages}
+          onToggle={(value, mode) => toggleFacet("languages", value, mode)}
+        />
+
         <fieldset className="mb-4">
           <legend className="h6 mb-2">Artificial Intelligence Usage</legend>
           <AIModeGroup
@@ -601,6 +611,7 @@ function PlaylistGallery({
   pushFacet(filters.genres, "Genre");
   pushFacet(filters.keywords, "Keyword");
   pushFacet(filters.platforms, "Platform");
+  pushFacet(filters.languages, "Language");
   if (filters.yearInclude.from !== undefined || filters.yearInclude.to !== undefined) {
     const from = filters.yearInclude.from ?? "…";
     const to = filters.yearInclude.to ?? "…";

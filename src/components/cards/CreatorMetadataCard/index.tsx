@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import { ELMSCreatorMetadataInformation } from "../../../types/elms/creatorMetadataInformation";
 import { RichTextBlock } from "../../../utils/richText";
+import SearchResultLink from "../../SearchResultLink";
 import {
   CreatorMetadataInformationPopover,
   CreatorKeywordsPopover,
@@ -32,7 +33,9 @@ export default function CreatorMetadataInformationCard(
             <h3>Keywords <CreatorKeywordsPopover /></h3>
             <ul>
               {creatorKeywords.map((keyword, index) => (
-                <li key={index}>{keyword}</li>
+                <li key={index}>
+                  <SearchResultLink param="keyword" value={keyword} />
+                </li>
               ))}
             </ul>
           </>
