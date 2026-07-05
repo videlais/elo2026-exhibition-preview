@@ -49,7 +49,7 @@ export default function SearchPage() {
             return (
               <Col key={workId} xs={12} sm={6} md={4} xl={2} role="listitem">
                 <article className="galleryCard h-100">
-                  <Link to={`/${workId}`} aria-label={`View ${title} by ${authorName}`}>
+                  <Link to={`/work/${workId}`} aria-label={`View ${title} by ${authorName}`}>
                     {coverSrc && (
                       <img
                         src={coverSrc}
