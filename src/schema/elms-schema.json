@@ -590,7 +590,7 @@
           "format": "uri",
           "x-widget": "media-upload",
           "x-media-type": "video",
-          "description": "A recorded video traversal of the work (MP4, WebM, or MOV, max 5 GB). Please keep the total runtime less than 20 minutes. If you have a video that exceeds the size limit, please contact the organizers for alternative arrangements."
+          "description": "A traversal is one or more 'video and audio recordings of a digital text showing its possibilities, capabilities, and functionality.'"
         }
       },
       "required": ["coverImage", "traversalVideo"]

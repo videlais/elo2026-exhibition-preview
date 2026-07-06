@@ -46,7 +46,7 @@ export default function MediaFilesInformationCard(
                     Your browser does not support the video tag.
                   </video>
                 ) : (
-                  <strong>No traversal included.</strong>
+                  <strong>No individual traversal included in current collection. The entry may be a larger sub-collection of works or contain its own recorded traversals.</strong>
                 )}
               </div>
             </Col>
