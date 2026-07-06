@@ -824,9 +824,7 @@
       "peripheralDependencies": [
         "Speakers to experience dialogue, music, and sound effects"
       ],
-      "computerLanguages": [
-        "English"
-      ],
+      "computerLanguages": [],
       "digitalQualities": [],
       "sensoryModalities": [],
       "genres": [
@@ -879,7 +877,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/10.png",
-      "traversalVideo": ""
+      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/10.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2070,7 +2068,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/22.jpg",
-      "traversalVideo": ""
+      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/22.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2463,7 +2461,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/26.png",
-      "traversalVideo": ""
+      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/26.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
