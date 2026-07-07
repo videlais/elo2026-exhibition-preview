@@ -4065,14 +4065,29 @@
     ],
     "worksExternalLinksInformation": [
       {
-        "externalLinkName": "Website",
+        "externalLinkName": "Cicada Mountain",
         "externalLinkId": 1,
-        "externalLinkUrl": "https://www.accumulations.online/livinghosts/"
+        "externalLinkUrl": "https://www.daniellichtman.com/cicada-mountain/"
+      },
+      {
+        "externalLinkName": "The home-life of the spoonbill, the stork and some herons",
+        "externalLinkId": 2,
+        "externalLinkUrl": "https://www.accumulations.online/pearls-and-parasites/homelife/index.html"
+      },
+      {
+        "externalLinkName": "Pearls and Parasites",
+        "externalLinkId": 3,
+        "externalLinkUrl": "https://www.accumulations.online/pearls-and-parasites/pearl.html"
+      },
+      {
+        "externalLinkName": "Our Humble Helpers",
+        "externalLinkId": 4,
+        "externalLinkUrl": "https://www.newmediartspace.info/exhibitions/2025_love-exe/our-humble-helpers.html"
       }
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/42.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/42.mp4"
+      "traversalVideo": ""
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
