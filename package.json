@@ -38,6 +38,7 @@
     "build:works": "tsx scripts/build-works.mts",
     "validate": "tsx scripts/validate-works.mts",
     "verify:videos": "node scripts/verify-deployed-videos.mjs",
+    "shrink:videos": "node scripts/shrink-videos.mjs",
     "predeploy:gh": "VITE_APP_BASE_PATH=/elo2026-exhibition-preview/ npm run build:full",
     "deploy:gh": "gh-pages -d build",
     "all": "npm run build:works && npm run lint && npm run type-check && npm run validate && npm run test"
