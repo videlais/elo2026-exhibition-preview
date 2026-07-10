@@ -1,0 +1,121 @@
+# Cuts a versioned, deployable release of the whole site.
+#
+# Trigger: a push to main whose commit message contains "[release]" (or a manual
+# "Run workflow"). When triggered it:
+#   1. bumps the minor version in package.json (npm version minor) and tags it,
+#   2. pulls the traversal videos from the "media-v1" Release into public/videos/mp4,
+#   3. builds the full pre-rendered site (client + SSR + prerender) for the
+#      external base path (/mediaartsexhibits/elo2026/),
+#   4. zips build/ (including .htaccess and the videos), and
+#   5. publishes a GitHub Release for the new version with the zip attached, then
+#      pushes the version-bump commit + tag back to main.
+#
+# The bump commit message includes "[skip ci]" so it does not re-trigger any
+# workflow. NOTE: the packaged zip includes ~2 GB of video; if it exceeds the
+# per-asset limit for the repo, switch to site-only packaging or split the videos.
+
+name: Release
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    # Only run on manual dispatch or when the pushed commit asks for a release.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.head_commit.message, '[release]')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Must match the deployment location so asset URLs and .htaccess line up.
+      VITE_APP_BASE_PATH: /mediaartsexhibits/elo2026/
+      # Release that holds the traversal videos as NN.mp4 assets.
+      MEDIA_RELEASE_TAG: media-v1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Bump minor version
+        id: bump
+        run: |
+          # Requires a clean tree; creates a commit and a vX.Y.Z tag locally.
+          VERSION="$(npm version minor -m 'chore(release): %s [skip ci]')"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Bumped to $VERSION"
+
+      - name: Download traversal videos from media release
+        run: |
+          mkdir -p public/videos/mp4
+          gh release download "$MEDIA_RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --dir public/videos/mp4 \
+            --pattern '*.mp4' \
+            --clobber
+          echo "Downloaded $(ls public/videos/mp4/*.mp4 | wc -l) videos."
+
+      - name: Build full site
+        run: npm run build:full
+
+      - name: Package build into a zip
+        id: package
+        run: |
+          VERSION="${{ steps.bump.outputs.version }}"
+          ZIP="elo2026-site-${VERSION}.zip"
+          # Zip the contents of build/ (dotfiles like .htaccess/.nojekyll included).
+          ( cd build && zip -r -q "../${ZIP}" . )
+          SHA="$(shasum -a 256 "${ZIP}" | cut -d' ' -f1)"
+          echo "zip=${ZIP}" >> "$GITHUB_OUTPUT"
+          echo "sha256=${SHA}" >> "$GITHUB_OUTPUT"
+          ls -lh "${ZIP}"
+
+      - name: Push version bump and tag
+        run: git push --follow-tags origin HEAD:main
+
+      - name: Create GitHub Release with deployable zip
+        run: |
+          VERSION="${{ steps.bump.outputs.version }}"
+          ZIP="${{ steps.package.outputs.zip }}"
+          SHA="${{ steps.package.outputs.sha256 }}"
+          gh release create "$VERSION" "$ZIP" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "$VERSION" \
+            --notes "$(cat <<EOF
+          Deployable build of the ELO 2026 exhibition site, including the traversal
+          videos and the Apache \`.htaccess\` routing config.
+
+          **To deploy:** download \`${ZIP}\`, unzip it, and upload the extracted
+          contents to the site root on the web server (so \`index.html\` and
+          \`.htaccess\` sit at \`/mediaartsexhibits/elo2026/\`).
+
+          Built with base path \`${VITE_APP_BASE_PATH}\`.
+
+          \`SHA-256 (${ZIP})\`: \`${SHA}\`
+          EOF
+          )"
