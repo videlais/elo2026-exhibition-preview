@@ -16,8 +16,8 @@ function ensureCitationTemplatesRegistered() {
   }
 
   const cslConfig = plugins.config.get("@csl");
-  cslConfig.templates.add("mla", mlaTemplate);
-  cslConfig.templates.add("chicago", chicagoTemplate);
+  cslConfig.styles.add("mla", mlaTemplate);
+  cslConfig.styles.add("chicago", chicagoTemplate);
 
   const btConfig = plugins.config.get("@bibtex");
   btConfig.constants.fieldTypes.doi = ["field", "literal"];
