@@ -5,6 +5,7 @@ import { describe, it } from "vitest";
 // components. Many only appear on a work page when their specific field is
 // populated, so rendering each one directly covers the rare-field popovers.
 import * as AiPopovers from "../src/components/cards/ArtificialIntelligenceInformation/Popovers";
+import * as AccessibilityPopovers from "../src/components/cards/AccessibilityInformationCard/Popovers";
 import * as CreatorPopovers from "../src/components/cards/CreatorMetadataCard/Popovers";
 import * as EntityPopovers from "../src/components/cards/EntityInformationCard/Popovers";
 import * as MediaPopovers from "../src/components/cards/MediaFilesInformationCard/Popovers";
@@ -14,6 +15,7 @@ import * as ExternalLinksPopovers from "../src/components/cards/WorksExternalLin
 
 const modules: Record<string, Record<string, unknown>> = {
   ArtificialIntelligenceInformation: AiPopovers,
+  AccessibilityInformationCard: AccessibilityPopovers,
   CreatorMetadataCard: CreatorPopovers,
   EntityInformationCard: EntityPopovers,
   MediaFilesInformationCard: MediaPopovers,

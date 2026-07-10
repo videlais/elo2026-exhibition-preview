@@ -5,6 +5,7 @@ import PageLayout from "../components/PageLayout";
 import NotFound from "../components/errors/NotFound";
 import useWorks from "../hooks/useWorks";
 import VersionInformationCard from "../components/cards/VersionInformationCard";
+import AccessibilityInformationCard from "../components/cards/AccessibilityInformationCard";
 import MediaFilesInformationCard from "../components/cards/MediaFilesInformationCard";
 import EntityInformationCard from "../components/cards/EntityInformationCard";
 import ArtificialIntelligenceInformationCard from "../components/cards/ArtificialIntelligenceInformation";
@@ -50,6 +51,12 @@ export default function WorkPage() {
         <Row className="g-3">
           <Col xs={12} md={12}>
             <VersionInformationCard {...work.versionInformation} />
+          </Col>
+        </Row>
+
+        <Row className="g-3">
+          <Col xs={12} md={12}>
+            <AccessibilityInformationCard {...work.accessibilityInformation} />
           </Col>
         </Row>
 
