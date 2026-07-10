@@ -79,7 +79,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/01.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/01.mp4"
+      "traversalVideo": "/videos/mp4/01.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -252,7 +252,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/03.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/03.mp4"
+      "traversalVideo": "/videos/mp4/03.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -337,7 +337,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/04.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/04.mp4"
+      "traversalVideo": "/videos/mp4/04.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -445,7 +445,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/05.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/05.mp4"
+      "traversalVideo": "/videos/mp4/05.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -525,7 +525,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/06.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/06.mp4"
+      "traversalVideo": "/videos/mp4/06.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -602,7 +602,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/07.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/07.mp4"
+      "traversalVideo": "/videos/mp4/07.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -631,7 +631,7 @@
       "title": "Talan Memmott: Works on Screen, 1998-2016",
       "workId": "8",
       "workDescription": "<p>This online exhibition created by members of the Electronic Literature Lab and curated by Dene Grigar features works of net art by Talan Memmott held by The NEXT that explores the aesthetic of code, language, and code language. Supported by funding from the Society of American Archivists (SAA), the exhibition was conceived when the lab was conducting formal video recordings, called Traversals, of works Memmott had produced on the Shockwave platform and others that were no longer accessible on contemporary computers. In conversation with the artist, it was clear that The NEXT held what may be the only copies of some of Memmott&#39;s net art output dating back to his earliest pieces, including the highly regarded &quot;Lexia to Perplexia.&quot; Along with direct access to many of Memmott&#39;s works, visitors will also find those preserved via Traversals. Additionally, the exhibition features video testimonials, criticism about his work, ephemera, and video and sound recordings of his performances.</p>",
-      "curatorialStatement": "<p>PENDING</p>",
+      "curatorialStatement": "<p><em>Talan Memmott: Works on Screen, 1998-2016</em> gathers thirteen works of electronic literature by a foundational figure of the field, drawn from seven of The NEXT&#39;s collections and presented as one of the archive&#39;s &quot;Treasures&quot; exhibitions. Curated by Dene Grigar with the Electronic Literature Lab, the exhibition spans nearly two decades of Memmott&#39;s output, from the DHTML experiments of &quot;Bread.Crumbs&quot; and &quot;Jilt; a Romance&quot; in 1998 to the later &quot;Toy Garbage&quot; and &quot;Dérivepedia,&quot; and situates each piece within the journals that first published it. Its title borrows the language of the gallery — &quot;works on paper&quot; — to insist on the screen as Memmott&#39;s chosen medium: the monitor his canvas, its resolution his frame, and its affordances the material properties through which the art was made.</p>\n<p>Organised around preservation as an act of care, the exhibition treats the collection itself as a work, one composed as much of maintenance as of curation. Where obsolescence, browser wars, and the retirement of Flash and DHTML have rendered pieces like &quot;Lexia to Perplexia&quot; and &quot;Translucidity&quot; partially or wholly inaccessible, the lab restages them through Ruffle and through formal Traversals, video performances recorded on period hardware following the Pathfinders methodology. In holding what may be the only surviving copies of some of these works, and in documenting the labour required to keep them legible, <em>Talan Memmott: Works on Screen, 1998-2016</em> offers a reflection on how a canonical body of born-digital art endures: not as fixed objects but as an ongoing practice of custody, performance, and return.</p>",
       "instructions": "",
       "documentationLicense": ""
     },
@@ -782,7 +782,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/09.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/09.mp4"
+      "traversalVideo": "/videos/mp4/09.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -877,7 +877,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/10.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/10.mp4"
+      "traversalVideo": "/videos/mp4/10.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -990,7 +990,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/11.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/11.mp4"
+      "traversalVideo": "/videos/mp4/11.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1078,7 +1078,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/12.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/12.mp4"
+      "traversalVideo": "/videos/mp4/12.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1164,7 +1164,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/13.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/13.mp4"
+      "traversalVideo": "/videos/mp4/13.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1269,7 +1269,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/14.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/14.mp4"
+      "traversalVideo": "/videos/mp4/14.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1375,7 +1375,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/15.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/15.mp4"
+      "traversalVideo": "/videos/mp4/15.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -1470,7 +1470,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/16.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/16.mp4"
+      "traversalVideo": "/videos/mp4/16.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1563,7 +1563,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/17.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/17.mp4"
+      "traversalVideo": "/videos/mp4/17.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1643,7 +1643,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/18.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/18.mp4"
+      "traversalVideo": "/videos/mp4/18.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1762,7 +1762,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/19.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/19.mp4"
+      "traversalVideo": "/videos/mp4/19.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1887,7 +1887,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/20.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/20.mp4"
+      "traversalVideo": "/videos/mp4/20.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -1983,7 +1983,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/21.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/21.mp4"
+      "traversalVideo": "/videos/mp4/21.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2068,7 +2068,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/22.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/22.mp4"
+      "traversalVideo": "/videos/mp4/22.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2188,7 +2188,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/23.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/23.mp4"
+      "traversalVideo": "/videos/mp4/23.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2294,7 +2294,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/24.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/24.mp4"
+      "traversalVideo": "/videos/mp4/24.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2375,7 +2375,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/25.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/25.mp4"
+      "traversalVideo": "/videos/mp4/25.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2461,7 +2461,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/26.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/26.mp4"
+      "traversalVideo": "/videos/mp4/26.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -2579,7 +2579,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/27.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/27.mp4"
+      "traversalVideo": "/videos/mp4/27.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2668,7 +2668,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/28.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/28.mp4"
+      "traversalVideo": "/videos/mp4/28.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2692,7 +2692,7 @@
       "title": "Italo Calvino's Invisible Cities And A Generative World",
       "workId": "29",
       "workDescription": "<p>Half a century ago, the Italian writer Italo Calvino asked: &quot;Will I ever be able to say &#39;it&#39;s writing today,&#39; precisely as one says &#39;it&#39;s raining today&#39;?&quot; In 2026, we find ourselves inhabiting the reality of that forecast; a new genre of writing and a new species of author have entered the literary realm: the machine—or more specifically, generative artificial intelligence. As an aesthetic response to this technological reality, our project presents a computational reimagining of Calvino&#39;s 1972 novel <em>Invisible Cities</em> and traces the genealogy of human-machine co-authorship back to his 1967 essay &quot;Cybernetics and Ghosts,&quot; which envisioned a combinatorial &quot;literature machine&quot; capable of exhausting every narrative permutation. Developed using multimodal Gemini models, this interactive prototype attempts to realize Calvino&#39;s vision of automatic writing within the infinite corridors of modern liminal space aesthetics. The system mirrors the dialogic structure of Calvino&#39;s novel, in which the Mongol emperor Kublai Khan commissions the Venetian traveler Marco Polo to describe the cities he has encountered on his journey. In our prototype, the user assumes the role of the emperor and commissions a generative AI—our algorithmic Marco Polo—to construct infinite liminal architectures of the modern world. The interface then translates these textual descriptions into visual imagery of contemporary liminal space aesthetics. The reader-user can then navigate the cities they have co-created within a dynamic 3D web environment, materializing the act of reading into an exploration, a wandering through a physical liminal space. The dialogic structure also serves as a direct tribute to ELIZA, the world&#39;s first conversational computer program. Through this setup, we hope modern readers can experience the birth of a collaborative, distributed authorship: one that ricochets, like a ping-pong ball, between human and machine.</p>",
-      "curatorialStatement": "<p>PENDING</p>",
+      "curatorialStatement": "<p><em>Calvino&#39;s Invisible Cities as a Generative World</em> remediates Italo Calvino&#39;s <em>Invisible Cities</em> through the aesthetics of backrooms and twisting corridors. Drawing on the framing structure of the book, the work casts a language model in the role of Marco Polo, narrating the infinite architecture of its re-imagined digital spaces as the user moves through them.</p>\n<p>Organised around the liminality of the &quot;inside&quot;, the work transforms Calvino&#39;s imagined empire of impossible cities into a succession of forgotten industrial and corporate interiors. Just as Calvino frames the fantastic through Marco Polo&#39;s recounting of strange places, <em>Calvino&#39;s Invisible Cities as a Generative World</em> pairs the uncanny, half-remembered spaces of the present with the same dreamlike desire to find hidden rooms and vanished cities. The work offers a reflection on how generative systems can extend a combinatorial literary tradition, rendering the search for invisible cities as an endless, machine-narrated architecture.</p>",
       "instructions": "",
       "documentationLicense": ""
     },
@@ -2775,7 +2775,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/29.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/29.mp4"
+      "traversalVideo": "/videos/mp4/29.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -2874,7 +2874,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/30.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/30.mp4"
+      "traversalVideo": "/videos/mp4/30.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -2975,7 +2975,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/31.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/31.mp4"
+      "traversalVideo": "/videos/mp4/31.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -3076,7 +3076,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/32.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/32.mp4"
+      "traversalVideo": "/videos/mp4/32.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -3189,7 +3189,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/33.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/33.mp4"
+      "traversalVideo": "/videos/mp4/33.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -3307,7 +3307,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/34.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/34.mp4"
+      "traversalVideo": "/videos/mp4/34.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -3409,7 +3409,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/35.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/35.mp4"
+      "traversalVideo": "/videos/mp4/35.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -3503,7 +3503,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/36.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/36.mp4"
+      "traversalVideo": "/videos/mp4/36.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -3594,7 +3594,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/37.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/37.mp4"
+      "traversalVideo": "/videos/mp4/37.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -3694,7 +3694,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/38.jpg",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/38.mp4"
+      "traversalVideo": "/videos/mp4/38.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -3796,7 +3796,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/39.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/39.mp4"
+      "traversalVideo": "/videos/mp4/39.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -3878,7 +3878,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/40.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/40.mp4"
+      "traversalVideo": "/videos/mp4/40.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -3988,7 +3988,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/41.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/41.mp4"
+      "traversalVideo": "/videos/mp4/41.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -4087,7 +4087,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/42.png",
-      "traversalVideo": ""
+      "traversalVideo": "/videos/mp4/42.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -4187,7 +4187,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/43.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/43.mp4"
+      "traversalVideo": "/videos/mp4/43.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -4312,7 +4312,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/44.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/44.mp4"
+      "traversalVideo": "/videos/mp4/44.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -4393,7 +4393,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/45.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/45.mp4"
+      "traversalVideo": "/videos/mp4/45.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,
@@ -4461,7 +4461,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/46.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/46.mp4"
+      "traversalVideo": "/videos/mp4/46.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -4580,7 +4580,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/47.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/47.mp4"
+      "traversalVideo": "/videos/mp4/47.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": false,
@@ -4603,7 +4603,7 @@
     "workInformation": {
       "title": "Get Lost",
       "workId": "48",
-      "workDescription": "<p><em>Get Lost</em> is a hypertextual poetic journal project. It is a work-in-progress in which I use web development as a writing tool, with the idea that the programming technique is roughly the same since the beginning of the Internet. This kind of technical timelessness of digital technology (simple HTML code, CSS, and JavaScript) intersects with the reflections and ideas recorded in this journal, which evokes my daily life in a very current reality, in terms of the social and political situation and the ideological divisions that arise from it. My very personal relationship with artistic creation is intertwined with the more general observation that we are living in complex times, where violence, hatred, injustice, and the destruction of ecosystems seem almost inevitable.  </p>\n<p>The title <em>Get Lost</em> evokes ideological confrontation, rejection of others, but more broadly, the idea of losing oneself, which is both a source of renewal, according to the situationist theory (that is to say, Guy Debord and the Situationist International movement), but also a labyrinth from which one must try to escape, despite everything.  </p>\n<p>The current version is only a prototype. The appearance and aesthetics will be worked on using CSS. But the basic idea of a non-linear journal is already in place. The use of hyperlinks will, in a way, create a second narrative that links the pages together, while gradually enhancing the first level of narrative. Eventually, I plan to add images (mainly calligraphy and drawing). This will allow me to highlight the act of scribbling, writing by hand, and drawing. I want to incorporate traces of these gestures as elements of performance that are integrated into the narrative of the journal. These images will allow the audience to vary the pace of viewing and reading. I also use a few emojis, because they are an integral part of web culture, and because they are emblematic of the relationship with images in contemporary communication.</p>\n<p>Some generative AI (mostly Gemini) has been used to help in the coding of the piece.</p>\n<p>Even tough the project is mainly in English, it also contains parts in French and Kréyol gwadloupèyen. As a Québécois (French Canadian) who lived in France for a while then got married to someone from Gwadloup in the West Indies, code switching and the blending of languages and cultures is part of my life. I decided to keep this multilingual mix in the work instead of translating everything, in order to better represent this reality. The semantic ambiguity is therefore an integral part of the work. Furthermore, colonialism is intrinsically hidden beneath linguistic issues, and I did not want a complete translation to mask this aspect.</p>",
+      "workDescription": "<p><em>Get Lost</em> is a hypertextual poetic journal project. It is a work-in-progress in which I use web development as a writing tool, with the idea that the programming technique is roughly the same since the beginning of the Internet. This kind of technical timelessness of digital technology (simple HTML code, CSS, and JavaScript) intersects with the reflections and ideas recorded in this journal, which evokes my daily life in a very current reality, in terms of the social and political situation and the ideological divisions that arise from it. My very personal relationship with artistic creation is intertwined with the more general observation that we are living in complex times, where violence, hatred, injustice, and the destruction of ecosystems seem almost inevitable.  </p>\n<p>The title <em>Get Lost</em> evokes ideological confrontation, rejection of others, but more broadly, the idea of losing oneself, which is both a source of renewal, according to the situationist theory (that is to say, Guy Debord and the Situationist International movement), but also a labyrinth from which one must try to escape, despite everything.  </p>\n<p>The current version is only a prototype. The appearance and aesthetics will be worked on using CSS. But the basic idea of a non-linear journal is already in place. The use of hyperlinks will, in a way, create a second narrative that links the pages together, while gradually enhancing the first level of narrative. Eventually, I plan to add images (mainly calligraphy and drawing). This will allow me to highlight the act of scribbling, writing by hand, and drawing. I want to incorporate traces of these gestures as elements of performance that are integrated into the narrative of the journal. These images will allow the audience to vary the pace of viewing and reading. I also use a few emojis, because they are an integral part of web culture, and because they are emblematic of the relationship with images in contemporary communication.</p>\n<p>Some generative AI (mostly Gemini) has been used to help in the coding of the piece.</p>\n<p>Even though the project is mainly in English, it also contains parts in French and Kréyol gwadloupèyen. As a Québécois (French Canadian) who lived in France for a while then got married to someone from Gwadloup in the West Indies, code switching and the blending of languages and cultures is part of my life. I decided to keep this multilingual mix in the work instead of translating everything, in order to better represent this reality. The semantic ambiguity is therefore an integral part of the work. Furthermore, colonialism is intrinsically hidden beneath linguistic issues, and I did not want a complete translation to mask this aspect.</p>",
       "curatorialStatement": "<p><em>Get Lost</em> interweaves personal journal entries with news-related stories to build a labyrinthine maze of loops and combinatorial poetic forms. Drawing on the author&#39;s own reflections alongside observations of violence and injustice, the work holds the reader within a cycle of semantic ambiguity, shifting between English, French, and Kréyol gwadloupèyen. This movement across languages unsettles both the reader&#39;s position within the work and their grasp of the text itself, producing a deliberate interpretational drift in which meaning is continually deferred.</p>\n<p>That disorientation is enacted at the level of structure. Composed as a collection of linked HTML files, the work circulates a repeating set of phrases, moving the reader from static passages into moments of dynamic, shifting text and disrupting the convention of the single, self-contained interactive page. In doing so, <em>Get Lost</em> makes navigation itself a form of meaning-making, offering a reflection on how multilingual, combinatorial writing can render the experience of dislocation as something the reader must move through rather than resolve.</p>",
       "instructions": "",
       "documentationLicense": ""
@@ -4651,7 +4651,7 @@
     ],
     "mediaFilesInformation": {
       "coverImage": "/images/works/cover/48.png",
-      "traversalVideo": "https://github.com/videlais/elo2026-exhibition-preview/releases/download/media-v1/48.mp4"
+      "traversalVideo": "/videos/mp4/48.mp4"
     },
     "artificialIntelligenceInformation": {
       "artificialIntelligenceGeneratedContent": true,

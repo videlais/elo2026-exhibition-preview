@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import path from 'path';
 
-const rawBasePath = process.env.VITE_APP_BASE_PATH || '/';
+const rawBasePath = process.env.VITE_APP_BASE_PATH || '/mediaartsexhibits/elo2026/';
 const normalizedBasePath = rawBasePath.endsWith('/') ? rawBasePath : `${rawBasePath}/`;
 
 export default defineConfig(({ isSsrBuild }) => ({

@@ -149,5 +149,9 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
+# Vite build output (generated from source + public/; deployed to gh-pages branch).
+# Not committed to main so the large public/videos/ MP4s aren't duplicated here.
+/build/
+
 # Transcoded traversal videos (uploaded to GitHub Releases, not committed)
 video-dist/

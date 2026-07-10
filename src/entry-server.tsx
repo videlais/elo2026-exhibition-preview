@@ -29,8 +29,13 @@ export function getStaticRoutes(): string[] {
   return [...staticRoutes, ...workRoutes];
 }
 
-export function render(url: string, base = ""): { html: string } {
+export function render(
+  url: string,
+  base = (import.meta.env.BASE_URL ?? "/").replace(/\/+$/, ""),
+): { html: string } {
   const helmetContext: Record<string, unknown> = {};
+  // BrowserRouter/StaticRouter share a basename without a trailing slash.
+  const basename = base || "/";
 
   const siteJsonLd = {
     "@context": "https://schema.org",
@@ -91,7 +96,7 @@ export function render(url: string, base = ""): { html: string } {
         <script type="application/ld+json">{JSON.stringify(siteJsonLd)}</script>
       </Helmet>
       <ThemeProvider>
-        <StaticRouter location={url} basename={base}>
+        <StaticRouter location={`${base}${url}`} basename={basename}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/search" element={<SearchPage />} />
