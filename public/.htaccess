@@ -1,0 +1,28 @@
+# Apache configuration for the pre-rendered single-page app.
+#
+# Each route is pre-rendered to its own <route>/index.html, but direct visits and
+# deep links must always resolve to an app shell so React Router can take over on
+# the client. Without this, Apache returns 403 Forbidden for any directory that
+# has no index.html (e.g. /work/, or /work/<id>/ when that page was not uploaded)
+# and 404 for client-only routes.
+#
+# This file is copied verbatim from public/ into the build/ root by Vite, so it
+# lands at the deployed site root alongside index.html.
+#
+# IMPORTANT: the two absolute paths below must match the deployed base URL
+# (VITE_APP_BASE_PATH). They are set for:
+#   https://projects.cah.ucf.edu/mediaartsexhibits/elo2026/
+# If the site is deployed under a different path, update both paths to match.
+
+# Serve <dir>/index.html when it exists; otherwise fall back to the app shell
+# instead of returning 403 for an empty or index-less directory.
+DirectoryIndex index.html /mediaartsexhibits/elo2026/index.html
+
+# For any request that does not map to a real file, serve the app shell (HTTP 200)
+# so client-side routing can resolve the path.
+FallbackResource /mediaartsexhibits/elo2026/index.html
+
+# Do not expose raw directory listings.
+# If this line causes an HTTP 500 error, the server's AllowOverride does not permit
+# Options in .htaccess; remove this single line (the two directives above still work).
+Options -Indexes
