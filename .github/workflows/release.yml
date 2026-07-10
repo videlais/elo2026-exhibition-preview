@@ -65,10 +65,19 @@ jobs:
       - name: Bump minor version
         id: bump
         run: |
-          # Requires a clean tree; creates a commit and a vX.Y.Z tag locally.
-          VERSION="$(npm version minor -m 'chore(release): %s [skip ci]')"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "Bumped to $VERSION"
+          # For visibility if anything unexpectedly modified tracked files.
+          echo "Working tree status before bump:"
+          git status --porcelain || true
+          # Bump package.json WITHOUT any git operations, so an unrelated dirty
+          # tree (e.g. install side effects) can't abort the release. We then
+          # commit only the version files ourselves and tag manually.
+          npm version minor --no-git-tag-version
+          VERSION="v$(node -p "require('./package.json').version")"
+          git add package.json package-lock.json
+          git commit -m "chore(release): ${VERSION} [skip ci]"
+          git tag "${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Bumped to ${VERSION}"
 
       - name: Download traversal videos from media release
         run: |
