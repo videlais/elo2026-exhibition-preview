@@ -2314,8 +2314,8 @@
     "workInformation": {
       "title": "Bureau of Emotional Statistics (Part III of FRACTALIZE)",
       "workId": "26",
-      "workDescription": "<p><em>Bureau of Emotional Statistics</em> is a poetic hypermedia narrative experiment disguised as a bureaucratic department — a fictional office dedicated to collecting, classifying, and expressing the data of human feeling. Each performance/media instalment becomes a kind of &quot;emotional audit&quot; conducted in soundscape, music, and narrative and aleatoric editing processes will be distilled into short media pieces that function as public service announcements from the bureau to the general public.</p>\n<p>These PSAs will invite audiences (the watchers) into the speculative fiction world and to reflect on how we quantify, express, and share emotion in a data-driven age.</p>\n<p>The watchers will be provided with links to follow for access to secret messages from the resistance movement that is quietly trying to hold onto the language of emotion and fighting against the statisticization and discontinuation/cancelling of a category feelings, and the trend of reducing complex human emotions to data points, metrics and facts.</p>",
-      "curatorialStatement": "<p>PENDING</p>",
+      "workDescription": "<p><em>Bureau of Emotional Statistics</em> is a poetic hypermedia narrative experiment disguised as a bureaucratic department — a fictional office dedicated to collecting, classifying, and expressing the data of human feeling. Each performance/media instalment becomes a kind of “emotional audit” conducted in soundscape, music, and narrative and aleatoric editing processes will be distilled into short media pieces that function as public service announcements from the bureau to the general public.</p>\n<p>These PSAs will invite audiences (the watchers) into the speculative fiction world and to reflect on how <strong>we quantify, express, and share emotion in a data-driven age</strong>.</p>\n<p>The <em>watchers</em> will be provided with links to follow for access to secret messages from the resistance movement that is quietly trying to hold onto the language of emotion and fighting against the statisticization and discontinuation/cancelling of a category feelings, and the trend of reducing complex human emotions to data points, metrics and facts.</p>\n<p>The project is in its developmental stage and will be ongoing and growing as if it were an actual government department.</p>",
+      "curatorialStatement": "<p><em>Bureau of Emotional Statistics</em> presents a poetic hypermedia narrative disguised as a government department: a fictional office dedicated to collecting, classifying, and standardising the data of human feeling. Through a series of media installments styled as public service announcements, the work conducts a speculative &quot;emotional audit&quot; in soundscape, music, and narrative, its aleatoric editing distilling the messy overflow of emotions into the clipped, official language of a bureaucracy.</p>\n<p>Organised around the theme of emotion as a managed resource, the work stages the quiet violence of quantification: feelings are surveyed, catalogued, and, where they resist the ledger, &quot;discontinued.&quot; In holding the polished authority of the department against the fugitive dissent it cannot fully silence, <em>Bureau of Emotional Statistics</em> offers a reflection on how a data-driven age names, standardises, and cancels the categories of feeling, and on what is lost when what cannot be measured is deemed unspeakable.</p>",
       "instructions": "",
       "documentationLicense": ""
     },
@@ -2371,7 +2371,7 @@
       {
         "externalLinkName": "Website",
         "externalLinkId": 1,
-        "externalLinkUrl": "https://tonyvieira.com/#works/bureau"
+        "externalLinkUrl": "https://tonyvieira.com/bureau.html"
       }
     ],
     "mediaFilesInformation": {
