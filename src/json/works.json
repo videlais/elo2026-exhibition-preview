@@ -2372,6 +2372,16 @@
         "externalLinkName": "Website",
         "externalLinkId": 1,
         "externalLinkUrl": "https://tonyvieira.com/bureau.html"
+      },
+      {
+        "externalLinkName": "Instagram Account",
+        "externalLinkId": 2,
+        "externalLinkUrl": "https://www.instagram.com/bureauofemotionalstatistics?utm_source=qr"
+      },
+      {
+        "externalLinkName": "Bureau PSA 2 (Vimeo)",
+        "externalLinkId": 3,
+        "externalLinkUrl": "https://vimeo.com/1210523417"
       }
     ],
     "mediaFilesInformation": {
